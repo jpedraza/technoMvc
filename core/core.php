@@ -30,7 +30,7 @@ define('LONGITUD_MIN_NOM', 5);
 define('LONGITUD_MIN_MAR', 3);
 define('LONGITUD_MAX_NOM', 50);
 define('LONGITUD_MAX_MAR', 30);
-define('URL_PRODUCTOS', 'C:\Xampp\www\technoMvc\views\images\productos/');
+define('URL_PRODUCTOS', 'views/images/productos/');
 define('PRECIO_MIN_PROD', 350);
 define('MONEDA', 'Bs');
 define('CANTIDAD_PRODUCTOS', 5);
