@@ -155,7 +155,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$nuevos[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $nuevos[1]; ?>" alt="<?php echo $nuevos[3]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
