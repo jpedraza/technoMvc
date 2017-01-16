@@ -1,5 +1,5 @@
 <div class="modal fade" id="Addpro" role="dialog">             
-    <div class="modal-dialog">  
+    <div class="modal-luis">  
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -16,7 +16,7 @@
                     <div class="form-group col-sm-6">
                         <label for="inputEmail" class="col-lg-4 control-label">Nombre del Producto <b class="aviso-luis">*</b></label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto">
+                            <input type="text" class="form-control" id="nombre" name="nombre" maxlength="50" placeholder="Nombre del producto">
                         </div>
                     </div>
                     <div class="form-group col-sm-6" onkeypress="return runScriptAddpro(event)">

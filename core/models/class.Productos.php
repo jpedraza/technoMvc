@@ -67,15 +67,6 @@ class Productos {
 			}
 			
 			
-			$sql = $this->db->query("SELECT nombre FROM productos WHERE nombre='$this->nombre';");
-			$nombreBd = $this->db->recorrer($sql)[0];
-			if (strtolower($this->nombre) == strtolower($nombreBd)){
-				throw new Exception(4);
-			} else {
-				$this->nombre = $this->db->real_escape_string($_POST['nombre']);
-			}
-			
-			
 			$sql = $this->db->query(
 								"SELECT 
 									id 
@@ -88,14 +79,14 @@ class Productos {
 								;"
 							);
 			if ($db->rows($sql) > 0){
-				throw new Exception(5);
+				throw new Exception(4);
 			} else {
 				$this->foto1 = $this->db->real_escape_string($_POST['foto1']);
 			}
 
 			
 			if ($_POST['cantidad'] <= 0) {
-				throw new Exception(6);
+				throw new Exception(5);
 			} else {
 				$this->cantidad = intval($_POST['cantidad']);
 			}
@@ -105,14 +96,14 @@ class Productos {
 			$temporal = $_FILES['foto1']['tmp_name'];
             $tipo = getimagesize($temporal);
             if ($tipo[2] != 1 || $tipo[2] != 2 || $tipo[2] != 3){
-            	throw new Exception(7);
+            	throw new Exception(6);
             } else {
 				$this->foto1 = $this->db->real_escape_string($_FILES['foto1']['name']);
 			}
 
 			
 			if (strlen($_POST['descripcion']) < LONGITUD_MIN) {
-				throw new Exception(8);
+				throw new Exception(7);
 			} else {
 				$this->descripcion = $this->db->real_escape_string($_POST['descripcion']);
 				$this->descripcion 	= str_replace(
@@ -127,7 +118,7 @@ class Productos {
 		} 
 	}
 
-	public function Add(){
+	/*public function Add(){
 		$this->Errors('?view=productos&mode=add&error=');
 		$this->db->query(
 					"INSERT INTO
@@ -162,7 +153,7 @@ class Productos {
 				");
 		copy($temporal, URL_PRODUCTOS . $archivo);
 		header('location: ?view=productos&mode=add&id='.$this->id.'&success=true');
-	}
+	}*/
 
 	public function Edit(){
 		$this->id = intval($_GET['id']);
@@ -199,28 +190,10 @@ class Productos {
 				productos
 			WHERE 
 				id='$this->id';
-		");
-		/*$q .= 
-			"DELETE FROM
-				productos
-			WHERE 
-				id_categoria='$this->id';
-		";
-		if (!$this->db->multi_query($q)) {
-		    echo "Falló la multiconsulta: (" . $this->db->errno . ") " . $this->db->error;
-		} do {
-		    if ($resultado = $this->db->store_result()) {
-			    var_dump($resultado->fetch_all(MYSQLI_ASSOC));
-			    $resultado->free();
-			}
-		} while ($this->db->more_results() && $this->db->next_result());*/
-			
+		");		
 		header('location: ?view=productos');
 
 	}
-
-
-
 	public function __destruct() {
 		$this->db->close();
 	}

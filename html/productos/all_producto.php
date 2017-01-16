@@ -69,50 +69,149 @@
 					            			</tr>
 					            		</thead>				     
 					     	       		<tbody>';
-					     	       			foreach ($_productos as $id_producto => $producto_array) {
-				             				 	$oferta = ($_productos[$id_producto]['oferta'] == 1) ? "Si" : "No";
-				             					$HTML .= 
-				                 				'<tr>
-				                   					<td style="text-align:center;">
-				                   						<img src="views/images/productos/' . $_productos[$id_producto]['foto1'] .'" alt="'. $_productos[$id_producto]['nombre'] .'" width="70" height="70">
-				                   					</td>
-				                   					<td style="text-align:center">'.
-				                   						strtoupper(substr($_productos[$id_producto]['nombre'],0,1)).
-				                   						strtolower(substr($_productos[$id_producto]['nombre'],1)).
+					     	       			$db = new Conexion();
+					     	       			$compag = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag']; 
+											$TotalReg = $_productos;
+											$TotalRegistro  =ceil(count($TotalReg) / CANTIDAD_PRODUCTOS);
+											$consultavistas ="
+												SELECT
+													foto1,
+													nombre,
+													precio,
+													cantidad,
+													id_categoria,
+													id_subcategoria,
+													oferta,
+													precio_oferta,
+													id
+												FROM
+													productos
+												ORDER BY
+													id ASC
+												LIMIT ".(($compag-1) * CANTIDAD_PRODUCTOS)." , ".CANTIDAD_PRODUCTOS
+											;
+											$consulta=$db->query($consultavistas);
+											while ($lista = $consulta->fetch_row()) {
+												$oferta = ($lista[6] == 1) ? "Si" : "No";
+												$HTML .=  
+												'
+												<tr>
+													<td style="text-align:center;">
+													<img src="views/images/productos/' . $lista[0] .'" alt="'. $lista[1].'" width="70" height="70">
+													</td>
+													<td style="text-align:center">'.
+				                   						strtoupper(substr($lista[1],0,1)).
+				                   						substr($lista[1],1).
+				                   					'</td>
+													<td style="text-align:center">'.
+				                   						number_format($lista[2],2,",",".").
 				                   					'</td>
 				                   					<td style="text-align:center">'.
-				                   						number_format($_productos[$id_producto]['precio'],2,",",".").
+				                   						$lista[3].
 				                   					'</td>
 				                   					<td style="text-align:center">'.
-				                   						$_productos[$id_producto]['cantidad'].
+				                   						$_categorias[$lista[4]]['nombre'].
 				                   					'</td>
 				                   					<td style="text-align:center">'.
-				                   						$_categorias[$_productos[$id_producto]['id_categoria']]['nombre'].
-				                   					'</td>
-				                   					<td style="text-align:center">'.
-				                   						$_subcategorias[$_productos[$id_producto]['id_subcategoria']]['nombre'].
+				                   						$_subcategorias[$lista[5]]['nombre'].
 				                   					'</td>
 				                   					<td style="text-align:center">'.
 				                   						$oferta.
 				                   					'</td>
 				                   					<td style="text-align:center">'.
-				                   						number_format($_productos[$id_producto]['precio_oferta'],2,",",".").
+				                   						number_format($lista[7],2,",",".").
 				                   					'</td>
 				                   					<td style="text-align:center">
-				                   						<a class="btn btn-default"  data-target="#Edipro" href="?view=productos&mode=edit&id='. $_productos[$id_producto]['id'] .'" >
+				                   						<a class="btn btn-default"  data-target="#Edipro" href="?view=productos&mode=edit&id='. $lista[8] .'" >
 					                                        <i class="fa fa-edit" title="Editar"> Editar</i>
 					                                    </a>					                                    
 				                   					</td>
 				                   					<td style="text-align:center">
-					                                    <a class="btn btn-default" onclick="DeleteItem(\'¿Está seguro de eliminar este Producto?\',\'?view=productos&mode=delete&id='.$_productos[$id_producto]['id'].'\')"><i class="fa fa-times" title="Eliminar"> Eliminar</i>
+					                                    <a class="btn btn-default" onclick="DeleteItem(\'¿Está seguro de eliminar este Producto?\',\'?view=productos&mode=delete&id='.$lista[8] .'\')"><i class="fa fa-times" title="Eliminar"> Eliminar</i>
 					                                    </a>
 					                                </td>
-								                </tr>';
-								            }
+												</tr>'
+												;
+											}
 								            $HTML .= 
 								        '</tbody>
-								    </table>'
-								;
+								    </table>';
+
+								/*Sector de Paginacion */
+																	
+								//Operacion matematica para botón siguiente y atrás 
+								$IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
+								$DecrementNum = (($compag - 1)) < 1 ? 1 :( $compag - 1);
+																	
+								$HTML .=  
+									'<div style="text-align:center">
+									<ul class="pagination"> ';
+								if($TotalRegistro > 3){
+									$HTML .= 
+										'<li>
+											<a href=?view=productos&pag=1>
+												◀◀
+											</a>
+										</li>';
+								} else { 
+									$HTML .= 
+										'';
+								}
+								$HTML .=
+									'<li>
+										<a href=?view=productos&pag=' . $DecrementNum . '>
+											◀
+										</a>
+									</li>';
+									
+								//Se resta y suma con el numero de pag actual con el cantidad de 
+								//números  a mostrar
+								$Desde = $compag - (ceil(CANTIDAD_PRODUCTOS / 2) - 1);
+								$Hasta = $compag + (ceil(CANTIDAD_PRODUCTOS / 2) - 1);
+																	
+								//Se valida
+								$Desde = ($Desde < 1) ? 1 : $Desde;
+								$Hasta = ($Hasta < CANTIDAD_PRODUCTOS) ? CANTIDAD_PRODUCTOS : $Hasta;
+								//Se muestra los números de paginas
+								for($i = $Desde; $i <= $Hasta; $i++) {
+								//Se valida la paginacion total de registros
+									if($i <= $TotalRegistro){
+								 	//Validamos la pag activo
+										if($i == $compag){
+											$HTML .=  
+											"<li class=\"active\">
+												<a href=\"?view=productos&pag=".$i."\">
+													".$i."
+												</a>
+											</li>";
+										} else {
+											$HTML .=  
+											"<li>
+												<a href=\"?view=productos&pag=".$i."\">
+													" . $i . "
+												</a>
+											</li>";
+										}     		
+									}
+								}
+								$HTML .=  
+									'<li>
+										<a href=?view=productos&pag=' . $IncrimentNum . '>
+											▶
+										</a>
+									</li>';
+									if ($TotalRegistro > 3){
+										$HTML .= 
+										'<li>
+											<a href=?view=productos&pag=' . $TotalRegistro . '>
+												▶▶
+											</a>
+										</li>';
+								} else {
+									$HTML .= 
+										'</ul>
+									</div>';
+								}
 							} else {
 								$HTML = 
 									'<div class="alert alert-dismissible alert-info">
@@ -120,7 +219,8 @@
 									</div>'
 								;
 							}
-							echo $HTML;							
+							echo $HTML;
+							$db->close();							
 				           	?>
 	            	</div>
 	        	</div>

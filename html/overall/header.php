@@ -53,6 +53,34 @@
     <script src="views/app/js/html5shiv.js"></script>
     <script src="views/app/js/respond.min.js"></script>
   <![endif]--> 
-  <title><?php echo APP_TITLE ?></title>
+  <title>
+    <?php $archivo_actual = !isset($_GET['view']) ? "index" : $_GET['view'];    
+        switch ($archivo_actual) {
+            case "index":
+                echo "Home";
+                break;
+            case "categorias":
+                echo "Categorías";
+                break;
+            case "productos":
+                echo "Productos";
+                break;
+            case "subcategorias":
+                echo "Subcategorías";
+                break;            
+            case "login":
+                echo "Login";
+                break;            
+            case "reg":
+                echo "Registro";
+                break;            
+            case "lostpass":
+                echo "Recuperar Clave";
+                break;
+            default:
+                echo "404";
+                break;
+        }
+    echo ' '. APP_TITLE ?></title>
 </head>
    

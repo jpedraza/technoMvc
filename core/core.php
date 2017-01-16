@@ -33,6 +33,7 @@ define('LONGITUD_MAX_MAR', 30);
 define('URL_PRODUCTOS', 'C:\Xampp\www\technoMvc\views\images\productos/');
 define('PRECIO_MIN_PROD', 350);
 define('MONEDA', 'Bs');
+define('CANTIDAD_PRODUCTOS', 5);
 
 #Estructura
 require('vendor/autoload.php'); //incluye las librerias instaladas por composer

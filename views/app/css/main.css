@@ -20,6 +20,9 @@
 	}
 }
 
+.product-name {
+    height: 40px;
+}
 
 .product-men img {
     width: 100%;

@@ -132,14 +132,14 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">Productos Recientes</h2>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
                                         <a href="detalleProducto.php?detalleProd=26">
                                             <img src="views/images/productos/wahl1.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <h2>Bs. 29.999,00</h2>
-                                            <p title="Afeitadora Wahl Beard Battery Trimmer">
+                                            <p class="product-name">
                                             Afeitadora Wahl Beard Batt<b>....</b>                                             </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=26" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>                                                
@@ -154,15 +154,16 @@
                                 </div>
                             </div>
                         </div>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
                                         <a href="detalleProducto.php?detalleProd=25">
                                             <img src="views/images/productos/destornilladorSecur.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <h2>Bs. 2.950,00</h2>
-                                            <p title="Kit De Destornilladores Para Abrir Celulares 21 Pcs + Pinza">
-                                            Kit De Destornilladores Pa<b>....</b>                                             </p>
+                                            <p class="product-name">
+                                                Kit De Destornilladores Parte electronicas 50-1Kit<b>....</b>
+                                            </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=25" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>                                                
                                     </div>
@@ -176,14 +177,14 @@
                                 </div>
                             </div>
                         </div>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
                                         <a href="detalleProducto.php?detalleProd=24">
                                             <img src="views/images/productos/destornillador1.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <h2>Bs. 3.450,00</h2>
-                                            <p title="Juego De Destornilladores 31 En 1 ">
+                                            <p class="product-name">
                                             Juego De Destornilladores <b>....</b>                                             </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=24" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>                                                
@@ -197,13 +198,12 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                                            
-                                    </div><!-- FIN Productos Destacados-->
+                        </div>                                            
+                </div><!-- FIN Productos Destacados-->
 
                 <div class="features_items"><!--Productos en Oferta-->
                     <h2 class="title text-center">Productos En Oferta</h2>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
@@ -211,7 +211,7 @@
                                             <img src="views/images/productos/3ps2.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <strike>Bs. 86.550,00</strike>
                                             <h2>Bs. 85.000,00</h2>
-                                            <p title="Playstation 2 Slim 9001 | Chipeado">
+                                            <p class="product-name">
                                             Playstation 2 Slim 9001 | <b>....</b>                                             </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=1" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                         </div>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
@@ -234,7 +234,7 @@
                                             <img src="views/images/productos/wii.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <strike>Bs. 62.999,00</strike>
                                             <h2>Bs. 61.000,00</h2>
-                                            <p title="Nintendo Wii | Chipeado">
+                                            <p class="product-name">
                                             Nintendo Wii | Chipeado                                            </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=2" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
@@ -249,7 +249,7 @@
                                 </div>
                             </div>
                         </div>
-                                            <div class="col-sm-4">
+                        <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center men-thumb-item">
@@ -257,7 +257,7 @@
                                             <img src="views/images/productos/pso.jpg" alt="Producto Destacado" class="pro-image-front">
                                             <strike>Bs. 32.800,00</strike>
                                             <h2>Bs. 31.500,00</h2>
-                                            <p title="Playstation 1 PsOne | Chipeado y Lente Óptico Nuevo">
+                                            <p class="product-name">
                                             Playstation 1 PsOne | Chip<b>....</b>                                             </p>
                                         </a>
                                         <a href="verificoSesion.php?idpro=5" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
@@ -272,7 +272,7 @@
                                 </div>
                             </div>
                         </div>
-                                    </div><!-- FIN Productos en Oferta-->
+                </div><!-- FIN Productos en Oferta-->
 
                 <div class="category-tab"><!--PESTAÑA DE CATEGORIA-->
                     <div class="col-sm-12">

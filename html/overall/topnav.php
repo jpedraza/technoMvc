@@ -159,17 +159,65 @@
                        </li>
                        <?php 
                         if (false != $_categorias){
-                          foreach ($_categorias as $nombre => $array) {
-                            echo 
-                            '
-                            <li>
-                              <a href="#">' . 
-                                strtoupper(substr($_categorias[$nombre]['nombre'],0,1)) .
-                                strtolower(substr($_categorias[$nombre]['nombre'],1)) .
-                              '</a>
-                            </li>
+                            $db = new Conexion();
+                            $prepare_sql = $db->prepare(
+                                "SELECT 
+                                    id 
+                                FROM 
+                                    subcategorias 
+                                WHERE 
+                                    id_categoria = ? 
+                                ;"
+                            );
+                            $prepare_sql->bind_param('i',$id_categoria);
+                            foreach ($_categorias as $id_categoria => $array_categoria) {
+                                $prepare_sql->execute();
+                                $prepare_sql->store_result();
+                                echo 
+                                '
+                                <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">' . 
+                                    strtoupper(substr($_categorias[$id_categoria]['nombre'],0,1)) .
+                                    strtolower(substr($_categorias[$id_categoria]['nombre'],1)) .' 
+                                    <b class="caret"></b>
+                                  </a>
+                                ';
+                                if ($prepare_sql->num_rows > 0) {
+                                    $prepare_sql->bind_result($id_de_subcategoria);
+                                    echo '<ul role="menu" class="dropdown-menu">';
+                                    while ($prepare_sql->fetch()) {
+                                        echo '
+                                                <li>
+                                                    <a href="subcategorias/'. UrlAmigable($id_de_subcategoria, $_subcategorias[$id_de_subcategoria]['nombre']) . '">'
+                                                        . $_subcategorias[$id_de_subcategoria]['nombre'] .
+                                                    '</a> 
+                                                </li>'
+                                        ;
+                                    }
+                                    echo '</ul>';
+                                } else {
+                                    echo 
+                                    '
+                                    <ul role="menu" class="dropdown-menu">
+                                        <li>
+                                            <a href="#">
+                                                Sin Sub-Categorías
+                                            </a> 
+                                        </li>
+                                    </ul>
+                                    ';
+                                }
+                                echo '</li>';
+                            }
+                            $prepare_sql->close(); 
+                        } else {
+                            echo '
+                                <li>
+                                    <a href="#">
+                                        No Hay Categorias
+                                    </a>
+                                </li>
                             ';
-                           } 
                         }
                        ?>
                        <li>
