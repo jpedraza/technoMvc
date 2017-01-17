@@ -228,7 +228,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$oferta[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $oferta[1]; ?>" alt="<?php echo $oferta[4]; ?>" class="pro-image-front">
                                                 <strike><?php echo number_format($oferta[2],2,",","."); ?></strike>
                                                 <h2><?php echo number_format($oferta[3],2,",","."); ?></h2>
@@ -309,7 +309,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -365,7 +365,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -421,7 +421,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -477,7 +477,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="">
+                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -539,7 +539,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="detalleProducto.php?detalleProd=12">
+                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -593,7 +593,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="#">
+                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 

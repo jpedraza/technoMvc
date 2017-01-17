@@ -83,3 +83,15 @@ ul.pagination li a.active {
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 
+
+
+#imagenGrande:hover {
+  cursor: pointer;
+  transform: scale(1.3);
+}
+
+#imagenGrande {
+  width: 100%;
+  transform: scale(1);
+  transition: all .2s ease;
+}

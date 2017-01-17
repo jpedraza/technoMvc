@@ -56,64 +56,68 @@
              <div class="col-sm-9 padding-right">
                 <div class="product-details"><!--Detalles del Producto-->
                     <div class="col-sm-5">
+                        <?php 
+                            $db = new Conexion();
+                            $sql = $db->query(
+                                "SELECT
+                                    *
+                                FROM
+                                    productos
+                                WHERE
+                                    id='$_GET[id]'
+                                LIMIT 
+                                    1;")
+                            ;
+                            while ($prod = $sql->fetch_row()) {
+                        ?>
+                         
                         <div class="view-product">
-                            <img src="views/images/productos/default.jpg" alt="">
-                                <!--<h3>ZOOM</h3>-->
+                            <img id="imagenGrande" alt="<?php echo $prod[1]; ?>" src="views/images/productos/<?php echo $prod[11]; ?>" />
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
-                            <!-- Otras Fotos del Articulo -->
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
+                                <div id="thumbs" class="item active">
+                                    <img src="views/images/productos/<?php echo $prod[11]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[11]; ?>" />
+                                    <img src="views/images/productos/<?php echo $prod[12]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[12]; ?>" />
+                                    <img src="views/images/productos/<?php echo $prod[13]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[13]; ?>" />
                                 </div>
-                                <div class="item">
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                </div>
-                                <div class="item">
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                    <a href=""><img src="views/images/productos/default.jpg" alt=""></a>
-                                </div>  
                             </div>
-                            <!-- Controls -->
-                            <a class="left item-control" href="#similar-product" data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="right item-control" href="#similar-product" data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         </div>
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/Información del Producto-->
-                            <h2></h2>
-                            <p>Código: <?php print '#000' ?></p>
+                            <h2><?php echo $prod[1]; ?></h2>
+                            <p>Código: <?php print '#000'. $prod[0] ?></p>
                             <img src="views/images/product-details/rating.png" alt="">
                             <span>
-                                <strike>584</strike><br>
-                                <span>888</span>
-                                <span><?php print "Bs. 777" ?></span>
+                                <?php 
+                                if ($prod[9] == 1){ ?>
+                                    <strike><?php print "Bs. " . number_format($prod[2], 2, ",", ".") ?></strike><br>
+                                    <span><?php print "Bs. " . number_format($prod[10], 2, ",", "."); ?></span>
+                                <?php } else { ?>
+                                    <span><?php print "Bs. " . number_format($prod[2], 2, ",", "."); ?></span>
+                                    <?php } ?>
                                 <label>Cantidad:</label>
                                 <input type="text" value="1">
                                 <a href="">
                                     <i class="fa fa-star" title="Agregar a Favoritos"></i>
                                 </a>
                                 <a href="">
-                                    <button type="button" class="btn btn-fefault cart">
+                                    <button type="button" class="btn btn-default cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Agregar al carrito
                                     </button>
                                 </a>
                             </span>
-                            <p><b>Disponibilidad: </b> </p>
-                            <p><b>Condicion: </b></p>
-                            <p><b>Marca: </b></p>
+                            <p><b>Disponibilidad:</b> <?php echo $prod[3]; ?> </p>
+                            <p><b>Condicion: </b> <?php if ($prod[5] == 1) { echo "Nuevo";} else { echo "Usado";} ?></p>
+                            <p><b>Marca: </b> 
+                                <?php 
+                                    echo strtoupper(substr($prod[8],0,1)); 
+                                    echo substr($prod[8],1); 
+                                ?></p>
                             <a href="">
-                                <img src="images/product-details/share.png" class="share img-responsive"  alt="" />
+                                <img src="views/images/product-details/share.png" class="share img-responsive"  alt="" />
                             </a>
                         </div><!--/Información del Producto-->
                     </div>
@@ -129,7 +133,7 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane fade active in" id="detalles" >
-                                detallessdfdsfdasf
+                                <?php echo $prod[4]; ?>
                             </div>
 
                             <div class="tab-pane fade" id="similares" >
@@ -153,7 +157,9 @@
                             </div>
                         </div>
                     </div><!--/category-tab-->
-
+                <?php }
+                    $db->close();
+                 ?>
                 <div class="recommended_items"><!--MAS VENDIDOS-->
                     <h2 class="title text-center">Productos Más Vendidos</h2>
 
@@ -184,7 +190,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="detalleProducto.php?detalleProd=12">
+                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -238,7 +244,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="#">
+                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -283,8 +289,21 @@
 
 
 
-
 <?php include(HTML_DIR . 'overall/footer.php'); ?>
 
+<script>
+    $(document).ready(function(){
+ 
+    //selector de imagenes a aplicar la funcionalidad de click
+    $("#thumbs img").click(function(){
+ 
+        //obtenemos la imagen a mostrar
+        urlImagenGrande=$(this).data("img");
+ 
+        //asignamos la imagen por medio de prop
+        $("#imagenGrande").prop("src",urlImagenGrande); 
+    }) 
+});
+</script>
 </body>
 </html>
