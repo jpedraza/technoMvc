@@ -187,11 +187,11 @@
                                     echo '<ul role="menu" class="dropdown-menu">';
                                     while ($prepare_sql->fetch()) {
                                         echo '
-                                                <li>
-                                                    <a href="subcategorias/'. UrlAmigable($id_de_subcategoria, $_subcategorias[$id_de_subcategoria]['nombre']) . '">'
-                                                        . $_subcategorias[$id_de_subcategoria]['nombre'] .
-                                                    '</a> 
-                                                </li>'
+                                            <li>
+                                                <a href="detalles/'. UrlAmigable($id_de_subcategoria, $_subcategorias[$id_de_subcategoria]['nombre']) . '">'
+                                                    . $_subcategorias[$id_de_subcategoria]['nombre'] .
+                                                '</a> 
+                                            </li>'
                                         ;
                                     }
                                     echo '</ul>';

@@ -78,8 +78,18 @@
                             <div class="carousel-inner">
                                 <div id="thumbs" class="item active">
                                     <img src="views/images/productos/<?php echo $prod[11]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[11]; ?>" />
-                                    <img src="views/images/productos/<?php echo $prod[12]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[12]; ?>" />
-                                    <img src="views/images/productos/<?php echo $prod[13]; ?>" alt="<?php echo $prod[1]; ?>" data-img="views/images/productos/<?php echo $prod[13]; ?>" />
+                                    <?php 
+                                        if ($prod[12] == "default.jpg" or "") {
+                                            echo "";
+                                        } else {
+                                            echo '<img src="views/images/productos/'.$prod[12].'" alt="" data-img="views/images/productos/'.$prod[12].'" />';
+                                        }
+                                        if ($prod[13] == "default.jpg" or "") {
+                                            echo "";
+                                        } else {
+                                            echo '<img src="views/images/productos/'.$prod[13].'" alt="" data-img="views/images/productos/'.$prod[13].'" />';
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -137,28 +147,62 @@
                             </div>
 
                             <div class="tab-pane fade" id="similares" >
-                                <div class="col-sm-4">
-                                    <div class="product-image-wrapper">
-                                        <div class="single-products">
-                                            <div class="productinfo text-center men-thumb-item">
-                                                <a href="">
-                                                    <img src="views/images/productos/default.jpg" alt="" class="pro-image-front">
-                                                </a> 
-                                                <h2>5432</h2>
-                                                <p>Similar</p>
-                                                <a href="">
-                                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</button>
-                                                </a>
+                            <?php
+                                $sql_similar = $db->query(
+                                    "SELECT
+                                        *
+                                    FROM
+                                        productos
+                                    WHERE
+                                        marca='$prod[8]' and id_subcategoria='$prod[7]' and id!=$prod[0]
+                                    LIMIT 
+                                        3;")
+                                ;
+                                if ($db->rows($sql_similar) > 0) {
+                                    while ($similar = $sql_similar->fetch_row()) { ?>
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center men-thumb-item">
+                                                        <?php echo 
+                                                        '<a href="detalles/'. UrlAmigable($similar[0], $_productos[$similar[0]]['nombre']) . '">'; ?>
+                                                            <img src="views/images/productos/<?php echo $similar[11]; ?>" alt="<?php echo $similar[1]; ?>" />
+                                                            <h2>
+                                                                <?php 
+                                                                    $similar[9] == 1 ? $precio = number_format($similar[10],2,",",".") : $precio = number_format($similar[2],2,",","."); 
+                                                                    echo $precio;
+                                                                ?>
+                                                            </h2>
+                                                            <p class="product-name" title="<?php echo $prod[5]; ?>">
+                                                                <?php 
+                                                                    if (strlen($similar[1]) > 50) {
+                                                                        echo substr($similar[1],0,47);
+                                                                        echo "...";
+                                                                    } else {
+                                                                        echo $similar[1];
+                                                                    }
+                                                                ?>           
+                                                            </p>
+                                                        <?php       
+                                                        '</a>';
+                                                        ?>
+                                                        <a href="">
+                                                            <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</button>
+                                                        </a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <h3>No Hay Producto Similar</h3>
+                                    <?php 
+                                    } 
+                                } else {
+                                    echo "<h3>No Hay Producto Similar</h3>";
+                                } 
+                                ?>
                             </div>
                         </div>
                     </div><!--/category-tab-->
                 <?php }
-                    $db->close();
                  ?>
                 <div class="recommended_items"><!--MAS VENDIDOS-->
                     <h2 class="title text-center">Productos Más Vendidos</h2>
@@ -167,7 +211,6 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <?php 
-                                    $db = new Conexion();
                                     $sql = $db->query(
                                         "SELECT
                                             id,
@@ -190,7 +233,8 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                                <?php echo 
+                                                '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -208,7 +252,9 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                </a>
+                                                <?php       
+                                                '</a>';
+                                                ?>
                                                 <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
@@ -216,12 +262,10 @@
                                 </div>
                                 <?php 
                                     }
-                                    $db->close();
                                 ?>
                             </div>
                             <div class="item">
                                 <?php 
-                                    $db = new Conexion();
                                     $sql = $db->query(
                                         "SELECT
                                             id,
@@ -244,7 +288,8 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                                <?php echo 
+                                                '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -262,7 +307,9 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                </a>
+                                                <?php       
+                                                '</a>';
+                                                ?>
                                                 <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>

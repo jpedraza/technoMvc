@@ -54,7 +54,9 @@
     <script src="views/app/js/respond.min.js"></script>
   <![endif]--> 
   <title>
-    <?php $archivo_actual = !isset($_GET['view']) ? "index" : $_GET['view'];    
+    <?php 
+      $archivo_actual   = !isset($_GET['view']) ? "index" : $_GET['view'];    
+      $modo_actual      = !isset($_GET['mode']) ? "" : $_GET['mode'];    
         switch ($archivo_actual) {
             case "index":
                 echo "Home";
@@ -76,6 +78,9 @@
                 break;            
             case "lostpass":
                 echo "Recuperar Clave";
+                break;            
+            case "detalles":
+                echo "Detalle " . strtoupper(substr($modo_actual,0,1)) . substr($modo_actual,1) . " ";
                 break;
             default:
                 echo "404";

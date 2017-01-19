@@ -155,7 +155,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$nuevos[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($nuevos[0], $_productos[$nuevos[0]]['nombre']) . '">'; ?>                                            
                                                 <img src="<?php echo URL_PRODUCTOS . $nuevos[1]; ?>" alt="<?php echo $nuevos[3]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -173,7 +174,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>                                                
@@ -228,7 +231,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$oferta[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($oferta[0], $_productos[$oferta[0]]['nombre']) . '">'; ?>
                                                 <img src="<?php echo URL_PRODUCTOS . $oferta[1]; ?>" alt="<?php echo $oferta[4]; ?>" class="pro-image-front">
                                                 <strike><?php echo number_format($oferta[2],2,",","."); ?></strike>
                                                 <h2><?php echo number_format($oferta[3],2,",","."); ?></h2>
@@ -242,7 +246,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>                                                
@@ -309,7 +315,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -327,7 +334,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -365,7 +374,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -383,7 +393,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -421,7 +433,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -439,7 +452,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -477,7 +492,8 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center men-thumb-item">
-                                            <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                 <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                 <h2>
                                                     <?php 
@@ -495,7 +511,9 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            </a>
+                                            <?php       
+                                            '</a>';
+                                            ?>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -539,7 +557,8 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                                <?php echo 
+                                                '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -557,7 +576,9 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                </a>
+                                                <?php       
+                                                '</a>';
+                                                ?>
                                                 <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
@@ -593,7 +614,8 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center men-thumb-item">
-                                                <a href="<?php echo '?view=detalles&mode=productos&id=' .$prod[0] ?>">
+                                                <?php echo 
+                                                '<a href="detalles/'. UrlAmigable($prod[0], $_productos[$prod[0]]['nombre']) . '">'; ?>
                                                     <img src="<?php echo URL_PRODUCTOS . $prod[1]; ?>" alt="<?php echo $prod[5]; ?>" class="pro-image-front">
                                                     <h2>
                                                         <?php 
@@ -611,7 +633,9 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                </a>
+                                                <?php       
+                                                '</a>';
+                                                ?>
                                                 <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
@@ -635,9 +659,6 @@
         </div>
     </div>
 </section>
-
-
-
 
 <?php include(HTML_DIR . 'overall/footer.php'); ?>
 

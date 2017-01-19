@@ -1,0 +1,15 @@
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|json|lock|swp)|~)$">
+	Order allow,deny
+	Deny from all
+	Satisfy All
+</FilesMatch>
+
+<Files .htaccess>
+	Order allow,deny
+	Deny from all
+</Files>
+
+RewriteEngine on
+RewriteRule ^detalles/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=detalles&mode=productos&id=$1
+RewriteRule ^deta/([0-9]+)\-([a-zA-Z0-9-]*)$ index.php?view=detalles&id=$1
+RewriteRule ^temas/([0-9]+)\-([0-9]+)\-([a-zA-Z0-9-]*)$ index.php?view=temas&id=$1&id_foro=$2

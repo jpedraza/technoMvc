@@ -19,13 +19,14 @@ class Detalles {
 	public function See(){
 		$this->Errors('?view=detalles&mode=productos&error=');
 		$this->db->query(
-					"SELECT
-						*
-					FROM 
-						productos
-					WHERE 
-						id='$this->id';
-				");
+			"SELECT
+				*
+			FROM 
+				productos
+			WHERE 
+				id='$this->id';
+			"
+		);
 	}
 
 	
