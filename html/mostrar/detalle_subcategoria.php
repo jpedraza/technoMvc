@@ -71,7 +71,7 @@
                             WHERE
                                 id_subcategoria='$_GET[id]'
                             ORDER BY
-                            id DESC
+                            nombre ASC
                             ;")
                         ;
                         while ($nuevos = $sql_new->fetch_row()) {
@@ -106,7 +106,12 @@
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>                                                
                                         </div>
-                                        <img src="views/images/home/new.png" class="new" alt="nuevo">
+                                        <?php 
+                                        if ($nuevos[4] == 1) { ?>
+                                            <img src="views/images/home/sale.png" class="new" alt="Oferta">
+                                        <?php 
+                                        } 
+                                        ?>
                                     </div>
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">

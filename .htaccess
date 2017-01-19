@@ -12,4 +12,3 @@
 RewriteEngine on
 RewriteRule ^detalles/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=detalles&mode=productos&id=$1
 RewriteRule ^mostrar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&id=$1
-RewriteRule ^temas/([0-9]+)\-([0-9]+)\-([a-zA-Z0-9-]*)$ index.php?view=temas&id=$1&id_foro=$2
