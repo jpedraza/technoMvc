@@ -81,6 +81,9 @@
                 break;            
             case "detalles":
                 echo "Detalle " . strtoupper(substr($modo_actual,0,1)) . substr($modo_actual,1) . " ";
+                break;            
+            case "mostrar":
+                echo "Productos ";
                 break;
             default:
                 echo "404";

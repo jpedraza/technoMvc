@@ -53,7 +53,83 @@
       </div>
 
             <!--SECCION CENTRAL DE LA PAGINA-->
-             <div class="col-sm-9 padding-right">
+            <div class="col-sm-9 padding-right">
+                <div class="features_items"><!--Productos Destacados-->
+                    <h2 class="title text-center"><?php echo $_categorias[$_subcategorias[$_GET['id']]['id_categoria']]['nombre'] . '  <i class="fa fa-hand-o-right" style="margin-right: 8px; margin-left:8px;"></i> ' . $_subcategorias[$_GET['id']]['nombre'] ?></h2>
+                      <?php 
+                        $db = new Conexion();
+                        $sql_new = $db->query(
+                            "SELECT
+                                id,
+                                foto1,
+                                precio,
+                                nombre,
+                                oferta,
+                                precio_oferta
+                            FROM
+                                productos
+                            WHERE
+                                id_subcategoria='$_GET[id]'
+                            ORDER BY
+                            id DESC
+                            ;")
+                        ;
+                        while ($nuevos = $sql_new->fetch_row()) {
+                      ?>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center men-thumb-item">
+                                            <?php echo 
+                                            '<a href="detalles/'. UrlAmigable($nuevos[0], $_productos[$nuevos[0]]['nombre']) . '">'; ?>                                            
+                                                <img src="<?php echo URL_PRODUCTOS . $nuevos[1]; ?>" alt="<?php echo $nuevos[3]; ?>" class="pro-image-front">
+                                                <h2>
+                                                    <?php 
+                                                    $nuevos[4] == 1 ? $precio = number_format($nuevos[5],2,",",".") : $precio = number_format($nuevos[2],2,",","."); 
+                                                    echo $precio;
+                                                    ?>
+                                                </h2>
+                                                <p class="product-name" title="<?php echo $nuevos[3]; ?>">
+                                                    <?php 
+                                                    if (strlen($nuevos[3]) > 50) {
+                                                        echo substr($nuevos[3],0,47);
+                                                        echo "...";
+                                                    } else {
+                                                        echo $nuevos[3];
+                                                    }
+                                                    ?>           
+                                                </p>
+                                            <?php       
+                                            '</a>';
+                                            ?>
+                                            <a href="" class="btn btn-default add-to-cart">
+                                                <i class="fa fa-shopping-cart"></i>Agregar al carrito
+                                            </a>                                                
+                                        </div>
+                                        <img src="views/images/home/new.png" class="new" alt="nuevo">
+                                    </div>
+                                    <div class="choose">
+                                        <ul class="nav nav-pills nav-justified">
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-star"></i>Agregar a Favoritos
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-plus-square"></i>Ver Detalle
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php 
+                        }
+                        ?>                                            
+                </div><!-- FIN Productos Destacados-->
+
+
                 <div class="recommended_items"><!--MAS VENDIDOS-->
                     <h2 class="title text-center">Productos Más Vendidos</h2>
 

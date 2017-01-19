@@ -140,7 +140,7 @@
                <div id="navbarCollapse" class="collapse navbar-collapse">
                   <?php if (isset($_SESSION['app_id']) and ($_users[$_SESSION['app_id']]['permisos'] == 2)) { ?>
                      <ul class="nav navbar-nav">
-                         <li><a href="#">Inicio</a></li>
+                         <li><a href="?view=index">Inicio</a></li>
                          <li><a href="?view=categorias">Categorías</a></li>
                          <li><a href="?view=subcategorias">Sub-Categorías</a></li>
                          <li><a href="?view=productos">Productos</a></li>
@@ -155,7 +155,7 @@
                   } else {?>                            
                      <ul class="luis nav navbar-nav">
                        <li>
-                           <a href="#">Inicio</a>
+                           <a href="?view=index">Inicio</a>
                        </li>
                        <?php 
                         if (false != $_categorias){
@@ -188,7 +188,7 @@
                                     while ($prepare_sql->fetch()) {
                                         echo '
                                             <li>
-                                                <a href="detalles/'. UrlAmigable($id_de_subcategoria, $_subcategorias[$id_de_subcategoria]['nombre']) . '">'
+                                                <a href="mostrar/'. UrlAmigable($id_de_subcategoria, $_subcategorias[$id_de_subcategoria]['nombre']) . '">'
                                                     . $_subcategorias[$id_de_subcategoria]['nombre'] .
                                                 '</a> 
                                             </li>'
