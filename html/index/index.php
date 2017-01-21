@@ -93,8 +93,8 @@
             <h2>CONDICIÓN DEL PRODUCTO</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="?view=mostrar&condicion=1"> <span class="pull-right"></span>Nuevo</a></li>
-                <li><a href="?view=mostrar&condicion=2"> <span class="pull-right"></span>Usado</a></li>
+                <li><a href="<?php echo 'condicion/1-Nuevos'; ?>"> <span class="pull-right"></span>Nuevo</a></li>
+                <li><a href="<?php echo 'condicion/2-Usados'; ?>"> <span class="pull-right"></span>Usado</a></li>
               </ul>
             </div>
           </div>

@@ -17,8 +17,8 @@
             <h2>CONDICIÓN DEL PRODUCTO</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"> <span class="pull-right"></span>Nuevo</a></li>
-                <li><a href="#"> <span class="pull-right"></span>Usado</a></li>
+                <li><a href="<?php echo 'condicion/1-Nuevos'; ?>"> <span class="pull-right"></span>Nuevo</a></li>
+                <li><a href="<?php echo 'condicion/2-Usados'; ?>"> <span class="pull-right"></span>Usado</a></li>
               </ul>
             </div>
           </div>
@@ -161,7 +161,7 @@
                                 if($TotalRegistro > 3){
                                     $HTML .= 
                                         '<li>
-                                            <a href=?view=mostrar&id='.$_GET['id'].'&pag=1>
+                                            <a href=mostrarPag/'.$_GET['id'].'-'.$_subcategorias[$_GET['id']]['nombre']. '-1>
                                                 ◀◀
                                             </a>
                                         </li>';
@@ -169,10 +169,10 @@
                                     $HTML .= 
                                         '';
                                 }
-                                if($TotalRegistro >= CANTIDAD_ARTICULOS){
+                                if($TotalRegistro > 1){
                                 $HTML .=
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . $DecrementNum . '>
+                                        <a href=mostrarPag/'.$_GET['id'].'-'.$_subcategorias[$_GET['id']]['nombre'].'-'. $DecrementNum . '>
                                             ◀
                                         </a>
                                     </li>';
@@ -196,24 +196,24 @@
                                         if($i == $compag){
                                             $HTML .=  
                                             '<li class="active">
-                                                <a href="?view=mostrar&id='.$_GET['id'].'&pag=' . $i .'">
+                                                <a href="mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $i .'">
                                                     '.$i.'
                                                 </a>
                                             </li>';
                                         } else {
                                             $HTML .=  
                                             '<li>
-                                                <a href="?view=mostrar&id='.$_GET['id'].'&pag='.$i.'">
+                                                <a href="mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $i .'">
                                                     ' . $i . '
                                                 </a>
                                             </li>';
                                         }           
                                     }
                                 }
-                                if($TotalRegistro >= CANTIDAD_ARTICULOS){
+                                if($TotalRegistro > 1){
                                 $HTML .=  
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . $IncrimentNum . '>
+                                        <a href=mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $IncrimentNum . '>
                                             ▶
                                         </a>
                                     </li>';
@@ -224,7 +224,7 @@
                                 if ($TotalRegistro > 3){
                                     $HTML .= 
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . intval($TotalRegistro) . '>
+                                        <a href=mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . intval($TotalRegistro) . '>
                                             ▶▶
                                         </a>
                                     </li>';

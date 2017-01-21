@@ -19,7 +19,6 @@ if ($isset_id) {
 						");
 		include(HTML_DIR . 'mostrar/detalle_subcategoria.php');	
 		$db->liberar($sql_subcate);
-		$db->close();
 	} else {
 			header('location: ../index.php?view=error');
 	}
@@ -38,7 +37,6 @@ if ($isset_id) {
 					");
 	include(HTML_DIR . 'mostrar/detalle_condicion.php');	
 	$db->liberar($sql_condicion);
-	$db->close();
 
 } elseif (!$isset_id and ($_GET['condicion']== 2)) {
 	$db 			= new Conexion();
@@ -55,7 +53,6 @@ if ($isset_id) {
 					");
 	include(HTML_DIR . 'mostrar/detalle_condicion.php');	
 	$db->liberar($sql_condicion);
-	$db->close();
 } else {
 	header('location: ../index.php?view=index');
 }

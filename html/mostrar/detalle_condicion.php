@@ -17,8 +17,8 @@
             <h2>CONDICIÓN DEL PRODUCTO</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="?view=mostrar&condicion=1"> <span class="pull-right"></span>Nuevo</a></li>
-                <li><a href="?view=mostrar&condicion=2"> <span class="pull-right"></span>Usado</a></li>
+                <li><a href="<?php echo 'condicion/1-Nuevos'; ?>"> <span class="pull-right"></span>Nuevo</a></li>
+                <li><a href="<?php echo 'condicion/2-Usados'; ?>"> <span class="pull-right"></span>Usado</a></li>
               </ul>
             </div>
           </div>
@@ -157,6 +157,7 @@
                                 //Operacion matematica para botón siguiente y atrás 
                                 $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                                 $DecrementNum = (($compag - 1)) < 1 ? 1 :( $compag - 1);
+                                $condition = $_GET['condicion'] == 1 ? "Nuevo" : "Usados";
                                                                     
                                 $HTML =  
                                     '<div class="col-md-9" style="text-align:center">
@@ -164,7 +165,7 @@
                                 if($TotalRegistro > 3){
                                     $HTML .= 
                                         '<li>
-                                            <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=1>
+                                            <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-1>
                                                 ◀◀
                                             </a>
                                         </li>';
@@ -175,7 +176,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=
                                     '<li>
-                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $DecrementNum . '>
+                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $DecrementNum . '>
                                             ◀
                                         </a>
                                     </li>';
@@ -199,14 +200,14 @@
                                         if($i == $compag){
                                             $HTML .=  
                                             '<li class="active">
-                                                <a href="?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $i .'">
+                                                <a href="condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $i .'">
                                                     '.$i.'
                                                 </a>
                                             </li>';
                                         } else {
                                             $HTML .=  
                                             '<li>
-                                                <a href="?view=mostrar&condicion='.$_GET['condicion'].'&pag='.$i.'">
+                                                <a href="condicionPag/'.$_GET['condicion']. '-' . $condition . '-' .$i.'">
                                                     ' . $i . '
                                                 </a>
                                             </li>';
@@ -216,7 +217,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=  
                                     '<li>
-                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $IncrimentNum . '>
+                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $IncrimentNum . '>
                                             ▶
                                         </a>
                                     </li>';
@@ -227,7 +228,7 @@
                                 if ($TotalRegistro > 3){
                                     $HTML .= 
                                     '<li>
-                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . intval($TotalRegistro) . '>
+                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . intval($TotalRegistro) . '>
                                             ▶▶
                                         </a>
                                     </li>';

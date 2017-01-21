@@ -87,15 +87,15 @@
           <div class="single-widget">
             <h2>Servicios</h2>
             <ul class="nav nav-pills nav-stacked">
-              <li><a href="#">Ayuda en L&iacute;nea</a></li>
+              <li><a href="#">Ayuda en Línea</a></li>
               <li><a href="#">Contactenos</a></li>
-              <li><a href="#">Productos en Reparaci&oacute;n</a></li>
+              <li><a href="#">Productos en Reparación</a></li>
             </ul>
           </div>
         </div>
           <div class="col-sm-2">
           <div class="single-widget">
-            <h2>Compra R&aacute;pida</h2>
+            <h2>Compra Rápida</h2>
             <ul class="nav nav-pills nav-stacked">
               <li><a href="#">Consolas</a></li>
               <li><a href="#">Reproductores</a></li>
@@ -113,7 +113,7 @@
                 <i class="fa fa-arrow-circle-o-right"></i>
               </button>
               <p class="pjustify">
-                Recibe las actualizaciones m&aacute;s recientes de nuestro sitio en tu correo electr&oacute;nico
+                Recibe las actualizaciones más recientes de nuestro sitio en tu correo electrónico
               </p>
             </form>
           </div>
@@ -126,7 +126,7 @@
     <div class="container">
       <div class="row">
         <p class="pull-left"><?php echo APP_COPY ?></p>
-        <p class="pull-right">Dise&ntilde;ado por <span><a target="_blank" href="www.lcdesign.com.ve">LC Design</a></span></p>
+        <p class="pull-right">Diseñado por <span><a target="_blank" href="www.lcdesign.com.ve">LC Design</a></span></p>
       </div>
     </div>
   </div>
