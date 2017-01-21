@@ -17,8 +17,8 @@
             <h2>CONDICIÓN DEL PRODUCTO</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"> <span class="pull-right"></span>Nuevo</a></li>
-                <li><a href="#"> <span class="pull-right"></span>Usado</a></li>
+                <li><a href="?view=mostrar&condicion=1"> <span class="pull-right"></span>Nuevo</a></li>
+                <li><a href="?view=mostrar&condicion=2"> <span class="pull-right"></span>Usado</a></li>
               </ul>
             </div>
           </div>
@@ -56,7 +56,10 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">
-                        <?php echo $_categorias[$_subcategorias[$_GET['id']]['id_categoria']]['nombre'] . '  <i class="fa fa-hand-o-right" style="margin-right: 8px; margin-left:8px;"></i> ' . $_subcategorias[$_GET['id']]['nombre'] ?>
+                        <?php 
+                        $titulo = $_GET['condicion'] == 2 ? "Productos Usados" : "Productos Nuevos";
+                        echo $titulo 
+                        ?>
                     </h2>
                     <?php 
                     $total = 0;
@@ -67,7 +70,7 @@
                         FROM
                             productos
                         WHERE
-                            id_subcategoria='$_GET[id]'
+                            condicion='$_GET[condicion]'
                         ;")
                     ;
                     if ($db->rows($sql_new) > 0) {
@@ -77,7 +80,7 @@
                     }
                     $compag = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag']; 
                     $TotalReg = is_numeric($total) ? $total : null;
-                    $TotalRegistro  = $TotalReg / CANTIDAD_ARTICULOS;
+                    $TotalRegistro  = ceil($TotalReg / CANTIDAD_ARTICULOS);
                     $consultavistas =
                         "SELECT
                             id,
@@ -89,7 +92,7 @@
                         FROM
                             productos
                         WHERE
-                            id_subcategoria='$_GET[id]'
+                            condicion='$_GET[condicion]'
                         ORDER BY
                             nombre ASC
                         LIMIT ".(($compag-1) * CANTIDAD_ARTICULOS)." , ".CANTIDAD_ARTICULOS
@@ -161,7 +164,7 @@
                                 if($TotalRegistro > 3){
                                     $HTML .= 
                                         '<li>
-                                            <a href=?view=mostrar&id='.$_GET['id'].'&pag=1>
+                                            <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=1>
                                                 ◀◀
                                             </a>
                                         </li>';
@@ -169,10 +172,10 @@
                                     $HTML .= 
                                         '';
                                 }
-                                if($TotalRegistro >= CANTIDAD_ARTICULOS){
+                                if($TotalRegistro > 1){
                                 $HTML .=
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . $DecrementNum . '>
+                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $DecrementNum . '>
                                             ◀
                                         </a>
                                     </li>';
@@ -196,24 +199,24 @@
                                         if($i == $compag){
                                             $HTML .=  
                                             '<li class="active">
-                                                <a href="?view=mostrar&id='.$_GET['id'].'&pag=' . $i .'">
+                                                <a href="?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $i .'">
                                                     '.$i.'
                                                 </a>
                                             </li>';
                                         } else {
                                             $HTML .=  
                                             '<li>
-                                                <a href="?view=mostrar&id='.$_GET['id'].'&pag='.$i.'">
+                                                <a href="?view=mostrar&condicion='.$_GET['condicion'].'&pag='.$i.'">
                                                     ' . $i . '
                                                 </a>
                                             </li>';
                                         }           
                                     }
                                 }
-                                if($TotalRegistro >= CANTIDAD_ARTICULOS){
+                                if($TotalRegistro > 1){
                                 $HTML .=  
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . $IncrimentNum . '>
+                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . $IncrimentNum . '>
                                             ▶
                                         </a>
                                     </li>';
@@ -224,7 +227,7 @@
                                 if ($TotalRegistro > 3){
                                     $HTML .= 
                                     '<li>
-                                        <a href=?view=mostrar&id='.$_GET['id'].'&pag=' . intval($TotalRegistro) . '>
+                                        <a href=?view=mostrar&condicion='.$_GET['condicion'].'&pag=' . intval($TotalRegistro) . '>
                                             ▶▶
                                         </a>
                                     </li>';

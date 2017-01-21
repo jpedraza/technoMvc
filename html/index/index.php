@@ -93,8 +93,8 @@
             <h2>CONDICIÓN DEL PRODUCTO</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"> <span class="pull-right"></span>Nuevo</a></li>
-                <li><a href="#"> <span class="pull-right"></span>Usado</a></li>
+                <li><a href="?view=mostrar&condicion=1"> <span class="pull-right"></span>Nuevo</a></li>
+                <li><a href="?view=mostrar&condicion=2"> <span class="pull-right"></span>Usado</a></li>
               </ul>
             </div>
           </div>
@@ -173,11 +173,9 @@
                                                         echo $nuevos[3];
                                                     }
                                                     ?>           
-                                                </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
-                                            <a href="" class="btn btn-default add-to-cart">
+                                                </p>   
+                                            </a>
+                                            <a href="#" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>                                                
                                         </div>
@@ -186,12 +184,12 @@
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
                                             <li>
-                                                <a href="">
+                                                <a href="#">
                                                     <i class="fa fa-star"></i>Agregar a Favoritos
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="#">
                                                     <i class="fa fa-plus-square"></i>Ver Detalle
                                                 </a>
                                             </li>
@@ -246,10 +244,8 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
-                                            <a href="" class="btn btn-default add-to-cart">
+                                            </a>
+                                            <a href="#" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>                                                
                                         </div>
@@ -258,12 +254,12 @@
                                     <div class="choose">
                                         <ul class="nav nav-pills nav-justified">
                                             <li>
-                                                <a href="">
+                                                <a href="#">
                                                     <i class="fa fa-star"></i>Agregar a Favoritos
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="">
+                                                <a href="#">
                                                     <i class="fa fa-plus-square"></i>Ver Detalle
                                                 </a>
                                             </li>
@@ -334,9 +330,7 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
+                                            </a>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -393,9 +387,7 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
+                                            </a>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -452,9 +444,7 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
+                                            </a>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -511,9 +501,7 @@
                                                     }
                                                     ?>           
                                                 </p>
-                                            <?php       
-                                            '</a>';
-                                            ?>
+                                            </a>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                         </div>
                                     </div>
@@ -576,10 +564,8 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                <?php       
-                                                '</a>';
-                                                ?>
-                                                <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                </a>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>
@@ -633,10 +619,8 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                <?php       
-                                                '</a>';
-                                                ?>
-                                                <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                </a>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>

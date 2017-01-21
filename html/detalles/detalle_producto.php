@@ -109,10 +109,10 @@
                                     <?php } ?>
                                 <label>Cantidad:</label>
                                 <input type="text" value="1">
-                                <a href="">
+                                <a href="#">
                                     <i class="fa fa-star" title="Agregar a Favoritos"></i>
                                 </a>
-                                <a href="">
+                                <a href="#">
                                     <button type="button" class="btn btn-default cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Agregar al carrito
@@ -126,7 +126,7 @@
                                     echo strtoupper(substr($prod[8],0,1)); 
                                     echo substr($prod[8],1); 
                                 ?></p>
-                            <a href="">
+                            <a href="#">
                                 <img src="views/images/product-details/share.png" class="share img-responsive"  alt="" />
                             </a>
                         </div><!--/Información del Producto-->
@@ -183,10 +183,8 @@
                                                                     }
                                                                 ?>           
                                                             </p>
-                                                        <?php       
-                                                        '</a>';
-                                                        ?>
-                                                        <a href="">
+                                                        </a>
+                                                        <a href="#">
                                                             <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al Carrito</button>
                                                         </a>
                                                     </div>
@@ -252,10 +250,8 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                <?php       
-                                                '</a>';
-                                                ?>
-                                                <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                </a>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>
@@ -307,10 +303,8 @@
                                                         }
                                                         ?>           
                                                     </p>
-                                                <?php       
-                                                '</a>';
-                                                ?>
-                                                <a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                </a>
+                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>
