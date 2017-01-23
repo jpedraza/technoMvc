@@ -50,10 +50,7 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">
-                        <?php 
-                        $titulo = $_GET['condicion'] == 2 ? "Productos Usados" : "Productos Nuevos";
-                        echo $titulo 
-                        ?>
+                        Productos en Oferta
                     </h2>
                     <?php 
                     $total = 0;
@@ -64,7 +61,7 @@
                         FROM
                             productos
                         WHERE
-                            condicion='$_GET[condicion]'
+                            oferta='$_GET[oferta]'
                         ;")
                     ;
                     if ($db->rows($sql_new) > 0) {
@@ -86,7 +83,7 @@
                         FROM
                             productos
                         WHERE
-                            condicion='$_GET[condicion]'
+                            oferta='$_GET[oferta]'
                         ORDER BY
                             nombre ASC
                         LIMIT ".(($compag-1) * CANTIDAD_ARTICULOS)." , ".CANTIDAD_ARTICULOS
@@ -151,15 +148,14 @@
                                 //Operacion matematica para botón siguiente y atrás 
                                 $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
                                 $DecrementNum = (($compag - 1)) < 1 ? 1 :( $compag - 1);
-                                $condition = $_GET['condicion'] == 1 ? "Nuevo" : "Usados";
-                                                                    
+                                $condition    = "Promocion";                                    
                                 $HTML =  
                                     '<div class="col-md-9" style="text-align:center">
                                     <ul class="pagination"> ';
                                 if($TotalRegistro > 3){
                                     $HTML .= 
                                         '<li>
-                                            <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-1>
+                                            <a href=promocionPag/'.$_GET['oferta']. '-' . $condition . '-1>
                                                 ◀◀
                                             </a>
                                         </li>';
@@ -170,7 +166,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=
                                     '<li>
-                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $DecrementNum . '>
+                                        <a href=promocionPag/'.$_GET['oferta']. '-' . $condition . '-' . $DecrementNum . '>
                                             ◀
                                         </a>
                                     </li>';
@@ -194,14 +190,14 @@
                                         if($i == $compag){
                                             $HTML .=  
                                             '<li class="active">
-                                                <a href="condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $i .'">
+                                                <a href="promocionPag/'.$_GET['oferta']. '-' . $condition . '-' . $i .'">
                                                     '.$i.'
                                                 </a>
                                             </li>';
                                         } else {
                                             $HTML .=  
                                             '<li>
-                                                <a href="condicionPag/'.$_GET['condicion']. '-' . $condition . '-' .$i.'">
+                                                <a href="promocionPag/'.$_GET['oferta']. '-' . $condition . '-' .$i.'">
                                                     ' . $i . '
                                                 </a>
                                             </li>';
@@ -211,7 +207,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=  
                                     '<li>
-                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . $IncrimentNum . '>
+                                        <a href=promocionPag/'.$_GET['oferta']. '-' . $condition . '-' . $IncrimentNum . '>
                                             ▶
                                         </a>
                                     </li>';
@@ -222,7 +218,7 @@
                                 if ($TotalRegistro > 3){
                                     $HTML .= 
                                     '<li>
-                                        <a href=condicionPag/'.$_GET['condicion']. '-' . $condition . '-' . intval($TotalRegistro) . '>
+                                        <a href=promocionPag/'.$_GET['oferta']. '-' . $condition . '-' . intval($TotalRegistro) . '>
                                             ▶▶
                                         </a>
                                     </li>';

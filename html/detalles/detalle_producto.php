@@ -43,12 +43,6 @@
             <a href="#"><h2>Productos En Oferta</h2></a>
           </div>
           <!--/PRODUCTOS EN OFERTA-->
-
-          <!--PUBLICIDAD-->
-          <div class="shipping text-center">
-              <img src="views/images/home/publicidad.jpg" alt="" />
-          </div>
-          <!--/PUBLICIDAD-->
         </div>
       </div>
 
@@ -108,7 +102,7 @@
                                     <span><?php print "Bs. " . number_format($prod[2], 2, ",", "."); ?></span>
                                     <?php } ?>
                                 <label>Cantidad:</label>
-                                <input type="text" value="1">
+                                <input type="number" min="1" max="<?php echo $prod[3]; ?>" required="required" value="1">
                                 <a href="#">
                                     <i class="fa fa-star" title="Agregar a Favoritos"></i>
                                 </a>

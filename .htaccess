@@ -15,3 +15,5 @@ RewriteRule ^mostrar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&id=$1
 RewriteRule ^mostrarPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&id=$1&pag=$3
 RewriteRule ^condicion/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&condicion=$1
 RewriteRule ^condicionPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&condicion=$1&pag=$3
+RewriteRule ^promocion/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&oferta=$1
+RewriteRule ^promocionPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&oferta=$1&pag=$3

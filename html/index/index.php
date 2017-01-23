@@ -116,15 +116,8 @@
           
           <!--PRODUCTOS EN OFERTA-->
           <div class="brands_products">
-            <a href="#"><h2>Productos En Oferta</h2></a>
+            <a href="promocion/1-Promocion"><h2>Productos En Oferta</h2></a>
           </div>
-          <!--/PRODUCTOS EN OFERTA-->
-
-          <!--PUBLICIDAD-->
-          <div class="shipping text-center">
-              <img src="views/images/home/publicidad.jpg" alt="" />
-          </div>
-          <!--/PUBLICIDAD-->
         </div>
       </div>
 

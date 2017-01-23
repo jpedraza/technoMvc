@@ -87,7 +87,7 @@
 												FROM
 													productos
 												ORDER BY
-													id ASC
+													nombre ASC
 												LIMIT ".(($compag-1) * CANTIDAD_PRODUCTOS)." , ".CANTIDAD_PRODUCTOS
 											;
 											$consulta=$db->query($consultavistas);

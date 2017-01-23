@@ -108,7 +108,7 @@
           <div class="single-widget">
             <h2>Recibe Actualizaciones en tu correo</h2>
             <form action="#" class="searchform">
-              <input type="text" placeholder="Ingresa tu correo" />
+              <input type="email" placeholder="Ingresa tu correo" required="" />
               <button type="submit" class="btn btn-default">
                 <i class="fa fa-arrow-circle-o-right"></i>
               </button>

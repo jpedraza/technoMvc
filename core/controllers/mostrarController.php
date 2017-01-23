@@ -22,7 +22,7 @@ if ($isset_id) {
 	} else {
 			header('location: ../index.php?view=error');
 	}
-} elseif (!$isset_id and ($_GET['condicion']== 1)) {
+} elseif (!$isset_id and isset($_GET['condicion']) and $_GET['condicion']== 1) {
 	$db 			= new Conexion();
 	$sql_condicion 	= $db->query(
 						"SELECT 
@@ -38,7 +38,7 @@ if ($isset_id) {
 	include(HTML_DIR . 'mostrar/detalle_condicion.php');	
 	$db->liberar($sql_condicion);
 
-} elseif (!$isset_id and ($_GET['condicion']== 2)) {
+} elseif (!$isset_id and isset($_GET['condicion']) and ($_GET['condicion']== 2)) {
 	$db 			= new Conexion();
 	$sql_condicion 	= $db->query(
 						"SELECT 
@@ -53,6 +53,21 @@ if ($isset_id) {
 					");
 	include(HTML_DIR . 'mostrar/detalle_condicion.php');	
 	$db->liberar($sql_condicion);
+} elseif (!$isset_id and ($_GET['oferta'] == 1)) {
+	$db 			= new Conexion();
+	$sql_oferta 	= $db->query(
+						"SELECT 
+							* 
+						FROM 
+							productos
+						WHERE 
+							oferta = 1
+						ORDER BY 
+							nombre 
+						ASC;
+					");
+	include(HTML_DIR . 'mostrar/detalle_oferta.php');	
+	$db->liberar($sql_oferta);
 } else {
 	header('location: ../index.php?view=index');
 }
