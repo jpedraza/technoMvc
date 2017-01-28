@@ -102,13 +102,31 @@
 
           <div class="brands_products">
             <!--PRODUCTOS POR MARCA-->
-            <h2>MáS BUSCADOS</h2>
+            <h2>MARCAS PREFERIDAS</h2>
             <div class="brands-name">
               <ul class="nav nav-pills nav-stacked">
-                <li><a href="#"> <span class="pull-right">(7)</span>Generico</a></li>
-                <li><a href="#"> <span class="pull-right">(4)</span>PlayStation</a></li>
-                <li><a href="#"> <span class="pull-right">(5)</span>Sony</a></li>
-                <li><a href="#"> <span class="pull-right">(2)</span>Wii</a></li>
+                <?php
+                    $sqlMarca = 
+                        "SELECT 
+                            marca, COUNT(*) total 
+                        FROM 
+                            productos 
+                        GROUP BY 
+                            marca 
+                        HAVING 
+                            total > 1 
+                        LIMIT 6";
+                    $db = new Conexion();
+                    $marca = $db->query($sqlMarca);
+                    while ($marcaBd = $db->recorrer($marca)) { ?>
+                        <li>
+                            <a href="<?php print 'marca/'. $marcaBd[0] ?>"> 
+                                <span class="pull-right"><?php print "(" . $marcaBd[1] . ")" ?></span>
+                                <?php print $marcaBd[0] ?>
+                            </a>
+                        </li>
+                    <?php 
+                    } ?>
               </ul>
             </div>
           </div>

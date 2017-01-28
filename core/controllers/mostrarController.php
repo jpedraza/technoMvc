@@ -53,7 +53,7 @@ if ($isset_id) {
 					");
 	include(HTML_DIR . 'mostrar/detalle_condicion.php');	
 	$db->liberar($sql_condicion);
-} elseif (!$isset_id and ($_GET['oferta'] == 1)) {
+} elseif (!$isset_id and isset($_GET['oferta']) and ($_GET['oferta'] == 1)) {
 	$db 			= new Conexion();
 	$sql_oferta 	= $db->query(
 						"SELECT 
@@ -68,6 +68,19 @@ if ($isset_id) {
 					");
 	include(HTML_DIR . 'mostrar/detalle_oferta.php');	
 	$db->liberar($sql_oferta);
+} elseif (!$isset_id and isset($_GET['marca']) and $_GET['marca']) {
+	$marca = $_GET['marca'];
+	$db 			= new Conexion();
+	$sql_marca	 	= $db->query(
+						"SELECT 
+							* 
+						FROM 
+							productos
+						WHERE 
+							marca ='$marca';
+					");
+	include(HTML_DIR . 'mostrar/detalle_marca.php');	
+	$db->liberar($sql_marca);
 } else {
 	header('location: ../index.php?view=index');
 }

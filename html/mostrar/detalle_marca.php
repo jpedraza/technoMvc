@@ -68,7 +68,7 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">
-                        <?php echo $_categorias[$_subcategorias[$_GET['id']]['id_categoria']]['nombre'] . '  <i class="fa fa-hand-o-right" style="margin-right: 8px; margin-left:8px;"></i> ' . $_subcategorias[$_GET['id']]['nombre'] ?>
+                        Productos de la Marca <?php echo $_GET['marca']; ?>
                     </h2>
                     <?php 
                     $total = 0;
@@ -79,7 +79,7 @@
                         FROM
                             productos
                         WHERE
-                            id_subcategoria='$_GET[id]'
+                            marca='$_GET[marca]'
                         ;")
                     ;
                     if ($db->rows($sql_new) > 0) {
@@ -89,7 +89,7 @@
                     }
                     $compag = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag']; 
                     $TotalReg = is_numeric($total) ? $total : null;
-                    $TotalRegistro  = $TotalReg / CANTIDAD_ARTICULOS;
+                    $TotalRegistro  = ceil($TotalReg / CANTIDAD_ARTICULOS);
                     $consultavistas =
                         "SELECT
                             id,
@@ -101,7 +101,7 @@
                         FROM
                             productos
                         WHERE
-                            id_subcategoria='$_GET[id]'
+                            marca='$_GET[marca]'
                         ORDER BY
                             nombre ASC
                         LIMIT ".(($compag-1) * CANTIDAD_ARTICULOS)." , ".CANTIDAD_ARTICULOS
@@ -165,15 +165,14 @@
                                                                     
                                 //Operacion matematica para botón siguiente y atrás 
                                 $IncrimentNum = (($compag + 1) <= $TotalRegistro) ? ($compag + 1) : 1;
-                                $DecrementNum = (($compag - 1)) < 1 ? 1 :( $compag - 1);
-                                                                    
+                                $DecrementNum = (($compag - 1)) < 1 ? 1 :( $compag - 1);       
                                 $HTML =  
                                     '<div class="col-md-9" style="text-align:center">
                                     <ul class="pagination"> ';
                                 if($TotalRegistro > 3){
                                     $HTML .= 
                                         '<li>
-                                            <a href=mostrarPag/'.$_GET['id'].'-'.$_subcategorias[$_GET['id']]['nombre']. '-1>
+                                            <a href=marcaPag/'.$_GET['marca'].'-1>
                                                 ◀◀
                                             </a>
                                         </li>';
@@ -184,7 +183,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=
                                     '<li>
-                                        <a href=mostrarPag/'.$_GET['id'].'-'.$_subcategorias[$_GET['id']]['nombre'].'-'. $DecrementNum . '>
+                                        <a href=marcaPag/'.$_GET['marca']. '-' . $DecrementNum . '>
                                             ◀
                                         </a>
                                     </li>';
@@ -208,14 +207,14 @@
                                         if($i == $compag){
                                             $HTML .=  
                                             '<li class="active">
-                                                <a href="mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $i .'">
+                                                <a href="marcaPag/'.$_GET['marca']. '-' . $i .'">
                                                     '.$i.'
                                                 </a>
                                             </li>';
                                         } else {
                                             $HTML .=  
                                             '<li>
-                                                <a href="mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $i .'">
+                                                <a href="marcaPag/'.$_GET['marca']. '-' .$i.'">
                                                     ' . $i . '
                                                 </a>
                                             </li>';
@@ -225,7 +224,7 @@
                                 if($TotalRegistro > 1){
                                 $HTML .=  
                                     '<li>
-                                        <a href=mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . $IncrimentNum . '>
+                                        <a href=marcaPag/'.$_GET['marca']. '-' . $IncrimentNum . '>
                                             ▶
                                         </a>
                                     </li>';
@@ -236,7 +235,7 @@
                                 if ($TotalRegistro > 3){
                                     $HTML .= 
                                     '<li>
-                                        <a href=mostrarPag/'.$_GET['id']. '-' . $_subcategorias[$_GET['id']]['nombre'] . '-' . intval($TotalRegistro) . '>
+                                        <a href=marcaPag/'.$_GET['marca']. '-' . intval($TotalRegistro) . '>
                                             ▶▶
                                         </a>
                                     </li>';
