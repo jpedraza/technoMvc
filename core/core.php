@@ -2,7 +2,6 @@
 /**
  * NUCLEO DE TODA LA APLICACIÓN
  */
-
 session_start();
 
 #Constantes de la Conexión a BD
@@ -44,14 +43,17 @@ require('core/bin/functions/Users.php');
 require('core/bin/functions/Categorias.php');
 require('core/bin/functions/Subcategorias.php');
 require('core/bin/functions/Productos.php');
+require('core/bin/functions/Carritos.php');
 require('core/bin/functions/EmailTemplate.php');
 require('core/bin/functions/LostpassTemplate.php');
 require('core/bin/functions/UrlAmigable.php');
 require('core/bin/ajax/SelectDependientes.php');
 
+$idUsuario = 0;
 $_users = Users();
 $_categorias = Categorias();
 $_subcategorias = Subcategorias();
 $_productos = Productos();
+$_carritos = Carritos($idUsuario);
 
 ?>

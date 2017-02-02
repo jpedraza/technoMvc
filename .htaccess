@@ -19,3 +19,4 @@ RewriteRule ^promocion/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&oferta=$1
 RewriteRule ^promocionPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&oferta=$1&pag=$3
 RewriteRule ^marca/([a-zA-Z0-9-]*)$ ?view=mostrar&marca=$1
 RewriteRule ^marcaPag/([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&marca=$1&pag=$2
+RewriteRule ^contacto/$ ?view=detalles&mode=contacto

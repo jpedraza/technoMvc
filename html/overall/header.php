@@ -83,7 +83,10 @@
                 echo "Detalle " . strtoupper(substr($modo_actual,0,1)) . substr($modo_actual,1) . " ";
                 break;            
             case "mostrar":
-                echo "Productos ";
+                echo "Productos";
+                break;            
+            case "carrito":
+                echo "Carrito";
                 break;
             default:
                 echo "404";

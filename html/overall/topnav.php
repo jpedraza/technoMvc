@@ -66,10 +66,11 @@
                   <ul class="nav navbar-nav">
 
                   <?php if(!isset($_SESSION['app_id'])) {
+                    $cantidadProducto = isset($_SESSION['cantidadProducto']) ? $_SESSION['cantidadProducto'] : 0; 
                      echo '
                      <li><a href="#"><i class="fa fa-star"></i> Favoritos</a></li>
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
-                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
+                     <li><a href="?view=carrito&mode=ver"><i class="fa fa-shopping-cart"></i> Carrito ( <i style="color:#00B3D3">'.$cantidadProducto.'</i>)</a></li>
                      <li>
                         <a data-toggle="modal" data-target="#Login"><i class="fa fa-lock"></i>
                            Login
@@ -87,7 +88,7 @@
                      echo '
                      <li><a href="#"><i class="fa fa-star"></i> Favoritos</a></li>
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
-                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
+                     <li><a href="#"><i class="fa fa-shopping-cart"></i> Carrito (<i style="color:#00B3D3">'.$cantidadProducto.'</i>) </a></li>
                      <li>
                         <a href="?view=perfil&id='.$_SESSION['app_id'].'"><i class="fa fa-user"></i>'
                         . strtolower($_users[$_SESSION['app_id']]['user']) .
@@ -221,7 +222,7 @@
                         }
                        ?>
                        <li>
-                           <a href="#">Contacto</a>
+                           <a href="contacto/">Contacto</a>
                        </li>
                      </ul>
                    <form role="search" class="navbar-form navbar-right">

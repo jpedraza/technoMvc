@@ -143,6 +143,21 @@
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">Productos Recientes</h2>
+                    <?php
+                if(isset($_GET['carro']) and $_GET['carro'] == true) {
+                    echo 
+                    '<div class="alert alert-dismissible alert-success"> 
+                        Agregaste con éxito el producto al carrito.
+                    </div>';
+                } else if(isset($_GET['carro']) and $_GET['carro'] == false) {
+                    echo  
+                    '<div class="alert alert-dismissible alert-danger"> 
+                        No agregaste el producto al carrito.
+                    </div>';
+                }
+            ?>
+
+            
                       <?php 
                         $db = new Conexion();
                         $sql_new = $db->query(
@@ -186,9 +201,9 @@
                                                     ?>           
                                                 </p>   
                                             </a>
-                                            <a href="#" class="btn btn-default add-to-cart">
+                                            <a href="?view=carrito&mode=add&producto=<?php echo $nuevos[0] ?>" class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
-                                            </a>                                                
+                                            </a>
                                         </div>
                                         <img src="views/images/home/new.png" class="new" alt="nuevo">
                                     </div>

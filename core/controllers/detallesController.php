@@ -12,6 +12,13 @@ switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		} else {
 			include(HTML_DIR . 'detalles/detalle_producto.php');
 		}
+	break;
+	case 'contacto':
+		if ($_POST) {
+			$detalles->See();
+		} else {
+			include(HTML_DIR . 'detalles/contacto.php');
+		}
 	break;		
 	default:				
 		header('location: ?view=index');

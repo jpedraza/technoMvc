@@ -1961,23 +1961,23 @@ h2.title {
 
 .cart_quantity_button a {
     background:#F0F0E9;
-    color: #696763;
+    color: #00849c;
     display: inline-block;
-    font-size: 16px;
-    height: 28px;
+    font-size: 15px;
     overflow: hidden;
     text-align: center;
-    width: 35px;
-    float: left;
+    font-family: 'Roboto',sans-serif;
+    width: 12px;
 }
 
 
 .cart_quantity_input {
     color: #696763;
-    float: left;
-    font-size: 16px;
+    display: inline-block;
+    font-size: 15px;
     text-align: center;
     font-family: 'Roboto',sans-serif;
+    width: 35px;
 
 }
 
