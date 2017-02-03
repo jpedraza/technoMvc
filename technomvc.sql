@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2017 a las 17:40:19
+-- Tiempo de generación: 02-02-2017 a las 23:19:09
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `technomvc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `carrito`
+--
+
+CREATE TABLE `carrito` (
+  `id` int(255) NOT NULL,
+  `id_usuario` int(255) NOT NULL,
+  `id_producto` int(255) NOT NULL,
+  `cantidad` int(4) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`id`, `id_usuario`, `id_producto`, `cantidad`) VALUES
+(1, 0, 26, 5),
+(2, 0, 25, 1),
+(3, 0, 24, 4);
 
 -- --------------------------------------------------------
 
@@ -71,8 +93,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `cantidad`, `descripcion`, `condicion`, `id_categoria`, `id_subcategoria`, `marca`, `oferta`, `precio_oferta`, `foto1`, `foto2`, `foto3`, `estatus`, `cantidad_vendida`) VALUES
-(1, 'PlayStation 2', 156500, 6, '<p style="text-align: center;"><font face="impact" size="5">Playstation 2 Slim 9001</font></p>Modelo Slim que incluye sus componentes Originales que son los siguientes:&nbsp;<div><ul><li>1- Consola PS2&nbsp;<br></li><li>1- Control Dualshock 2&nbsp;<br></li><li>1- Cable Audio/Video&nbsp;<br></li><li>1- Cable Corriente&nbsp;<br></li><li>1- Caja&nbsp;<br></li><li>1- Memory Card&nbsp;<br></li><li>5- Juegos</li></ul></div>', 1, 1, 1, 'Sony', 0, 0, '2ps2.jpg', '3ps2.jpg', '', 1, 3),
-(2, 'Kit de destornilladores partes electrónicas 31-1', 4950, 2, '<h2 style="text-align: center;"><span style="color: #ff0000;">KIT DE DESATORNILLADORES PARA PC Y DISPOSITIVOS ELECTRONICOS</span></h2>\r\n<p style="text-align: justify;">Juego completo de destornilladores para los dispositivos electrónicos, reparación de teléfonos celulares y mucho más.</p>\r\n<p style="text-align: justify;">Adecuado para la mayorí­a de los tornillos:</p>\r\n<ol>\r\n<li>T4</li>\r\n<li>T5</li>\r\n<li>T6</li>\r\n<li>T7</li>\r\n<li>T8</li>\r\n<li>T10</li>\r\n<li>T15</li>\r\n<li>Hex1.5</li>\r\n<li>Hex2.0</li>\r\n<li>Hex2.5</li>\r\n<li>Hex3.0</li>\r\n<li>Hex4.0</li>\r\n<li>PH00</li>\r\n<li>PH0</li>\r\n<li>PH1</li>\r\n<li>PH2</li>\r\n<li>Slot1.5</li>\r\n<li>Slot2.0</li>\r\n<li>Slot2.5</li>\r\n<li>Slot3.0</li>\r\n<li>Slot4.0</li>\r\n<li>Star2.3mm</li>\r\n<li>Tro1.5/2.0mm</li>\r\n<li>Spanner2.6mm</li>\r\n<li>Tro-Wing1mm</li>\r\n</ol>\r\n<p style="text-align: justify;"><strong>Especificaciones:</strong> 31-IN-1 Juego completo de destornilladores 2,5 mm 3,0 mm 3,5 mm 4,0 mm 4,5 mm 5,0 mm 5,5 mm T4 T5 T6 T7 T8 T10 T15 PH00 PH0 PH1 PH2 1.5 2.0 2.5 3.0 4.0 2.3 1.5 2.0 M2.6 1,0 mm.</p>\r\n<p style="text-align: justify;"><strong>Dimensiones: </strong>Largo: 10,5 cm x Ancho: 15,5 cm x Altura: 3 cm</p>\r\n<p style="text-align: justify;"><strong>Peso:</strong> 200 g</p>', 1, 4, 9, 'Generico', 0, 0, 'destornillador.jpg', 'destornillador1.jpg', 'default.jpg', 1, 0),
+(1, 'PlayStation 2', 156500, 6, '<p style="text-align: center;"><span style="font-family: impact; font-size: x-large; color: #ff0000;">Playstation 2 Slim 9001</span></p>\r\n<p style="text-align: justify;">Modelo Slim que incluye sus componentes Originales que son los siguientes: </p>\r\n<div>\r\n<ol>\r\n<li style="text-align: justify;">Consola PS2. </li>\r\n<li style="text-align: justify;">Control Dualshock 2 (dos 2).</li>\r\n<li style="text-align: justify;">Cable Audio/Video. </li>\r\n<li style="text-align: justify;">Cable Corriente. </li>\r\n<li style="text-align: justify;">Caja. </li>\r\n<li style="text-align: justify;">Memory Card.</li>\r\n<li style="text-align: justify;">Juegos a elección (cinco 5).</li>\r\n</ol>\r\n</div>', 1, 1, 1, 'Sony', 0, 0, '2ps2.jpg', '3ps2.jpg', 'default.jpg', 1, 3),
+(2, 'Kit de destornilladores partes electrónicas 31-1', 4950, 2, '<h2 style="text-align: center;"><span style="color: #ff0000;">KIT DE DESATORNILLADORES PARA PC Y DISPOSITIVOS ELECTRONICOS</span></h2>\r\n<p style="text-align: justify;">Juego completo de destornilladores para los dispositivos electrónicos, reparación de teléfonos celulares y mucho más.</p>\r\n<p style="text-align: justify;">Adecuado para la mayorí­a de los tornillos:</p>\r\n<ol>\r\n<li>T4</li>\r\n<li>T5</li>\r\n<li>T6</li>\r\n<li>T7</li>\r\n<li>T8</li>\r\n<li>T10</li>\r\n<li>T15</li>\r\n<li>Hex1.5</li>\r\n<li>Hex2.0</li>\r\n<li>Hex2.5</li>\r\n<li>Hex3.0</li>\r\n<li>Hex4.0</li>\r\n<li>PH00</li>\r\n<li>PH0</li>\r\n<li>PH1</li>\r\n<li>PH2</li>\r\n<li>Slot1.5</li>\r\n<li>Slot2.0</li>\r\n<li>Slot2.5</li>\r\n<li>Slot3.0</li>\r\n<li>Slot4.0</li>\r\n<li>Star2.3mm</li>\r\n<li>Tro1.5/2.0mm</li>\r\n<li>Spanner2.6mm</li>\r\n<li>Tro-Wing1mm</li>\r\n</ol>\r\n<p style="text-align: justify;"><strong>Especificaciones:</strong> 31-IN-1 Juego completo de destornilladores 2,5 mm 3,0 mm 3,5 mm 4,0 mm 4,5 mm 5,0 mm 5,5 mm T4 T5 T6 T7 T8 T10 T15 PH00 PH0 PH1 PH2 1.5 2.0 2.5 3.0 4.0 2.3 1.5 2.0 M2.6 1,0 mm.</p>\r\n<p style="text-align: justify;"><strong>Dimensiones: </strong>Largo: 10,5 cm x Ancho: 15,5 cm x Altura: 3 cm</p>\r\n<p style="text-align: justify;"><strong>Peso:</strong> 200 g</p>', 1, 4, 10, 'Generico', 0, 0, 'destornillador.jpg', 'destornillador1.jpg', 'default.jpg', 1, 0),
 (3, 'Nintendo Wii | Chipeado', 62999, 2, '<h2 style="text-align: center;"><span style="color: #ff0000;">Nintendo Wii</span></h2>\r\n<p>El producto posee Todos sus componentes Originales que son los siguientes:</p>\r\n<ol>\r\n<li>Consola Nintendo Wii</li>\r\n<li>Control Wii Remote <strong>(1)</strong></li>\r\n<li>Control Nunchuk <strong>(1)</strong></li>\r\n<li>Cable Audio/Video</li>\r\n<li>Fuente de Poder</li>\r\n<li>Barra Sensora</li>\r\n<li>Manuales</li>\r\n</ol>\r\n<p>Garantía de 2 Meses por la tienda</p>', 1, 1, 2, 'Wii', 1, 61000, 'wii.jpg', 'default.jpg', 'default.jpg', 1, 0),
 (4, 'Playstation 3 Slim | 160Gb', 162890, 1, '<h2 style="text-align: center;"><span style="color: #ff0000;">Playstation 3 Slim | 160Gb</span></h2>\r\n<p>Modelo Slim que incluye sus componentes Originales que son los siguientes:</p>\r\n<ol>\r\n<li>Consola Ps3.</li>\r\n<li>Control Dualshock  (1 uno).</li>\r\n<li>Cable USB para cargar el control.</li>\r\n<li>Cable HDMI 1.8m.</li>\r\n<li>Cable de Audio y Video.</li>\r\n<li>Caja.</li>\r\n<li>Manual de Instrucciones.</li>\r\n<li>Un Juego (El de su Preferencia)</li>\r\n</ol>', 1, 1, 1, 'Sony', 0, 0, 'ps3.jpg', 'default.jpg', 'default.jpg', 1, 0),
 (5, 'Playstation 4 | 500Gb', 695999, 1, '<h2 style="text-align: center;"><span style="color: #ff0000;">Playstation 4 | 500Gb</span></h2>\r\n<p>Incluye sus componentes Originales que son los siguientes:</p>\r\n<ol>\r\n<li>Consola Ps4 de 500 Gb.</li>\r\n<li>Control Ps4 (1 uno).</li>\r\n<li>Audifono (1 uno).</li>\r\n<li>Cable HDMI 1.8m.</li>\r\n<li>Caja.</li>\r\n<li>Manual de Instrucciones.</li>\r\n<li>Un Juego </li>\r\n</ol>', 1, 1, 1, 'Sony', 0, 0, 'ps4.jpg', 'default.jpg', 'default.jpg', 1, 0),
@@ -167,6 +189,12 @@ INSERT INTO `users` (`id`, `user`, `name`, `pass`, `email`, `permisos`, `activo`
 --
 
 --
+-- Indices de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -194,6 +222,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --

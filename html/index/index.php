@@ -144,18 +144,18 @@
                 <div class="features_items"><!--Productos Destacados-->
                     <h2 class="title text-center">Productos Recientes</h2>
                     <?php
-                if(isset($_GET['carro']) and $_GET['carro'] == true) {
-                    echo 
-                    '<div class="alert alert-dismissible alert-success"> 
-                        Agregaste con éxito el producto al carrito.
-                    </div>';
-                } else if(isset($_GET['carro']) and $_GET['carro'] == false) {
-                    echo  
-                    '<div class="alert alert-dismissible alert-danger"> 
-                        No agregaste el producto al carrito.
-                    </div>';
-                }
-            ?>
+                        if(isset($_GET['carro']) and $_GET['carro'] == true) {
+                            echo 
+                            '<div class="alert alert-dismissible alert-success"> 
+                                Agregaste con éxito el producto al carrito.
+                            </div>';
+                        } else if(isset($_GET['carro']) and $_GET['carro'] == false) {
+                            echo  
+                            '<div class="alert alert-dismissible alert-danger"> 
+                                No agregaste el producto al carrito.
+                            </div>';
+                        }
+                    ?>
 
             
                       <?php 

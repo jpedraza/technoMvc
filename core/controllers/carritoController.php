@@ -7,7 +7,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 
 	switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		case 'add':
-			$_SESSION['carrito'] = isset($_SESSION['app_id']) ? isset($_SESSION['app_id']) : 0;
+			$_SESSION['carrito'] = isset($_SESSION['app_id']) ? $_SESSION['app_id'] : 0;
 			$db = new Conexion();
 			$sql = $db->query("
 				SELECT
@@ -22,7 +22,6 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 				ORDER BY
 					id DESC;");
 			$existe 	= $db->rows($sql);
-
 			$cantidad 	= $existe > 0 ? intval($db->recorrer($sql)[3]) : 0; 
 			
 			if (isset($cantidad) && $cantidad > 0) {
@@ -48,13 +47,14 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 			include(HTML_DIR . 'carrito/carrito.php');			
 		break;
 		case 'delete':
+			$db = new Conexion();
 			$db->query(
-				"DELETE
+				"DELETE FROM
 					carrito
 				WHERE
-					id_usuario = '$_GET[usuario]'
+					id_usuario = '$_GET[usuario]' AND id_producto = '$_GET[producto]'
 				;");
-			header('Location:'. HTML_DIR . 'carrito/carrito.php');
+			header('Location:'. $_SERVER['HTTP_REFERER']);
 		break;		
 		default:					
 			include(HTML_DIR . 'carrito/carrito.php');

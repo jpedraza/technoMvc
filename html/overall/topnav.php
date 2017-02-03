@@ -64,13 +64,23 @@
             <div class="col-sm-8">
                <div class="shop-menu pull-right">
                   <ul class="nav navbar-nav">
+                  <?php
+                  $db  = new Conexion(); 
+                  if(!isset($_SESSION['app_id'])) {
 
-                  <?php if(!isset($_SESSION['app_id'])) {
-                    $cantidadProducto = isset($_SESSION['cantidadProducto']) ? $_SESSION['cantidadProducto'] : 0; 
+                    $_SESSION['carrito'] = isset($_SESSION['app_id']) ? $_SESSION['app_id'] : 0;
+                    $sql = $db->query(
+                      "SELECT
+                          id_producto
+                      FROM
+                          carrito
+                      WHERE
+                          id_usuario='$_SESSION[carrito]';");
+                    $cantidadProducto = $db->rows($sql); 
                      echo '
                      <li><a href="#"><i class="fa fa-star"></i> Favoritos</a></li>
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
-                     <li><a href="?view=carrito&mode=ver"><i class="fa fa-shopping-cart"></i> Carrito ( <i style="color:#00B3D3">'.$cantidadProducto.'</i>)</a></li>
+                     <li><a href="?view=carrito&mode=ver&id='. $_SESSION['carrito'] . '"><i class="fa fa-shopping-cart"></i> Carrito ( <i style="color:#00B3D3">'.$cantidadProducto.'</i>)</a></li>
                      <li>
                         <a data-toggle="modal" data-target="#Login"><i class="fa fa-lock"></i>
                            Login
@@ -115,7 +125,7 @@
                         </a>
                      </li>';
                   }
-
+                  $db->close();
                   ?>
                   </ul>
                </div>
