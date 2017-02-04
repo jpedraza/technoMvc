@@ -2,7 +2,12 @@
 /**
  * NUCLEO DE TODA LA APLICACIÓN
  */
+
 session_start();
+
+
+#Establecer el formato de hora de Caracas
+date_default_timezone_set('America/Caracas');
 
 #Constantes de la Conexión a BD
 define('DB_HOST','localhost'); 		//localhost			lcdesign.com.ve
@@ -52,5 +57,6 @@ $_users = Users();
 $_categorias = Categorias();
 $_subcategorias = Subcategorias();
 $_productos = Productos();
+
 
 ?>

@@ -14,15 +14,39 @@
             <div class="row">
                 <?php
                 $db  = new Conexion();
-                $sql = $db->query(
+                if (!isset($_SESSION['app_id'])) {
+                    $sql = $db->query(
                     "SELECT
                         id_producto,
                         cantidad
                     FROM
                         carrito
                     WHERE
-                        id_usuario='$_GET[id]';");
+                        id_usuario='$_SESSION[carrito]';");
                 $cantidadPrd = $db->rows($sql);
+                $idCarrito   = $_SESSION['carrito']; 
+                } else {
+                    $sql = $db->query(
+                    "UPDATE
+                        carrito
+                    SET
+                        id_usuario='$_SESSION[app_id]'
+                    WHERE
+                        id_usuario='$_SESSION[carrito]';");
+                    $sql = $db->query(
+                    "SELECT
+                        id_producto,
+                        cantidad
+                    FROM
+                        carrito
+                    WHERE
+                        id_usuario='$_SESSION[app_id]';");
+                $cantidadPrd = $db->rows($sql);
+
+                $idCarrito   = $_SESSION['app_id'];
+                }
+                
+                
                 ?>
                 <div class="col-sm-8">
                     <div class="contact-form">
@@ -79,7 +103,7 @@
                                             <p>Bs. '. number_format($precio * $data[1] * 0.89285714,2,",",".").'</p>   
                                         </td>
                                         <td style="text-align:center;">
-                                            <a class="cart_quantity_delete btn btn-default" href="?view=carrito&mode=delete&usuario=' .$_GET['id'] .'&producto=' .$data[0]. '"><i class="fa fa-times"> Borrar</i>
+                                            <a class="cart_quantity_delete btn btn-default" href="?view=carrito&mode=delete&usuario=' .$idCarrito .'&producto=' .$data[0]. '"><i class="fa fa-times"> Borrar</i>
                                             </a>
                                         </td>
                                     </tr>
@@ -105,8 +129,10 @@
                             <li>Costo de Envio<span>0,00</span></li>
                             <li>Total a Pagar <span><?php echo number_format($total,2,",",".") ?></span></li>
                         </ul>
-                                <!--<a class="btn btn-default update" href="">Actualizar</a>-->
-                        <a class="btn btn-default check_out" href="">Comprar</a>
+                    </div>
+                        <div style="text-align: center; margin-top: -15px; margin-bottom: 35px">
+                            <a class="btn btn-default check_out" href=""><i class="fa fa-check-square"></i> Procesar Compra</a>
+                        </div>
                     </div>
                 </div> 
                     <?php
@@ -122,20 +148,18 @@
                         </div>
                     </div>
                     <div class="col-sm-4">
-                    <div class="titulo_categoria">
-                        Costo estimado de la compra
-                    </div>
-                    <div class="total_area">
-                        <ul>
-                            <li>Sub-Total: <span>0,00</span></li>
-                            <li>I.V.A.<span>0,00</span></li>
-                            <li>Costo de Envio<span>0,00</span></li>
-                            <li>Total a Pagar <span>0,00</span></li>
-                        </ul>
-                                <!--<a class="btn btn-default update" href="">Actualizar</a>-->
-                        <a class="btn btn-default check_out" href="">Comprar</a>
-                    </div>
-                </div>  
+                        <div class="titulo_categoria">
+                            Costo estimado de la compra
+                        </div>
+                        <div class="total_area">
+                            <ul>
+                                <li>Sub-Total: <span>0,00</span></li>
+                                <li>I.V.A.<span>0,00</span></li>
+                                <li>Costo de Envio<span>0,00</span></li>
+                                <li>Total a Pagar <span>0,00</span></li>
+                            </ul>
+                        </div>
+                    </div>  
 
                 <?php    
                 }

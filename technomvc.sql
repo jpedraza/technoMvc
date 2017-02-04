@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-02-2017 a las 23:19:09
+-- Tiempo de generación: 03-02-2017 a las 02:29:13
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -32,15 +32,6 @@ CREATE TABLE `carrito` (
   `id_producto` int(255) NOT NULL,
   `cantidad` int(4) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `carrito`
---
-
-INSERT INTO `carrito` (`id`, `id_usuario`, `id_producto`, `cantidad`) VALUES
-(1, 0, 26, 5),
-(2, 0, 25, 1),
-(3, 0, 24, 4);
 
 -- --------------------------------------------------------
 
@@ -72,7 +63,7 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 CREATE TABLE `productos` (
   `id` bigint(255) NOT NULL,
   `nombre` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  `precio` float NOT NULL,
+  `precio` double NOT NULL,
   `cantidad` tinyint(3) NOT NULL DEFAULT '1',
   `descripcion` text COLLATE utf8_unicode_ci NOT NULL,
   `condicion` tinyint(1) NOT NULL DEFAULT '1',
@@ -80,7 +71,7 @@ CREATE TABLE `productos` (
   `id_subcategoria` int(255) NOT NULL,
   `marca` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
   `oferta` tinyint(1) NOT NULL DEFAULT '0',
-  `precio_oferta` float NOT NULL,
+  `precio_oferta` double NOT NULL,
   `foto1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `foto2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `foto3` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -226,7 +217,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
