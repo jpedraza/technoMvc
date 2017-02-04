@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')){
+if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver' || $_GET['mode'] == 'vaciar' ))){
 
 	require('core/models/class.Carrito.php');
 	$carrito 		= new Carrito();
@@ -39,7 +39,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 						VALUES 
 							('$_SESSION[carrito]','$_GET[producto]',1);
 					");
-					header('Location:'. $_SERVER['HTTP_REFERER'].'&carro=true');
+					header('Location:'. $_SERVER['HTTP_REFERER']);
 				}
 			} else {
 				$sql = $db->query("
@@ -65,7 +65,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 						cantidad = $cantidad + 1
 					WHERE
 						(id_usuario = '$_SESSION[carrito]' OR id_usuario = '$_SESSION[app_id]') AND id_producto = '$_GET[producto]';");
-					header('Location:'. $_SERVER['HTTP_REFERER'].'&carro=true');
+					header('Location:'. $_SERVER['HTTP_REFERER']);
 				} else {
 					$db->query(
 					"INSERT INTO
@@ -73,7 +73,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 						VALUES 
 							('$_SESSION[app_id]','$_GET[producto]',1);
 					");
-					header('Location:'. $_SERVER['HTTP_REFERER'].'&carro=true');
+					header('Location:'. $_SERVER['HTTP_REFERER']);
 				}
 			}
 		break;
@@ -87,6 +87,16 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && $_GET['mode'] == 'ver')
 					carrito
 				WHERE
 					id_usuario = '$_GET[usuario]' AND id_producto = '$_GET[producto]'
+				;");
+			header('Location:'. $_SERVER['HTTP_REFERER']);
+		break;
+		case 'vaciar':
+			$db = new Conexion();
+			$db->query(
+				"DELETE FROM
+					carrito
+				WHERE
+					id_usuario = '$_GET[usuario]'
 				;");
 			header('Location:'. $_SERVER['HTTP_REFERER']);
 		break;		

@@ -19,7 +19,7 @@ if ($_POST) {
 			break;	
 		case 'edipro':
 			require('core/bin/ajax/goEdipro.php');
-			break;		
+			break;
 		default:
 			header('location: index.php');
 			break;

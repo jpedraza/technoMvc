@@ -18,7 +18,8 @@
                     $sql = $db->query(
                     "SELECT
                         id_producto,
-                        cantidad
+                        cantidad,
+                        id
                     FROM
                         carrito
                     WHERE
@@ -36,7 +37,8 @@
                     $sql = $db->query(
                     "SELECT
                         id_producto,
-                        cantidad
+                        cantidad,
+                        id
                     FROM
                         carrito
                     WHERE
@@ -75,12 +77,12 @@
                             <?php
                             $HTML   = "";
                             $subtotal = 0;
-                            if ($cantidadPrd > 0) { 
+                            if ($cantidadPrd > 0) {                                
                                 while($data = $db->recorrer($sql)) {
                                     $precio = ($_productos[$data[0]]['oferta'] == 1) ? $_productos[$data[0]]['precio_oferta']: $_productos[$data[0]]['precio'];
                                     $subtotal += ($precio * $data[1] * 0.89285714);
                                     $HTML .= '
-                                    <tr>
+                                    <tr> 
                                         <td>
                                             <a href=""><img src="'.URL_PRODUCTOS. $_productos[$data[0]]['foto1'].'" alt="'.$_productos[$data[0]]['nombre'].'" width="70" height="70"></a>
                                         </td>
@@ -92,11 +94,12 @@
                                         </td>
                                         <td style="text-align:center;">
                                             <div class="cart_quantity_button">
-                                            <form>
-                                                <a class="cart_quantity_down" href="#">- </a>
-                                                <input class="cart_quantity_input" type="text" name="quantity" value="'.$data[1].'">
-                                                <a class="cart_quantity_up" href="#"> + </a>
-                                            </form>
+                                                <a class="btn btn-default cart_quantity_down" href="core/bin/ajax/disminuirCar.php?idCar='.$data[2].'"><i class="fa fa-angle-down"></i> </a>
+                                                <input type="text" class="cart_quantity_input" disabled="" name="cantidad" id="cantidad" value="'.$data[1].'">
+                                                <input type="hidden" name="idPrd" id="idPrd" value="'.$data[0].'">
+                                                <input type="hidden" name="idCar" id="idCar" value="'.$data[2].'">
+                                                <a class="btn btn-default cart_quantity_up" href="core/bin/ajax/aumentarCar.php?idCar='.$data[2].'&id='.$data[0].'"><i class="fa fa-angle-up" style="margin-left:4px;"></i> 
+                                                </a>
                                             </div>
                                         </td>
                                         <td style="text-align:center;">
@@ -109,9 +112,15 @@
                                     </tr>
                                     ';
                                 }
-                                echo $HTML; ?>
+                                echo $HTML;?>
                             </tbody>
                         </table>
+                        <?php  
+                        echo '
+                            <div style="text-align: center; margin-top: -15px; margin-bottom: 35px">
+                                <a class="btn btn-default check_out" href="?view=carrito&mode=vaciar&usuario='.$idCarrito.'"><i class="fa fa-times-circle"></i> Vaciar Carro</a>
+                            </div>';  
+                        ?>
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -131,7 +140,7 @@
                         </ul>
                     </div>
                         <div style="text-align: center; margin-top: -15px; margin-bottom: 35px">
-                            <a class="btn btn-default check_out" href=""><i class="fa fa-check-square"></i> Procesar Compra</a>
+                            <a class="btn btn-default check_out" href=""><i class="fa fa-check-circle"></i> Procesar Compra</a>
                         </div>
                     </div>
                 </div> 
@@ -171,6 +180,7 @@
 </section>
 
 <?php include(HTML_DIR . 'overall/footer.php'); ?>
+<script src=views/app/js/controlCarro.js></script>
 
 </body>
 </html>
