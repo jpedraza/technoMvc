@@ -187,7 +187,7 @@ include(HTML_DIR . 'overall/header.php'); ?>
                                                     ?>           
                                                 </p>   
                                             </a>
-                                            <a href="?view=carrito&mode=add&producto=<?php echo $nuevos[0] ?>" class="btn btn-default add-to-cart">
+                                            <a href='agregar/<?php echo UrlAmigable($nuevos[0],$_productos[$nuevos[0]]['nombre']) ?>' class="btn btn-default add-to-cart">
                                                 <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                             </a>
                                         </div>

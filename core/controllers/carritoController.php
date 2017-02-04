@@ -86,7 +86,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 				"DELETE FROM
 					carrito
 				WHERE
-					id_usuario = '$_GET[usuario]' AND id_producto = '$_GET[producto]'
+					id = '$_GET[producto]'
 				;");
 			header('Location:'. $_SERVER['HTTP_REFERER']);
 		break;

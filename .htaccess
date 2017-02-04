@@ -20,3 +20,7 @@ RewriteRule ^promocionPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&ofe
 RewriteRule ^marca/([a-zA-Z0-9-]*)$ ?view=mostrar&marca=$1
 RewriteRule ^marcaPag/([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&marca=$1&pag=$2
 RewriteRule ^contacto/$ ?view=detalles&mode=contacto
+RewriteRule ^carrito/$ ?view=carrito&mode=ver
+RewriteRule ^agregar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=add&producto=$1
+RewriteRule ^borrar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=delete&producto=$1
+RewriteRule ^vaciar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=vaciar&usuario=$1

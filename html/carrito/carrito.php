@@ -106,7 +106,8 @@
                                             <p>Bs. '. number_format($precio * $data[1] * 0.89285714,2,",",".").'</p>   
                                         </td>
                                         <td style="text-align:center;">
-                                            <a class="cart_quantity_delete btn btn-default" href="?view=carrito&mode=delete&usuario=' .$idCarrito .'&producto=' .$data[0]. '"><i class="fa fa-times"> Borrar</i>
+
+                                            <a class="cart_quantity_delete btn btn-default" href="borrar/' . UrlAmigable($data[2], $_productos[$data[0]]['nombre']).'"><i class="fa fa-times"> Borrar</i>
                                             </a>
                                         </td>
                                     </tr>
@@ -115,11 +116,19 @@
                                 echo $HTML;?>
                             </tbody>
                         </table>
-                        <?php  
-                        echo '
+                        <?php
+                        if (is_numeric($idCarrito)){
+                            echo '
+
+                            <div style="text-align: center; margin-top: -15px; margin-bottom: 35px">
+                                <a class="btn btn-default check_out" href="vaciar/' . UrlAmigable($idCarrito, $_users[$idCarrito]['user']).'"><i class="fa fa-times-circle"></i> Vaciar Carro</a>
+                            </div>'; 
+                        } else{ 
+                            echo '
                             <div style="text-align: center; margin-top: -15px; margin-bottom: 35px">
                                 <a class="btn btn-default check_out" href="?view=carrito&mode=vaciar&usuario='.$idCarrito.'"><i class="fa fa-times-circle"></i> Vaciar Carro</a>
                             </div>';  
+                        }
                         ?>
                     </div>
                 </div>
