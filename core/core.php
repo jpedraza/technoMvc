@@ -10,16 +10,22 @@ session_start();
 date_default_timezone_set('America/Caracas');
 
 #Constantes de la Conexión a BD
-define('DB_HOST','localhost'); 		//localhost			lcdesign.com.ve
-define('DB_USER','root');			//root				lcdesign_root
-define('DB_PASS','');		//					088008quetepasa
-define('DB_NAME','technomvc');		//technomvc			lcdesign_techno
+define('DB_HOST','localhost'); 		
+define('DB_USER','root');			
+define('DB_PASS','');		
+define('DB_NAME','technomvc');		
+
+/*#Constantes de la Conexión a BD
+define('DB_HOST','lcdesign.com.ve'); 		
+define('DB_USER','lcdesign_root');			
+define('DB_PASS','088008quetepasa');		
+define('DB_NAME','lcdesign_techno');*/		
 
 #Constantes de la APP
 define('HTML_DIR','html/'); //Definimos una constante con un string denominado /html
 define('APP_TITLE','| Technotronic Game RK'); //Definimos una constante con un string para los titulos
-/*define('APP_COPY','Copyright &copy; '. date('Y',time()). ' Technotronick Game R.K.'); */
-define('APP_COPY','Copyright &copy; Technotronick Game R.K.');
+define('APP_COPY','Copyright &copy; '. date('Y',time()). ' Technotronick Game R.K.'); 
+/*define('APP_COPY','Copyright &copy; Technotronick Game R.K.');*/
 define('APP_URL','http://localhost/technoMvc/'); // http://localhost/technoMvc/				http://lcdesign.com.ve/techno/
 
 #Constantes de PHPMailer

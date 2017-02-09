@@ -133,7 +133,7 @@
                                                         ?>           
                                                     </p>   
                                                 </a>
-                                                <a href="#" class="btn btn-default add-to-cart">
+                                                <a href='agregar/<?php echo UrlAmigable($nuevos[0],$_productos[$nuevos[0]]['nombre']) ?>' class="btn btn-default add-to-cart">
                                                     <i class="fa fa-shopping-cart"></i>Agregar al carrito
                                                 </a>                                                
                                             </div>
@@ -147,12 +147,12 @@
                                         <div class="choose">
                                             <ul class="nav nav-pills nav-justified">
                                                 <li>
-                                                    <a href="#">
+                                                    <a href='agregar-Favoritos/<?php echo UrlAmigable($nuevos[0],$_productos[$nuevos[0]]['nombre']) ?>'>
                                                         <i class="fa fa-star"></i>Agregar a Favoritos
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a href="detalles/<?php echo UrlAmigable($nuevos[0], $_productos[$nuevos[0]]['nombre']) ?>">
                                                         <i class="fa fa-plus-square"></i>Ver Detalle
                                                     </a>
                                                 </li>
@@ -308,7 +308,7 @@
                                                         ?>           
                                                     </p>
                                                 </a>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                <a href='agregar/<?php echo UrlAmigable($prod[0],$_productos[$prod[0]]['nombre']) ?>' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>
@@ -360,7 +360,7 @@
                                                         ?>           
                                                     </p>
                                                 </a>
-                                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                                <a href='agregar/<?php echo UrlAmigable($prod[0],$_productos[$prod[0]]['nombre']) ?>' class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                                             </div>
                                         </div>
                                     </div>

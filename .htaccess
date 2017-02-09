@@ -10,6 +10,7 @@
 </Files>
 
 RewriteEngine on
+RewriteRule ^home/$ ?view=index
 RewriteRule ^detalles/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=detalles&mode=productos&id=$1
 RewriteRule ^mostrar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=mostrar&id=$1
 RewriteRule ^mostrarPag/([0-9]+)\-([a-zA-Z0-9-]+)\-([0-9]*)$ ?view=mostrar&id=$1&pag=$3
@@ -24,3 +25,6 @@ RewriteRule ^carrito/$ ?view=carrito&mode=ver
 RewriteRule ^agregar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=add&producto=$1
 RewriteRule ^borrar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=delete&producto=$1
 RewriteRule ^vaciar/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=carrito&mode=vaciar&usuario=$1
+RewriteRule ^agregar-Favoritos/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=favoritos&mode=add&producto=$1
+RewriteRule ^borrar-de-Favoritos/([0-9]+)\-([a-zA-Z0-9-]*)$ ?view=favoritos&mode=delete&producto=$1
+RewriteRule ^favoritos/$ ?view=favoritos&mode=all

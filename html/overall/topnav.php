@@ -38,7 +38,7 @@
          <div class="row">
             <div class="col-sm-4">
                <div class="logo pull-left">
-                  <a href="?view=index"><img src="views/images/home/logo.png" alt="Technotronic Game RK" /></a>
+                  <a href="home/"><img src="views/images/home/logo.png" alt="Technotronic Game RK" /></a>
                </div>
                   <div class="btn-group pull-right">
                      <div class="btn-group">
@@ -66,6 +66,12 @@
                   <ul class="nav navbar-nav">
                   <?php
                   $db  = new Conexion();
+                  /**
+                   * Comportamiento de las variables de Session para verificar los productos en el carrito
+                   * Determinando si no existe usuario logeado crea la variable con el date actual, mientras
+                   * que si existe uno logeado actua de diferente manera.
+                   */
+                  
                   if (!isset($_SESSION['carrito']) && !isset($_SESSION['app_id'])){
                     $_SESSION['carrito'] = md5(date("d-m-Y H:i:s"));
                     $sql = $db->query(
@@ -96,6 +102,42 @@
                           id_usuario='$_SESSION[carrito]' OR id_usuario='$_SESSION[app_id]';");
                     $cantidadProducto = $db->rows($sql);
                   }
+
+                  /**
+                   * Comportamiento de las variables de Session para verificar los productos que tiene un 
+                   * usuario en favoritos. Se comporta similar a la variable de SESSION del carrito.
+                   */
+                  
+                  if (!isset($_SESSION['favoritos']) && !isset($_SESSION['app_id'])){
+                    $_SESSION['favoritos'] = md5(date("d-m-Y H:i:s"));
+                    $sql = $db->query(
+                      "SELECT
+                          id_producto
+                      FROM
+                          favoritos
+                      WHERE
+                          id_usuario='$_SESSION[favoritos]';");
+                    $cantidadFavoritos = $db->rows($sql);
+                  } else if (!isset($_SESSION['favoritos']) && isset($_SESSION['app_id'])) {
+                    $_SESSION['favoritos'] = $_SESSION['app_id'];
+                    $sql = $db->query(
+                      "SELECT
+                          id_producto
+                      FROM
+                          favoritos
+                      WHERE
+                          id_usuario='$_SESSION[favoritos]';");
+                    $cantidadFavoritos = $db->rows($sql);
+                  } else if (isset($_SESSION['favoritos']) && isset($_SESSION['app_id'])){
+                    $sql = $db->query(
+                      "SELECT
+                          id_producto
+                      FROM
+                          favoritos
+                      WHERE
+                          id_usuario='$_SESSION[favoritos]' OR id_usuario='$_SESSION[app_id]';");
+                    $cantidadFavoritos = $db->rows($sql);
+                  }
                      
                   if(!isset($_SESSION['app_id'])) {
                     if (isset($cantidadProducto)) {
@@ -107,13 +149,31 @@
                         FROM
                             carrito
                         WHERE
-                            id_usuario='$_SESSION[carrito]';");
+                            id_usuario = '$_SESSION[carrito]';");
                       $cantidadProducto = $db->rows($sql);
                     }
+
+                    if (isset($cantidadFavoritos)) {
+                      $cantidadFavoritos = $cantidadFavoritos; 
+                    } else {
+                        $sql = $db->query(
+                        "SELECT
+                            id_producto
+                        FROM
+                            favoritos
+                        WHERE
+                            id_usuario = '$_SESSION[favoritos]';");
+                      $cantidadFavoritos = $db->rows($sql);
+                    }
+
+                    /**
+                     * Muestra el MENU de la página dependiendo el tipo de usuario que inicia sesion.
+                     */
+
                     echo '
-                     <li><a href="#"><i class="fa fa-star"></i> Favoritos</a></li>
+                     <li><a href="favoritos/"><i class="fa fa-star"></i> Favoritos <b style="color:#ffffff; background-color:#00b6b4; border:none; border-radius:100%; padding:4px 7px">'.$cantidadFavoritos.'</b></a></li>
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
-                     <li><a href="carrito/"><i class="fa fa-shopping-cart"></i> Carrito ( <i style="color:#00B3D3">'.$cantidadProducto.'</i>)</a></li>
+                     <li><a href="carrito/"><i class="fa fa-shopping-cart"></i> Carrito <b style="color:#ffffff; background-color:#00b6b4; border:none; border-radius:100%; padding:4px 7px">'.$cantidadProducto.'</b></a></li>
                      <li>
                         <a data-toggle="modal" data-target="#Login"><i class="fa fa-lock"></i>
                            Login
@@ -129,9 +189,9 @@
                      include(HTML_DIR . '/public/lostpass.html');
                   }elseif ($_users[$_SESSION['app_id']]['permisos'] != 2) {
                      echo '
-                     <li><a href="#"><i class="fa fa-star"></i> Favoritos</a></li>
+                     <li><a href="favoritos/"><i class="fa fa-star"></i> Favoritos <b style="color:#ffffff; background-color:#00b6b4; border:none; border-radius:100%; padding:4px 7px">'.$cantidadFavoritos.'</b></a></li>
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
-                     <li><a href="carrito/"><i class="fa fa-shopping-cart"></i> Carrito ( <i style="color:#00B3D3">'.$cantidadProducto.'</i>)</a></li>
+                     <li><a href="carrito/"><i class="fa fa-shopping-cart"></i> Carrito <b style="color:#ffffff; background-color:#00b6b4; border:none; border-radius:100%; padding:4px 7px">'.$cantidadProducto.'</b></a></li>
                      <li>
                         <a href="?view=perfil&id='.$_SESSION['app_id'].'"><i class="fa fa-user"></i>'
                         . strtolower($_users[$_SESSION['app_id']]['user']) .
@@ -184,7 +244,7 @@
                <div id="navbarCollapse" class="collapse navbar-collapse">
                   <?php if (isset($_SESSION['app_id']) and ($_users[$_SESSION['app_id']]['permisos'] == 2)) { ?>
                      <ul class="nav navbar-nav">
-                         <li><a href="?view=index">Inicio</a></li>
+                         <li><a href="home/">Inicio</a></li>
                          <li><a href="?view=categorias">Categorías</a></li>
                          <li><a href="?view=subcategorias">Sub-Categorías</a></li>
                          <li><a href="?view=productos">Productos</a></li>
@@ -199,7 +259,7 @@
                   } else {?>                            
                      <ul class="luis nav navbar-nav">
                        <li>
-                           <a href="?view=index">Inicio</a>
+                           <a href="home/">Inicio</a>
                        </li>
                        <?php 
                         if (false != $_categorias){

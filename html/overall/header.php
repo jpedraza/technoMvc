@@ -88,6 +88,9 @@
             case "carrito":
                 echo "Carrito";
                 break;
+            case "favoritos":
+                echo "Favoritos";
+                break;
             default:
                 echo "404";
                 break;

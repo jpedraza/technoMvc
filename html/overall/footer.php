@@ -12,7 +12,7 @@
         <div class="col-sm-7">
           <div class="col-sm-3">
             <div class="video-gallery text-center">
-              <a href="#">
+              <a href="http://pspstation.org/playstation-5-segun-rumores-se-adelanta-la-fecha-lanzamiento/" target="_blank">
                 <div class="iframe-img">
                   <img src="views/images/home/iframe1.png" alt="" />
                 </div>
@@ -27,7 +27,7 @@
 
           <div class="col-sm-3">
             <div class="video-gallery text-center">
-              <a href="#">
+              <a href="https://www.youtube.com/watch?v=EaU1SeqP8KM" target="_blank">
                 <div class="iframe-img">
                   <img src="views/images/home/iframe2.png" alt="" />
                 </div>
@@ -35,14 +35,14 @@
                   <i class="fa fa-play-circle-o"></i>
                 </div>
               </a>
-              <p>Call of Duty Modern Warfare 4</p>
-              <h2>Finales de 2016</h2>
+              <p>Call of Duty Infinite Warfare</p>
+              <h2>Actualidad</h2>
             </div>
           </div>
 
           <div class="col-sm-3">
             <div class="video-gallery text-center">
-              <a href="#">
+              <a href="https://youtu.be/nCOnu-Majig" target="_blank">
                 <div class="iframe-img">
                   <img src="views/images/home/iframe3.png" alt="" />
                 </div>
@@ -57,7 +57,7 @@
 
           <div class="col-sm-3">
             <div class="video-gallery text-center">
-              <a href="#">
+              <a href="https://www.youtube.com/watch?v=VKz3N1bWPCM" target="_blank">
                 <div class="iframe-img">
                   <img src="views/images/home/iframe4.png" alt="" />
                 </div>
@@ -88,7 +88,7 @@
             <h2>Servicios</h2>
             <ul class="nav nav-pills nav-stacked">
               <li><a href="#">Ayuda en Línea</a></li>
-              <li><a href="#">Contactenos</a></li>
+              <li><a href="contacto/">Contactenos</a></li>
               <li><a href="#">Productos en Reparación</a></li>
             </ul>
           </div>

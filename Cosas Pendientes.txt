@@ -1,3 +1,16 @@
-1.- comentado las fuentes de google en el header.php
+1.- Contenido para terminos y condiciones
 
-2.-
+
+    PEDIDOS SUJETOS A DISPONIBILIDAD
+        El stock de los títulos que aparecen en nuestra página web varían constantemente, por lo cual la atención de cualquier pedido está sujeto a disponibilidad.
+        Previo pedido, sírvase confirmar la disponibilidad de los ítems que desea adquirir. Puede dirigirse a los teléfonos (511) 637-8902 ó 637-8903, al correo: palestra@palestraeditores.com, o a través del Skype: palestra.editores.
+    COSTOS DE ENVIO
+        Las compras en línea del extranjero están sujetas a un recargo adicional por costo de envío, calculados en función de los tarifarios del Servicio Postal del Perú (Serpost) y DHL.
+        Las compras en línea dentro del territorio peruano están sujetas a un recargo adicional calculado en función de los tarifarios de las agencias de transporte a provincia, cuyos costos varían dependiendo del volumen y peso del pedido. 
+        Los costos de envío dentro de Lima Metropolitana han sido calculados de acuerdo a factores como: tiempo, tarifas de transporte y combustible.
+    TIEMPO DE ENTREGA
+        Dentro del territorio peruano, los pedidos se atienden con un plazo de 48 horas posteriores a la recepción del pedido.
+        Los tiempos de envío al exterior están sujetos a los estándares establecidos por el Servicio Postal del Perú y DHL, dependiendo de que el cliente seleccione para su entrega.
+    IMPORTANTE
+        No se realizan envíos a apartados postales.
+        El costo por derechos aduanales e  impuestos que pueda generar su paquete en el extranjero, será asumido por el destinatario, según las políticas aduanales de importación de cada país. Esto puede llegar a afectar el tiempo de entrega del paquete.

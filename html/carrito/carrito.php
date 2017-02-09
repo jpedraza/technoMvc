@@ -79,26 +79,31 @@
                             $subtotal = 0;
                             if ($cantidadPrd > 0) {                                
                                 while($data = $db->recorrer($sql)) {
-                                    $precio = ($_productos[$data[0]]['oferta'] == 1) ? $_productos[$data[0]]['precio_oferta']: $_productos[$data[0]]['precio'];
-                                    $subtotal += ($precio * $data[1] * 0.89285714);
-                                    $HTML .= '
+                                    $precio     = ($_productos[$data[0]]['oferta'] == 1) ? $_productos[$data[0]]['precio_oferta']: $_productos[$data[0]]['precio'];
+                                    $subtotal  += ($precio * $data[1] * 0.89285714);
+                                    $inventario = $_productos[$data[0]]['cantidad'];
+                                    $alerta     = $inventario == $data[1] ? '<input type="text" style="background-color: #FFDBDB" class="cart_quantity_input" disabled="" name="cantidad" id="cantidad" value="'.$data[1].'">' : '<input type="text" class="cart_quantity_input" disabled="" name="cantidad" id="cantidad" value="'.$data[1].'">';
+                                    $HTML      .= '
                                     <tr> 
                                         <td>
-                                            <a href=""><img src="'.URL_PRODUCTOS. $_productos[$data[0]]['foto1'].'" alt="'.$_productos[$data[0]]['nombre'].'" width="70" height="70"></a>
+                                            <a href="detalles/'. UrlAmigable($data[0], $_productos[$data[0]]['nombre']) . '"><img src="'.URL_PRODUCTOS. $_productos[$data[0]]['foto1'].'" alt="'.$_productos[$data[0]]['nombre'].'" width="70" height="70"></a>
                                         </td>
                                         <td style="text-align:center;">
-                                            <p><a href="">'.$_productos[$data[0]]['nombre'].'</a></p>
+                                            <p><a href="detalles/'. UrlAmigable($data[0], $_productos[$data[0]]['nombre']) . '">'.$_productos[$data[0]]['nombre'].'</a></p>
                                         </td>
                                         <td style="text-align:center;">
                                             <p>Bs. '.number_format($precio * 0.89285714,2,",",".").'</p>  
                                         </td>
                                         <td style="text-align:center;">
                                             <div class="cart_quantity_button">
-                                                <a class="btn btn-default cart_quantity_down" href="core/bin/ajax/disminuirCar.php?idCar='.$data[2].'"><i class="fa fa-angle-down"></i> </a>
-                                                <input type="text" class="cart_quantity_input" disabled="" name="cantidad" id="cantidad" value="'.$data[1].'">
+                                                <a class="btn btn-default cart_quantity_down" href="core/bin/ajax/disminuirCar.php?idCar='.$data[2].'">
+                                                    <i class="fa fa-angle-down"></i> 
+                                                </a>'.
+                                                $alerta .'
                                                 <input type="hidden" name="idPrd" id="idPrd" value="'.$data[0].'">
                                                 <input type="hidden" name="idCar" id="idCar" value="'.$data[2].'">
-                                                <a class="btn btn-default cart_quantity_up" href="core/bin/ajax/aumentarCar.php?idCar='.$data[2].'&id='.$data[0].'"><i class="fa fa-angle-up" style="margin-left:4px;"></i> 
+                                                <a class="btn btn-default cart_quantity_up" href="core/bin/ajax/aumentarCar.php?idCar='.$data[2].'&id='.$data[0].'">
+                                                    <i class="fa fa-angle-up" style="margin-left:4px;"></i> 
                                                 </a>
                                             </div>
                                         </td>

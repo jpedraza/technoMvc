@@ -22,16 +22,21 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 					ORDER BY
 						id DESC;");
 				$existe 	= $db->rows($sql);
-				$cantidad 	= $existe > 0 ? intval($db->recorrer($sql)[3]) : 0; 
+				$cantidad 	= $existe > 0 ? intval($db->recorrer($sql)[3]) : 0;
+				$inventario	= $_productos[$_GET['producto']]['cantidad'];
 				if (isset($cantidad) && $cantidad > 0) {
-					$db->query("
-					UPDATE
-						carrito
-					SET
-						cantidad = $cantidad + 1
-					WHERE
-						id_usuario = '$_SESSION[carrito]' AND id_producto = '$_GET[producto]';");
-					header('Location:'. $_SERVER['HTTP_REFERER'].'&carro=true');
+					if ($cantidad < $inventario) {
+						$db->query("
+						UPDATE
+							carrito
+						SET
+							cantidad = $cantidad + 1
+						WHERE
+							id_usuario = '$_SESSION[carrito]' AND id_producto = '$_GET[producto]';");
+						header('Location:'. $_SERVER['HTTP_REFERER']);
+					} else {
+						header('Location:'. $_SERVER['HTTP_REFERER']);
+					}
 				} else {
 					$db->query(
 					"INSERT INTO
@@ -105,7 +110,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 		break;
 	}
 } else{
-	header('location: contacto/');
+	header('location: ?view=index');
 }
 $db->close();
 ?>

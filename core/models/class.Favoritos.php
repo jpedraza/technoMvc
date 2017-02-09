@@ -1,6 +1,6 @@
 <?php 
 
-class Carrito {
+class Favoritos {
 	private $db;
 	private $id;
 	
@@ -17,14 +17,14 @@ class Carrito {
 	}
 
 	public function Add(){
-		$this->Errors('?view=carrito&mode=add&error=');
+		$this->Errors('?view=favoritos&mode=add&error=');
 		/*$this->db->query(
 					"INSERT INTO
-						categorias (nombre)
+						favoritos (nombre)
 					VALUES 
 						('$this->nombre');
 				");
-		header('location: ?view=carrito&mode=add&id='.$this->id.'&success=true');*/
+		header('location: ?view=favoritos&mode=add&id='.$this->id.'&success=true');*/
 		echo "ingreso el producto al carro";
 	}
 	

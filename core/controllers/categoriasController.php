@@ -40,3 +40,4 @@ if (isset($_SESSION['app_id']) && $_users[$_SESSION['app_id']]['permisos'] >= 2)
 } else{
 	header('location: ?view=index');
 }
+?>

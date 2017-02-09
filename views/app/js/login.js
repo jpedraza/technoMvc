@@ -10,7 +10,7 @@ function goLogin() {
 		    if(connect.responseText == 1) {
 		      	result = '<div class="alert alert-dismissible alert-success">';
 		      	result += '<strong>Conectado!</strong><br />';
-		      	result += 'Estamos redireccionandote...';
+		      	result += 'Estamos redireccionandote<img src="views/app/images/loading1.gif" heigth="60%" alt="cargando" />';
 		      	result += '</div>';
 		      	__('_AJAX_LOGIN_').innerHTML = result;
 		      	location.reload();
@@ -20,8 +20,7 @@ function goLogin() {
 		} else if(connect.readyState != 4) {
       		result = '<div class="alert alert-dismissible alert-warning">';
       		result += '<button type="button" class="close" data-dismiss="alert">x</button>';
-      		result += '<strong>Procesando...</strong><br />';
-      		result += 'Estamos intentando logearte....';
+      		result += '<strong>Procesando</strong><img src="views/app/images/loading1.gif" heigth="60%" alt="cargando" />';
       		result += '</div>';
       		__('_AJAX_LOGIN_').innerHTML = result;
     	}
