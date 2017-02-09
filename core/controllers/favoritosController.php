@@ -2,9 +2,6 @@
 
 if (isset($_GET['producto']) || isset($_GET['mode'])){
 
-	/*require('core/models/class.Favoritos.php');
-	$favoritos = new favoritos();*/
-
 	switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		case 'add':
 			$db = new Conexion();
