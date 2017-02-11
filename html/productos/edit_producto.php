@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <ol class="breadcrumb">
-                  <li><a href="?view=index"><i class="fa fa-home"></i>Inicio</a></li>
+                  <li><a href="home/"><i class="fa fa-home"></i>Inicio</a></li>
                   <li><a href="#"><i class="fa fa-folder-open-o"></i>Productos</a></li>
                 </ol>
             </div>

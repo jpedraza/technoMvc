@@ -72,6 +72,6 @@ if (isset($_GET['producto']) || isset($_GET['mode'])){
 		break;
 	}
 } else{
-	header('location: ?view=index');
+	header('location: home/');
 }
 ?>

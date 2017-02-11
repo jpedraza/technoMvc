@@ -2,9 +2,6 @@
 
 if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver' || $_GET['mode'] == 'vaciar' ))){
 
-	require('core/models/class.Carrito.php');
-	$carrito 		= new Carrito();
-
 	switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		case 'add':
 			$db = new Conexion();
@@ -110,7 +107,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 		break;
 	}
 } else{
-	header('location: ?view=index');
+	header('location: home/');
 }
 $db->close();
 ?>

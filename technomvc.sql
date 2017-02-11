@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2017 a las 17:35:43
+-- Tiempo de generación: 09-02-2017 a las 15:11:34
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -53,6 +53,18 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 (2, 'Reproductores'),
 (3, 'Accesorios'),
 (4, 'Otros');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `favoritos`
+--
+
+CREATE TABLE `favoritos` (
+  `id` int(11) NOT NULL,
+  `id_usuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `id_producto` int(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -192,6 +204,12 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
@@ -223,6 +241,11 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `categorias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `favoritos`
+--
+ALTER TABLE `favoritos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --

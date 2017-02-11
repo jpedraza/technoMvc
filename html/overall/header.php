@@ -91,6 +91,18 @@
             case "favoritos":
                 echo "Favoritos";
                 break;
+            case "perfil":
+                echo "Mi Perfil";
+                break;
+            case "editpass":
+                echo "Cambio exitoso";
+                break;
+            case "lostpass":
+                echo "Recuperar Clave";
+                break;
+            case "activar":
+                echo "Activar Usuario";
+                break;
             default:
                 echo "404";
                 break;

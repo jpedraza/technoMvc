@@ -93,27 +93,16 @@
             </ul>
           </div>
         </div>
-          <div class="col-sm-2">
+        <div class="col-sm-4 col-sm-offset-1">
           <div class="single-widget">
-            <h2>Compra Rápida</h2>
-            <ul class="nav nav-pills nav-stacked">
-              <li><a href="#">Consolas</a></li>
-              <li><a href="#">Reproductores</a></li>
-              <li><a href="#">Accesorios</a></li>
-              <li><a href="#">Otros Productos</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-sm-3 col-sm-offset-1">
-          <div class="single-widget">
-            <h2>Recibe Actualizaciones en tu correo</h2>
+            <h2>Recibe actualizaciones en tu correo</h2>
             <form action="#" class="searchform">
               <input type="email" placeholder="Ingresa tu correo" required="" />
               <button type="submit" class="btn btn-default">
                 <i class="fa fa-arrow-circle-o-right"></i>
               </button>
               <p class="pjustify">
-                Recibe las actualizaciones más recientes de nuestro sitio en tu correo electrónico
+                Recibe las actualizaciones más recientes de nuestro sitio en tu correo electrónico.
               </p>
             </form>
           </div>
@@ -126,7 +115,7 @@
     <div class="container">
       <div class="row">
         <p class="pull-left"><?php echo APP_COPY ?></p>
-        <p class="pull-right">Diseñado por <span><a target="_blank" href="www.lcdesign.com.ve">LC Design</a></span></p>
+        <p class="pull-right">Diseñado por <span><a target="_blank" href="../">LC Design</a></span></p>
       </div>
     </div>
   </div>

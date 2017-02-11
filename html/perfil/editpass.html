@@ -1,0 +1,53 @@
+<div class="modal fade" id="Editpass" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+        <div id="_AJAX_EDITPASS_"></div>
+        
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="aviso-luis">
+                <span class="glyphicon glyphicon-lock"></span> 
+              Cambiar Contraseña
+            </h4>
+        </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group" onkeypress="return runScriptEditPass(event)">
+                        <label for="psw_bd">
+                            <span class="glyphicon glyphicon-eye-open"></span> 
+                            Contraseña Actual
+                        </label>
+                        <input type="password" class="form-control" id="pass_bd" placeholder="Introduce tu contraseña">
+                    </div>
+                    <div class="form-group" onkeypress="return runScriptEditPass(event)">
+                        <label for="psw">
+                            <span class="glyphicon glyphicon-eye-open"></span> 
+                            Nueva Contraseña
+                        </label>
+                        <input type="password" class="form-control" id="pass_reg" placeholder="Introduce tu nueva contraseña">
+                    </div>
+                    <div class="form-group" onkeypress="return runScriptEditPass(event)">
+                        <label for="psw_two">
+                             <span class="glyphicon glyphicon-eye-open"></span> 
+                            Repite tu Contraseña
+                        </label>
+                        <input type="password" class="form-control" id="pass_reg_dos" placeholder="Repite tu nueva contraseña">
+                    </div>
+                    <button type="button" onclick="editPass()" class="btn btn-default btn-success btn-block">
+                        <span class="glyphicon glyphicon-edit"></span> 
+                        Cambiar
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-default pull-left" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"></span> 
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="views/app/js/editPerfil.js"></script>

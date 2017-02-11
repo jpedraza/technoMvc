@@ -193,7 +193,7 @@
                      <li><a href="#"><i class="fa fa-crosshairs"></i> Caja </a></li>
                      <li><a href="carrito/"><i class="fa fa-shopping-cart"></i> Carrito <b style="color:#ffffff; background-color:#00b6b4; border:none; border-radius:100%; padding:4px 7px">'.$cantidadProducto.'</b></a></li>
                      <li>
-                        <a href="?view=perfil&id='.$_SESSION['app_id'].'"><i class="fa fa-user"></i>'
+                        <a href="perfil/"><i class="fa fa-user"></i>'
                         . strtolower($_users[$_SESSION['app_id']]['user']) .
                         '</a>
                      </li>
@@ -208,7 +208,7 @@
                         <span>ADMINISTRADOR</span>
                      </li>
                      <li>
-                        <a href="?view=perfil&id='.$_SESSION['app_id'].'"><i class="fa fa-user"></i>'
+                        <a href="perfil/"><i class="fa fa-user"></i>'
                         . strtolower($_users[$_SESSION['app_id']]['user']) .
                         '</a>
                      </li>

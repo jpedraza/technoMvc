@@ -1,6 +1,6 @@
 <?php 
 
-if (!isset($_SESSION['app_id']) and isset($_GET['key'])) {
+if (isset($_GET['key'])) {
 	$db 		= new Conexion();
 	$keypass	= $db->real_escape_string($_GET['key']);
 	$sql		= $db->query(
@@ -28,7 +28,7 @@ if (!isset($_SESSION['app_id']) and isset($_GET['key'])) {
 				LIMIT 
 					1;
 			");
-		include('html/lostpass_mensaje.php');
+		include('html/editpass_mensaje.php');
 	} else {
 		header('location: home/');
 	}
@@ -41,4 +41,4 @@ if (!isset($_SESSION['app_id']) and isset($_GET['key'])) {
 }
 
 
- ?>
+?>

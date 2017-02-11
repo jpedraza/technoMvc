@@ -19,13 +19,19 @@ if ($_POST) {
 			break;	
 		case 'edipro':
 			require('core/bin/ajax/goEdipro.php');
+			break;	
+		case 'ediperfil':
+			require('core/bin/ajax/ediPerfil.php');
 			break;
+		case 'editpass':
+			require('core/bin/ajax/editPass.php');
+			break;	
 		default:
-			header('location: index.php');
+			header('location: home/');
 			break;
 	}
 } else {
-	header('location: index.php');
+	header('location: contacto/');
 }
 
 ?>
