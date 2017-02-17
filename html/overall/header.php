@@ -103,6 +103,9 @@
             case "activar":
                 echo "Activar Usuario";
                 break;
+            case "userAdm":
+                echo "Gestión de Usuarios";
+                break;
             default:
                 echo "404";
                 break;

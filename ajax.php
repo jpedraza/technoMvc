@@ -25,6 +25,12 @@ if ($_POST) {
 			break;
 		case 'editpass':
 			require('core/bin/ajax/editPass.php');
+			break;
+		case 'addUserAdm':
+			require('core/bin/ajax/addUserAdm.php');
+			break;
+		case 'editUserAdm':
+			require('core/bin/ajax/editUserAdm.php');
 			break;	
 		default:
 			header('location: home/');

@@ -1,4 +1,5 @@
 <?php
+
 $db       = new mysqli("localhost","root","","technomvc");
 /*$db       = new mysqli("lcdesign.com.ve","lcdesign_root","088008quetepasa","lcdesign_techno");*/
 $carro = $_GET['idCar'];

@@ -56,6 +56,7 @@ require('core/bin/functions/Subcategorias.php');
 require('core/bin/functions/Productos.php');
 require('core/bin/functions/Carritos.php');
 require('core/bin/functions/EmailTemplate.php');
+require('core/bin/functions/EmailTemplateAdm.php');
 require('core/bin/functions/LostpassTemplate.php');
 require('core/bin/functions/EditpassTemplate.php');
 require('core/bin/functions/UrlAmigable.php');

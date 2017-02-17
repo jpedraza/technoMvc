@@ -245,10 +245,10 @@
                   <?php if (isset($_SESSION['app_id']) and ($_users[$_SESSION['app_id']]['permisos'] == 2)) { ?>
                      <ul class="nav navbar-nav">
                          <li><a href="home/">Inicio</a></li>
-                         <li><a href="?view=categorias">Categorías</a></li>
-                         <li><a href="?view=subcategorias">Sub-Categorías</a></li>
-                         <li><a href="?view=productos">Productos</a></li>
-                         <li><a href="#">Usuarios</a></li>                         
+                         <li><a href="Categorias/">Categorías</a></li>
+                         <li><a href="Subcategorias/">Sub-Categorías</a></li>
+                         <li><a href="Stock/">Productos</a></li>
+                         <li><a href="?view=userAdm">Usuarios</a></li>                         
                      </ul>
                      <form role="search" class="navbar-form navbar-right">
                          <div class="form-group">

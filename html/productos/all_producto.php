@@ -12,7 +12,7 @@
                     <div>
                         <ul class="mbr-navbar__items mbr-buttons--active">
                         	<li>
-                                <a class="btn btn-default active" data-toggle="modal" href="?view=productos">
+                                <a class="btn btn-default active" data-toggle="modal" href="Stock/">
                                     Gestionar
                                 </a>
                                 <a class="btn btn-default" data-target="#Addpro" data-toggle="modal">

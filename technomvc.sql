@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2017 a las 15:11:34
+-- Tiempo de generación: 17-02-2017 a las 16:29:25
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -174,18 +174,18 @@ CREATE TABLE `users` (
   `keyreg` varchar(120) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `keypass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `new_pass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ultima_conexion` int(32) NOT NULL DEFAULT '0',
-  `no_leidos` text COLLATE utf8_unicode_ci NOT NULL
+  `ultima_conexion` int(32) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `user`, `name`, `pass`, `email`, `permisos`, `activo`, `keyreg`, `keypass`, `new_pass`, `ultima_conexion`, `no_leidos`) VALUES
-(1, 'luisknd', 'Luis', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario41@gmail.com', 2, 1, '', '', '', 0, ''),
-(2, 'cande', 'Rafael', 'c0784027b45aa11e848a38e890f8416c', 'luis-knd@hotmail.com', 0, 1, '', '', '', 0, ''),
-(3, 'prueba', 'Candelario', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario4@gmail.com', 1, 1, '', '', '', 0, '');
+INSERT INTO `users` (`id`, `user`, `name`, `pass`, `email`, `permisos`, `activo`, `keyreg`, `keypass`, `new_pass`, `ultima_conexion`) VALUES
+(1, 'luisknd', 'Luis', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario41@gmail.com', 2, 1, '', '', '', 0),
+(2, 'cande', 'Rafael melendez', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario410@gmail.com', 0, 1, '', '', '', 0),
+(3, 'prueba', 'Candelario', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario4@gmail.com', 1, 1, '', '', '', 0),
+(4, 'caro', 'Carolina Jardin', 'c0784027b45aa11e848a38e890f8416c', 'luis-knd@hotmail.com', 2, 1, '', '', '', 0);
 
 --
 -- Índices para tablas volcadas
@@ -260,7 +260,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

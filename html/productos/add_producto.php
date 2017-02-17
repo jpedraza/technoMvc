@@ -94,7 +94,6 @@
                     <div class="form-group col-sm-12" onkeypress="return runScriptAddpro(event)">
                         <label for="inputEmail" class="col-lg-4 control-label">Foto <b class="aviso-luis">*</b></label>
                         <div class="col-lg-10">
-                           <!--  <input type="file" multiple name="imagen" id="imagen" class="form-control"></input> -->
                             <input type="file" name="imagen[]" class="form-control" id="imagen" data-field-type="bootstrap-file-filed" 
                             data-label='<i class="fa fa-folder-open"></i>Insertar Imagen' 
                             data-btn-class="btn-default" 
