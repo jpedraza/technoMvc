@@ -12,7 +12,7 @@
                     <div>
                         <ul class="mbr-navbar__items mbr-buttons--active">
                         	<li>
-                                <a class="btn btn-default active" data-toggle="modal" href="?view=userAdm">
+                                <a class="btn btn-default active" data-toggle="modal" href="Usuarios/">
                                     Gestionar
                                 </a>
                                 <a class="btn btn-default" data-target="#Adduser" data-toggle="modal">

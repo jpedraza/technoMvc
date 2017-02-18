@@ -1,7 +1,0 @@
-root = true
-
-[*.{js,css,html,less}]
-charset = utf-8
-indent_style = tab
-trim_trailing_whitespace = true
-end_of_line = lf

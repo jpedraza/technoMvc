@@ -32,6 +32,9 @@ if ($_POST) {
 		case 'editUserAdm':
 			require('core/bin/ajax/editUserAdm.php');
 			break;	
+		case 'busPro':
+			require('core/bin/ajax/busPro.php');
+			break;	
 		default:
 			header('location: home/');
 			break;

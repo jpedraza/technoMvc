@@ -248,7 +248,15 @@
                          <li><a href="Categorias/">Categorías</a></li>
                          <li><a href="Subcategorias/">Sub-Categorías</a></li>
                          <li><a href="Stock/">Productos</a></li>
-                         <li><a href="?view=userAdm">Usuarios</a></li>                         
+                         <li><a href="Usuarios/">Usuarios</a></li> 
+                         <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">Reportes <b class="caret"></b></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="Reporte-Productos/">Productos <i class="fa fa-file-pdf-o"></i></a></li>
+                                <li><a href="Reporte-Usuarios/">Usuarios <i class="fa fa-file-pdf-o"></i></a></li>
+                                <li><a href="#">Compras</a></li>
+                            </ul>
+                        </li>                        
                      </ul>
                      <form role="search" class="navbar-form navbar-right">
                          <div class="form-group">

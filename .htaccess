@@ -32,3 +32,6 @@ RewriteRule ^perfil/$ ?view=perfil
 RewriteRule ^Stock/$ ?view=productos
 RewriteRule ^Subcategorias/$ ?view=subcategorias
 RewriteRule ^Categorias/$ ?view=categorias
+RewriteRule ^Usuarios/$ ?view=userAdm
+RewriteRule ^Reporte-Productos/$ ?view=reportes&mode=inv
+RewriteRule ^Reporte-Usuarios/$ ?view=reportes&mode=user

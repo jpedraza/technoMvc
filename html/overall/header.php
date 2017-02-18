@@ -24,11 +24,11 @@
   <link rel="stylesheet" href="views/app/css/main.css" type="text/css">
   <link rel="stylesheet" href="views/responsive/css/responsive.css" type="text/css">
 
-  <script src="vendor/path/to/tinymce/js/tinymce/tinymce.min.js"></script>
+  <script src="views/tinymce/js/tinymce/tinymce.min.js"></script>
   <script type="text/javascript">
     tinymce.init({
       selector: '#detalle',
-      language_url : 'vendor/path/to/tinymce/js/tinymce/langs/es.js',  // site absolute URL
+      language_url : 'views/tinymce/js/tinymce/langs/es.js',  // site absolute URL
       language: 'es',
       entity_encoding: 'raw',
       height: 300,

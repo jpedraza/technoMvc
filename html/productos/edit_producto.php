@@ -13,7 +13,7 @@
                     <div>
                         <ul class="mbr-navbar__items mbr-buttons--active">
                             <li>
-                                <a class="btn btn-default" data-toggle="modal" href="?view=productos">
+                                <a class="btn btn-default" data-toggle="modal" href="Stock/">
                                     Gestionar
                                 </a>
                                 <a class="btn btn-default active" data-toggle="modal" href="#">
@@ -25,7 +25,7 @@
                 </div>
                 <ol class="breadcrumb">
                   <li><a href="home/"><i class="fa fa-home"></i>Inicio</a></li>
-                  <li><a href="#"><i class="fa fa-folder-open-o"></i>Productos</a></li>
+                  <li><a href="Stock/"><i class="fa fa-folder-open-o"></i>Productos</a></li>
                 </ol>
             </div>
 

@@ -33,42 +33,37 @@ include(HTML_DIR . 'overall/header.php'); ?>
           </ol>
           
           <div class="carousel-inner">
-            <div class="item active">
-              <div class="col-sm-6">
-                <h1><span>Techno</span>tronic</h1>
-                <h2>Ofertas del mes</h2>
-                <p>Aprovecha la promoción que traemos para ti, todo más barato que mercal.</p>
-                <button type="button" class="btn btn-default get">Aprovecha ya</button>
-              </div>
-              <div class="col-sm-6">
-                <img src="views/images/home/1.png" class="girl img-responsive" alt="ofertas">
-                <img src="views/images/home/oferta.png"  class="pricing" alt="oferta">
-              </div>
-            </div>
-            <div class="item">
-              <div class="col-sm-6">
-                <h1><span>Techno</span>tronic</h1>
-                <h2>Ofertas del mes</h2>
-                <p>Aprovecha la promoción que traemos para ti, todo más barato que mercal.</p>
-                <button type="button" class="btn btn-default get">Aprovecha ya</button>
-              </div>
-              <div class="col-sm-6">
-                <img src="views/images/home/2.jpg" class="girl img-responsive" alt="ofertas">
-                <img src="views/images/home/oferta.png"  class="pricing" alt="oferta">
-              </div>
-            </div>          
-            <div class="item">
-              <div class="col-sm-6">
-                <h1><span>Techno</span>tronic</h1>
-                <h2>Ofertas del mes</h2>
-                <p>Aprovecha la promoción que traemos para ti, todo más barato que mercal.</p>
-                <button type="button" class="btn btn-default get">Aprovecha ya</button>
-              </div>
-              <div class="col-sm-6">
-                <img src="views/images/home/3.png" class="girl img-responsive" alt="ofertas">
-                <img src="views/images/home/oferta.png" class="pricing" alt="oferta">
-              </div>
-            </div>          
+            <?php 
+            $db  = new Conexion();
+            $sql = $db->query("
+                SELECT
+                    id,
+                    titulo,
+                    detalle,
+                    imagen,
+                    oferta
+                FROM
+                    promociones;");                
+                $cantidad   = $db->rows($sql);
+                for ($i=0; $i < $cantidad; $i++) { 
+                    $item = $i==0 ? 'item active' : 'item';
+                    $data[$i] = $db->recorrer($sql);
+                    $oferta = $data[$i][4] == 1 ? '<img src="views/images/home/oferta.png"  class="pricing" alt="oferta" />' : '';
+                    echo'
+                    <div class="'.$item.'">
+                        <div class="col-sm-6">
+                            <h1><span>Techno</span>tronic</h1>
+                            <h2>'.$data[$i][1].'</h2>
+                            <p>'.$data[$i][2].'</p>
+                            <b class="btn btn-default get">Aprovecha ya</b>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="views/images/home/'.$data[$i][3].'" class="girl img-responsive" alt="ofertas" />'.
+                            $oferta .'
+                        </div>
+                    </div>';
+                }
+            ?>         
           </div>
           <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
             <i class="fa fa-angle-left"></i>

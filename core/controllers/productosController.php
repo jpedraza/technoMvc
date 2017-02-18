@@ -15,6 +15,9 @@ if (isset($_SESSION['app_id']) && $_users[$_SESSION['app_id']]['permisos'] >= 2)
 				include(HTML_DIR . 'productos/add_producto.php');
 			}			
 		break;*/
+		case 'busPro':
+			include(HTML_DIR . 'productos/bus_producto.php');
+		break;
 		case 'edit':
 			if ($isset_id && array_key_exists($_GET['id'],$_productos)) {
 				if ($_POST) {

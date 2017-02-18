@@ -25,8 +25,15 @@
                 </div>
                 <ol class="breadcrumb">
                   <li><a href="home/"><i class="fa fa-home"></i>Inicio</a></li>
-                  <li><a href="#"><i class="fa fa-folder-open-o"></i>Productos</a></li>
+                  <li><a href="Stock/"><i class="fa fa-folder-open-o"></i>Productos</a></li>
                 </ol>
+                <form role="form">
+               		<div class="form-group" onkeypress="return runScriptBuspro(event)">
+		            	<input type="text" name="buscar" id="buscar" placeholder="Buscar Producto">
+		            	<button type="button" title="Buscar" class="btn btn-default fa fa-search" onclick="goBuscarStock()"></button>
+		            	<span id="_AJAX_SEARCH_"></span>
+		            </div>
+	            </form>
             </div>
 			
 			<div class="row cart_info col-sm-12">
@@ -229,6 +236,7 @@
 		</div>
 	</section>
 
+    <script src=views/app/js/producto.js></script>
     <?php include(HTML_DIR . 'overall/footer.php'); ?>
 </body>
 </html>

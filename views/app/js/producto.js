@@ -36,8 +36,7 @@ function goAddpro() {
                                     } else if(connect.readyState != 4) {
                                         result = '<div class="alert alert-dismissible alert-warning">';
                                         result += '<button type="button" class="close" data-dismiss="alert">x</button>';
-                                        result += '<strong>Procesando...</strong><br />';
-                                        result += 'Estamos intentando agregar producto....';
+                                        result += '<strong>Procesando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
                                         result += '</div>';
                                         __('_AJAX_ADDPRO_').innerHTML = result;
                                     }
@@ -108,8 +107,7 @@ function goAddpro() {
                 } else if(connect.readyState != 4) {
                     result = '<div class="alert alert-dismissible alert-warning">';
                     result += '<button type="button" class="close" data-dismiss="alert">x</button>';
-                    result += '<strong>Procesando...</strong><br />';
-                    result += 'Estamos intentando agregar producto....';
+                    result += '<strong>Procesando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
                     result += '</div>';
                     __('_AJAX_ADDPRO_').innerHTML = result;
                 }
@@ -123,6 +121,12 @@ function goAddpro() {
         result += '<strong>ERROR:</strong> Debe completar los datos obligatorios *.';
         result += '</div>';
         __('_AJAX_ADDPRO_').innerHTML = result;
+    }
+}
+
+function runScriptAddpro(e) {
+    if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
+        goAddpro();
     }
 }
 
@@ -153,7 +157,7 @@ function goEdipro() {
                                     if(connect.readyState == 4 && connect.status == 200) {
                                         if(connect.responseText == 1) {
                                             result = '<div class="alert alert-dismissible alert-success">';
-                                            result += '<strong>Producto Agregado!</strong> ';
+                                            result += '<strong>Producto Editado!</strong> ';
                                             result += '</div>';
                                             __('_AJAX_EDIPRO_').innerHTML = result;
                                             location.reload();
@@ -163,8 +167,7 @@ function goEdipro() {
                                     } else if(connect.readyState != 4) {
                                         result = '<div class="alert alert-dismissible alert-warning">';
                                         result += '<button type="button" class="close" data-dismiss="alert">x</button>';
-                                        result += '<strong>Procesando...</strong><br />';
-                                        result += 'Estamos intentando agregar producto....';
+                                        result += '<strong>Editando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
                                         result += '</div>';
                                         __('_AJAX_EDIPRO_').innerHTML = result;
                                     }
@@ -203,7 +206,7 @@ function goEdipro() {
                 if(connect.readyState == 4 && connect.status == 200) {
                     if(connect.responseText == 1) {
                         result = '<div class="alert alert-dismissible alert-success">';
-                        result += '<strong>Producto Agregado!</strong> ';
+                        result += '<strong>Producto Editado!</strong> ';
                         result += '</div>';
                         __('_AJAX_EDIPRO_').innerHTML = result;
                         location.reload();
@@ -213,8 +216,7 @@ function goEdipro() {
                 } else if(connect.readyState != 4) {
                     result = '<div class="alert alert-dismissible alert-warning">';
                     result += '<button type="button" class="close" data-dismiss="alert">x</button>';
-                    result += '<strong>Procesando...</strong><br />';
-                    result += 'Estamos intentando agregar producto....';
+                    result += '<strong>Editando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
                     result += '</div>';
                     __('_AJAX_EDIPRO_').innerHTML = result;
                 }
@@ -232,17 +234,54 @@ function goEdipro() {
 }
 
 
-
-function runScriptAddpro(e) {
-	if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
-		goAddpro();
-	}
-}
-
-
 function runScriptEdipro(e) {
     if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
         goEdipro();
+    }
+}
+
+
+
+function goBuscarStock() {
+    var connect, form, response, result, buscar;
+    buscar = __('buscar').value;
+    if (buscar != '') {
+        form = 'buscar=' + buscar;
+        connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        connect.onreadystatechange = function() {
+              if(connect.readyState == 4 && connect.status == 200) {
+                  if(connect.responseText == 1) {
+                      result = '<span class="label label-success">';
+                      result += '<strong>Buscando!<img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
+                      result += '</span>';
+                      __('_AJAX_SEARCH_').innerHTML = result;
+                      window.location.assign("?view=productos&mode=busPro&buscar="+buscar);
+                  } else {
+                      __('_AJAX_SEARCH_').innerHTML = connect.responseText;
+                  }
+              } else if(connect.readyState != 4) {
+                  result = '<span class="label label-info">';
+                  result += '<strong>Procesando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
+                  result += '</span>';
+                  __('_AJAX_SEARCH_').innerHTML = result;
+              }
+        }
+        connect.open('POST','ajax.php?mode=busPro',true);
+        connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        connect.send(form);
+    }else {
+        result = '<span class="label label-danger">';
+        result += '<strong>ERROR!: </strong>Debes llenar el campo de busqueda.';
+        result += '</span>';
+        __('_AJAX_SEARCH_').innerHTML = result;
+    }
+}
+
+
+
+function runScriptBuspro(e) {
+    if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
+        return false;
     }
 }
 

@@ -25,7 +25,7 @@
                 </div>
                 <ol class="breadcrumb">
                   <li><a href="home/"><i class="fa fa-home"></i>Inicio</a></li>
-                  <li><a href="#"><i class="fa fa-folder-open-o"></i>Usuarios</a></li>
+                  <li><a href="usuarios/"><i class="fa fa-folder-open-o"></i>Usuarios</a></li>
                 </ol>
             </div>
 
