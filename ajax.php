@@ -1,9 +1,7 @@
 <?php 
 
 if ($_POST) {
-
 	require('core/core.php');
-
 	switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		case 'login':
 			require('core/bin/ajax/goLogin.php');
@@ -31,6 +29,9 @@ if ($_POST) {
 			break;
 		case 'editUserAdm':
 			require('core/bin/ajax/editUserAdm.php');
+			break;	
+		case 'promocionAdd':
+			require('core/bin/ajax/goAddpromo.php');
 			break;	
 		case 'busPro':
 			require('core/bin/ajax/busPro.php');

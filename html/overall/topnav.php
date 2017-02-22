@@ -249,6 +249,7 @@
                          <li><a href="Subcategorias/">Sub-Categorías</a></li>
                          <li><a href="Stock/">Productos</a></li>
                          <li><a href="Usuarios/">Usuarios</a></li> 
+                         <li><a href="?view=promociones">Promociones</a></li> 
                          <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">Reportes <b class="caret"></b></a>
                             <ul role="menu" class="dropdown-menu">

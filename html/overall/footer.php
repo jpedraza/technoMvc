@@ -6,7 +6,7 @@
         <div class="col-sm-2">
           <div class="companyinfo">
             <h2><span>Techno</span>tronic</h2>
-            <p class="pjustify">Te traemos la mejor y m&aacute;s grande variedad de videojuegos y productos elect&oacute;nicos, al mejor precio del mercado</p>
+            <p class="pjustify">Te traemos la mejor y más grande variedad de videojuegos y productos electrónicos, al mejor precio del mercado</p>
           </div>
         </div>
         <div class="col-sm-7">

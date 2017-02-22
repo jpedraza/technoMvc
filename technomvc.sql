@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2017 a las 16:29:25
+-- Tiempo de generación: 22-02-2017 a las 18:09:09
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -119,9 +119,33 @@ INSERT INTO `productos` (`id`, `nombre`, `precio`, `cantidad`, `descripcion`, `c
 (21, 'Cable Hdmi 1.5 Mt Full Hd 1080px', 4900, 24, '<p style="text-align: justify;">HDMI permite el uso de ví­deo computarizado de alta definición, así­ como audio digital multicanal en un Único cable.</p>\r\n<p style="text-align: justify;">La especificación HDMI no define una longitud máxima del cable. Al igual que con todos los cables, la atenuación de la señal se hace demasiado alta a partir de una determinada longitud. En lugar de ello, HDMI especifica un mÃ­nimo nivel de potencia. Diferentes materiales y calidades de construcción permitirán cables de diferentes longitudes. Además, el mayor rendimiento de los requisitos debe cumplirse para soportar los formatos de ví­deo de mayor resolución y/o el marco de las tasas de los formatos del estándar HDTV. La atenuación de la señal y la interferencia causada por los cables pueden ser compensadas mediante la utilización de un ecualizador adaptativo.</p>', 1, 3, 11, 'Generico', 0, 0, 'hdmi.jpg', 'default.jpg', 'default.jpg', 1, 4),
 (22, 'Cable Auxiliar Plus 3.5mm 1.5metros M/M', 2200, 12, '<h2 style="text-align: center;"><span style="color: #ff0000;">Cable auxiliar plus 3.5mm 1.5mts macho a macho</span></h2>\r\n<p> </p>\r\n<p>Cable auxiliar plus 3.5mm a 3.5mm, medida 1.5mts de largo punta dorada. Ideal para conectar su mp3, mp4, Ipod, celulares, equipos electrónicos al reproductor de su carro.</p>', 1, 3, 5, 'Generico', 0, 0, 'plusaudio.jpg', 'default.jpg', 'default.jpg', 1, 0),
 (23, 'Conector De Audio 3.5 Mm Macho A 2 Rca Hembra', 1390, 15, '<p>Adaptador que de una salida mini jack 3.5mm hembra convierte en 2 salidas RCA</p>\r\n<p>Conexión Jack Stereo 3.5mm Macho a 2 RCA Hembras</p>', 1, 3, 5, 'Generico', 0, 0, '35-rca.jpg', 'default.jpg', 'default.jpg', 1, 0),
-(24, 'Adaptador Mini Plug 2 Hembras', 1999, 12, '<p><strong>Caracterí­sticas:</strong></p>\r\n<p>Adaptador Jack Estereo 3.5mm Macho A 2 Jack 6.3mm Hembra. Ideal para conexiones musicales entre salidas de sonido de computadoras, laptop, mp3, mp4 desde o hacia equipos de sonido profesionales.</p>\r\n<p><strong>Especificaciones:</strong></p>\r\n<ol>\r\n<li>Producto: Nuevo.</li>\r\n<li>Color: Negro.</li>\r\n<li>Tipo: Estéreo.</li>\r\n<li>Peso: 8 gramos.</li>\r\n<li>Macho: 1 de 3.5mm.</li>\r\n<li>Hembra: 2 de 6.3mm.</li>\r\n<li>Material: Plástico moldeado.</li>\r\n</ol>', 1, 3, 5, 'Generico', 0, 0, '35-235.jpg', 'default.jpg', 'default.jpg', 1, 0),
+(24, 'Adaptador Mini Plug 2 Hembras', 1999, 8, '<p><strong>Caracterí­sticas:</strong></p>\r\n<p>Adaptador Jack Estereo 3.5mm Macho A 2 Jack 6.3mm Hembra. Ideal para conexiones musicales entre salidas de sonido de computadoras, laptop, mp3, mp4 desde o hacia equipos de sonido profesionales.</p>\r\n<p><strong>Especificaciones:</strong></p>\r\n<ol>\r\n<li>Producto: Nuevo.</li>\r\n<li>Color: Negro.</li>\r\n<li>Tipo: Estéreo.</li>\r\n<li>Peso: 8 gramos.</li>\r\n<li>Macho: 1 de 3.5mm.</li>\r\n<li>Hembra: 2 de 6.3mm.</li>\r\n<li>Material: Plástico moldeado.</li>\r\n</ol>', 1, 3, 5, 'Generico', 0, 0, '35-235.jpg', 'default.jpg', 'default.jpg', 1, 0),
 (25, 'Kit De Destornilladores Para Celulares 21 Piezas', 4150, 12, '<p style="text-align: justify;">Kit de Destornilladores con 21 piezas, ideal para equipos electrónicos de tamaño pequeño a mediano.</p>', 1, 4, 10, 'Security', 0, 0, 'destornilladorSecur.jpg', 'default.jpg', 'default.jpg', 1, 0),
 (26, 'Afeitadora Wahl Beard Battery Trimmer', 79000, 3, '<h2 style="text-align: center;"><span style="color: #ff0000;">Afeitadora Wahl Beard Battery Trimmer</span></h2>\r\n<p> </p>\r\n<p><strong>Acerca del producto:</strong></p>\r\n<ol>\r\n<li>Rasuradora con guí­a de cinco posiciones permite crear ajustes precisos y miradas.</li>\r\n<li>Acero de alto carbono mantiene la nitidez.</li>\r\n<li>Base de almacenamiento, para guardar las piezas organizadas y al alcance.</li>\r\n<li>Bono condensador de ajuste personal incluido para el oí­do, la nariz y la frente.</li>\r\n<li>Funciona con pilas, esta Rasuradora compacto es ideal para los viajes.</li>\r\n<li>Una guí­a peine de 6 posiciones permite dar forma a su vello facial a una longitud que más le convenga.</li>\r\n</ol>', 1, 4, 12, 'Whal', 1, 75800, 'wahl.jpg', 'wahl1.jpg', 'wahl3.jpg', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `promociones`
+--
+
+CREATE TABLE `promociones` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `detalle` varchar(90) COLLATE utf8_unicode_ci NOT NULL,
+  `imagen` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `oferta` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `promociones`
+--
+
+INSERT INTO `promociones` (`id`, `titulo`, `detalle`, `imagen`, `oferta`) VALUES
+(1, 'Solo por Febrero', 'Solo por este mes, aprovecha el 10% de descuento en todos los Juegos de PS4', '1.png', 1),
+(2, 'Ponte en Forma', 'Te traemos el Wii-Fit, para que te diviertas y ejercites en la comodidad de tu casa', '2.jpg', 0),
+(3, '¿Te gusta el Futbol?', 'Te ofrecemos descuentos en los titulos de Futbol (FIFA, PES) de años anteriores', '3.png', 1),
+(4, 'Lo Mejor en Audifonos.', 'Escucha tus artitas con el sonido de los mejores audifonos del mercado y al mejor precio.', 'original.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -183,8 +207,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `user`, `name`, `pass`, `email`, `permisos`, `activo`, `keyreg`, `keypass`, `new_pass`, `ultima_conexion`) VALUES
 (1, 'luisknd', 'Luis', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario41@gmail.com', 2, 1, '', '', '', 0),
-(2, 'cande', 'Rafael melendez', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario410@gmail.com', 0, 1, '', '', '', 0),
-(3, 'prueba', 'Candelario', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario4@gmail.com', 1, 1, '', '', '', 0),
+(2, 'cande', 'Rafael melendez', 'c0784027b45aa11e848a38e890f8416c', 'luiscandelario410@gmail.com', 0, 0, '', '', '', 0),
 (4, 'caro', 'Carolina Jardin', 'c0784027b45aa11e848a38e890f8416c', 'luis-knd@hotmail.com', 2, 1, '', '', '', 0);
 
 --
@@ -213,6 +236,12 @@ ALTER TABLE `favoritos`
 -- Indices de la tabla `productos`
 --
 ALTER TABLE `productos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `promociones`
+--
+ALTER TABLE `promociones`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -251,6 +280,11 @@ ALTER TABLE `favoritos`
 --
 ALTER TABLE `productos`
   MODIFY `id` bigint(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT de la tabla `promociones`
+--
+ALTER TABLE `promociones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `subcategorias`
 --

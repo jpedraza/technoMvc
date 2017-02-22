@@ -40,6 +40,8 @@ define('LONGITUD_MIN_NOM', 5);
 define('LONGITUD_MIN_MAR', 3);
 define('LONGITUD_MAX_NOM', 50);
 define('LONGITUD_MAX_MAR', 30);
+define('LONGITUD_MAX_TIT', 25);
+define('LONGITUD_MAX_DETALLE', 90);
 define('URL_PRODUCTOS', 'views/images/productos/');
 define('PRECIO_MIN_PROD', 350);
 define('MONEDA', 'Bs');
@@ -55,6 +57,7 @@ require('core/bin/functions/Categorias.php');
 require('core/bin/functions/Subcategorias.php');
 require('core/bin/functions/Productos.php');
 require('core/bin/functions/Carritos.php');
+require('core/bin/functions/Promociones.php');
 require('core/bin/functions/EmailTemplate.php');
 require('core/bin/functions/EmailTemplateAdm.php');
 require('core/bin/functions/LostpassTemplate.php');
@@ -67,6 +70,7 @@ $_categorias 	= Categorias();
 $_subcategorias = Subcategorias();
 $_productos 	= Productos();
 $_carritos 		= Carritos();
+$_promociones	= Promociones();
 
 
 ?>

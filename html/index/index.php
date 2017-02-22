@@ -27,12 +27,6 @@ include(HTML_DIR . 'overall/header.php'); ?>
       <div class="col-sm-12">
         <div id="slider-carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#slider-carousel" data-slide-to="1"></li>
-            <li data-target="#slider-carousel" data-slide-to="2"></li>
-          </ol>
-          
-          <div class="carousel-inner">
             <?php 
             $db  = new Conexion();
             $sql = $db->query("
@@ -46,6 +40,16 @@ include(HTML_DIR . 'overall/header.php'); ?>
                     promociones;");                
                 $cantidad   = $db->rows($sql);
                 for ($i=0; $i < $cantidad; $i++) { 
+                    $item = $i==0 ? 'class="active"' : '';
+                    echo
+                    '<li data-target="#slider-carousel" data-slide-to="$i" '.$item.'></li>';
+                }
+            ?>
+          </ol>
+          
+          <div class="carousel-inner">
+            <?php
+                for ($i=0; $i < $cantidad; $i++) { 
                     $item = $i==0 ? 'item active' : 'item';
                     $data[$i] = $db->recorrer($sql);
                     $oferta = $data[$i][4] == 1 ? '<img src="views/images/home/oferta.png"  class="pricing" alt="oferta" />' : '';
@@ -58,7 +62,7 @@ include(HTML_DIR . 'overall/header.php'); ?>
                             <b class="btn btn-default get">Aprovecha ya</b>
                         </div>
                         <div class="col-sm-6">
-                            <img src="views/images/home/'.$data[$i][3].'" class="girl img-responsive" alt="ofertas" />'.
+                            <img src="views/images/home/promociones/'.$data[$i][3].'" class="girl img-responsive" alt="promociones" />'.
                             $oferta .'
                         </div>
                     </div>';
