@@ -36,32 +36,31 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"></button>
                                 <h4 class="aviso-luis">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                    <span class="glyphicon glyphicon-gift"></span>
                                     Editar Promociones
                                 </h4>
                             </div>
 
-                            <div id="_AJAX_EDITPROMO_"></div>
+                            <div id="_AJAX_EDIPROMO_"></div>
 
                             <div class="modal-body">
-                                <form role="form" method="post" enctype="multipart/form-data" id="form" onkeypress="return runScriptEdipromo(event)">
-                                    <div class="form-group" onkeypress="return runScriptEdipromo(event)">
+                                <form role="form" method="post" enctype="multipart/form-data" id="form" onkeypress="return runScriptAddpromo(event)">
+                                    <div class="form-group" onkeypress="return runScriptAddpromo(event)">
                                         <label for="titulo">
                                             <span class="glyphicon glyphicon-pencil"></span> 
                                             Titulo
                                         </label>
-                                        <input type="text" class="form-control" id="titulo" maxlength="20" placeholder="Introduce el titulo" value="<?php echo $_promociones[$_GET['id']]['titulo'] ?>">
+                                        <input type="text" class="form-control" id="titulo" maxlength="25" placeholder="Introduce el titulo" value="<?php echo $_promociones[$_GET['id']]['titulo'] ?>">
+                                        <input type="hidden" name="id" id="id" value="<?php echo $_GET['id'] ?>">
                                     </div>
-                                    <div class="form-group" onkeypress="return runScriptEdipromo(event)">
+                                    <div class="form-group" onkeypress="return runScriptAddpromo(event)">
                                         <label for="detalle">
                                             <span class="glyphicon glyphicon-pencil"></span> 
                                             Detalle de Promoción
                                         </label>
-                                        <textarea class="form-control" id="detalle_promo">
-                                            <?php echo $_promociones[$_GET['id']]['detalle'] ?>
-                                        </textarea> 
+                                        <textarea class="form-control" id="detalle_promo" maxlength="90"><?php echo $_promociones[$_GET['id']]['detalle'] ?></textarea> 
                                     </div>
-                                    <div class="form-group" onkeypress="return runScriptEdipromo(event)">
+                                    <div class="form-group" onkeypress="return runScriptAddpromo(event)">
                                         <input type="file" name="imagen" class="form-control" id="imagen" data-field-type="bootstrap-file-filed" 
                                             data-label='<i class="fa fa-folder-open"></i>Insertar Imagen' 
                                             data-btn-class="btn-default" 
@@ -72,7 +71,7 @@
                                         <label for="detalle"> Img. Actual <span class="glyphicon glyphicon-arrow-right"></span></label>
                                         <img src="views/images/home/promociones/<?php echo $_promociones[$_GET['id']]['imagen']; ?>" alt="'. $_promociones[$_GET['id']]['titulo'] .'" width="90" height="70">
                                     </div>
-                                    <div class="form-group" onkeypress="return runScriptEdipromo(event)">
+                                    <div class="form-group" onkeypress="return runScriptAddpromo(event)">
                                         <label for="psw">
                                             <span class="glyphicon glyphicon-picture"></span> 
                                             Agregar Imagen de Oferta

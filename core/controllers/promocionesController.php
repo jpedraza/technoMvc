@@ -9,11 +9,7 @@ if (isset($_SESSION['app_id']) && $_users[$_SESSION['app_id']]['permisos'] >= 2)
 			include(HTML_DIR . 'promociones/add_promo.php');
 		break;
 		case 'edit':
-			if ($isset_id && array_key_exists($_GET['id'],$_users)) {
-				include(HTML_DIR . 'promociones/edit_promo.php');
-			} else {
-				header('location: ?view=promociones');	
-			}			
+			include(HTML_DIR . 'promociones/edit_promo.php');
 		break;
 		case 'delete':
 			$db = new Conexion();

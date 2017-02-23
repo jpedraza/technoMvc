@@ -1,6 +1,6 @@
 <?php
 
-/*var_dump($_POST['titulo']); exit();*/
+
 if((isset($_POST['titulo']) && $_POST['titulo'] != "")  && (isset($_POST['detalle_promo']) && $_POST['detalle_promo'] != "") && (isset($_POST['oferta']) && $_POST['oferta'] != "" && ($_POST['oferta'] == 1 || $_POST['oferta'] == 0))) {
     $db             = new Conexion();
     $titulo         = $db->real_escape_string($_POST['titulo']);
@@ -8,7 +8,7 @@ if((isset($_POST['titulo']) && $_POST['titulo'] != "")  && (isset($_POST['detall
     $detalle_promo  = $_POST['detalle_promo'];
     $detalle_promo  = str_replace(array('<script>','</script>','<script src', '<script type='), '', $detalle_promo);
     $subido         = "";
-    /* var_dump($_FILES["imagen"]["name"]); exit();*/
+    
     /**
      * Verificamos que el titulo no este repetido en otra promoción
      */

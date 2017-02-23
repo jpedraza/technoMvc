@@ -33,6 +33,9 @@ if ($_POST) {
 		case 'promocionAdd':
 			require('core/bin/ajax/goAddpromo.php');
 			break;	
+		case 'promocionEdi':
+			require('core/bin/ajax/goEdipromo.php');
+			break;	
 		case 'busPro':
 			require('core/bin/ajax/busPro.php');
 			break;	
