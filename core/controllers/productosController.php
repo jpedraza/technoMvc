@@ -20,11 +20,7 @@ if (isset($_SESSION['app_id']) && $_users[$_SESSION['app_id']]['permisos'] >= 2)
 		break;
 		case 'edit':
 			if ($isset_id && array_key_exists($_GET['id'],$_productos)) {
-				if ($_POST) {
-					$productos->Edit();
-				} else {
-					include(HTML_DIR . 'productos/edit_producto.php');
-				}					
+				include(HTML_DIR . 'productos/edit_producto.php');
 			} else {
 				header('location: ?view=productos');	
 			}			

@@ -118,57 +118,6 @@ class Productos {
 		} 
 	}
 
-	/*public function Add(){
-		$this->Errors('?view=productos&mode=add&error=');
-		$this->db->query(
-					"INSERT INTO
-						productos (
-							nombre, 
-							precio,
-							cantidad, 
-							descripcion, 
-							condicion, 
-							id_categoria, 
-							id_subcategoria, 
-							marca, 
-							oferta, 
-							precio_oferta, 
-							foto1, foto2, foto3
-						)
-					VALUES (
-						'$this->nombre',
-						'$this->precio',
-						'$this->cantidad',
-						'$this->descripcion',
-						'$this->condicion',
-						'$this->categoria',
-						'$this->subcategoria',
-						'$this->marca',
-						'$this->oferta',
-						'$this->precio_oferta',
-						'$this->foto1',
-						'$this->foto2',
-						'$this->foto3'
-					);
-				");
-		copy($temporal, URL_PRODUCTOS . $archivo);
-		header('location: ?view=productos&mode=add&id='.$this->id.'&success=true');
-	}*/
-
-	public function Edit(){
-		$this->id = intval($_GET['id']);
-		$this->Errors('?view=productos&mode=edit&id=' . $this->id . '&error=');
-		$this->db->query(
-					"UPDATE 
-						productos
-					SET 
-						nombre='$this->nombre'
-					WHERE 
-						id='$this->id';
-				");
-		header('location: ?view=productos&mode=edit&id='.$this->id.'&success=true');
-	}
-
 	public function Delete(){
 		$this->id = intval($_GET['id']);
 		//Para borrar una categoria debemos borrar todos los productos. Haremos multiquerys

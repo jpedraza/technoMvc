@@ -49,22 +49,22 @@
                                         <input type="hidden" id="id" name="id" value="<?php echo $_GET['id']; ?>">
                                         <label for="inputEmail" class="col-lg-4 control-label">Nombre del Producto <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
-                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del producto" value="<?php echo $_productos[$_GET['id']]['nombre']; ?>">
+                                            <input type="text" class="form-control" id="nombre" maxlength="<?php echo LONGITUD_MAX_NOM; ?>" name="nombre" placeholder="Nombre del producto" value="<?php echo $_productos[$_GET['id']]['nombre']; ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-6" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-6">
                                         <label for="inputEmail" class="col-lg-6 control-label">Precio <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <input type="number" class="form-control" id="precio" name="precio" placeholder="Precio" value="<?php echo $_productos[$_GET['id']]['precio']; ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-3" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-3">
                                         <label for="inputEmail" class="col-lg-4 control-label">Cantidad <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Stock" value="<?php echo $_productos[$_GET['id']]['cantidad']; ?>">
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-4" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-4">
                                         <label for="inputEmail" class="col-lg-4 control-label">Condicion <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <select name="condicion" id="condicion" class="form-control">
@@ -80,7 +80,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-5" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-5">
                                         <label for="inputEmail" class="col-lg-4 control-label">Categoría <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <select name="categoria" id="categoria" class="form-control">
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-6" enctype="multipart/form-data" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-6" enctype="multipart/form-data">
                                         <label for="inputEmail" class="col-lg-4 control-label">Sub-Categoría <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <select name="subcategoria" id="subcategoria" class="form-control">
@@ -113,57 +113,94 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-6" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-6">
                                         <label for="inputEmail" class="col-lg-4 control-label">Marca <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <input type="text" class="form-control" id="marca" name="marca" placeholder="Marca del producto" value="<?php echo $_productos[$_GET['id']]['marca']; ?>">
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-6" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-6">
                                         <label for="inputEmail" class="col-lg-4 control-label">¿Esta en Oferta? <b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
                                             <select name="oferta" id="oferta" class="form-control" onclick="return Desactivo(this.value)">
                                                 <?php 
-                                                    if ($_productos[$_GET['id']]['precio_oferta'] == 0) {
-                                                       echo '<option value="0">No</option>';
+                                                    if ($_productos[$_GET['id']]['oferta'] == 0) {
+                                                       echo 
+                                                       '<option value="0">No</option>
+                                                        <option value="1">Si</option>';
                                                     } else {
-                                                       echo '<option value="1">Si</option>';
+                                                       echo 
+                                                       '<option value="1">Si</option>
+                                                        <option value="0">No</option>';
                                                     }
                                                 ?>
-                                                <option value="0">No</option>
-                                                <option value="1">Si</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-6" onkeypress="return runScriptEdipro(event)">
+                                    <div class="form-group col-sm-6">
                                         <label for="inputEmail" class="col-lg-4 control-label">Precio de oferta</label>
                                         <div class="col-lg-10">
-                                            <input type="number" class="form-control" id="precio_oferta" name="precio_oferta" disabled="" placeholder="Precio de Oferta" value="<?php echo $_productos[$_GET['id']]['precio_oferta']; ?>">
+                                            <?php 
+                                            if ($_productos[$_GET['id']]['oferta'] == 1) {
+                                                echo '
+                                                <input type="number" class="form-control" id="precio_oferta" name="precio_oferta" placeholder="Precio de Oferta" value="'.$_productos[$_GET['id']]['precio_oferta'].'">
+                                                ';
+                                            } else {
+                                                echo'
+                                                <input type="number" class="form-control" id="precio_oferta" name="precio_oferta" disabled="" placeholder="Precio de Oferta" value="'.$_productos[$_GET['id']]['precio_oferta'].'">
+                                                ';
+                                            }
+                                            ?>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-12" onkeypress="return runScriptEdipro(event)">
-                                        <label for="inputEmail" class="col-lg-4 control-label">Foto <b class="aviso-luis">*</b></label>
+
+                                    <div class="form-group col-sm-4">
+                                        <label for="inputEmail" class="col-lg-4 control-label">Foto Principal<b class="aviso-luis">*</b></label>
                                         <div class="col-lg-10">
-                                           <!--  <input type="file" multiple name="imagen" id="imagen" class="form-control"></input> -->
-                                            <input type="file" name="imagen[]" class="form-control" id="imagen" data-field-type="bootstrap-file-filed" 
+                                            <input type="file" name="foto1" class="form-control" id="foto1" data-field-type="bootstrap-file-filed" 
                                             data-label='<i class="fa fa-folder-open"></i>Insertar Imagen' 
                                             data-btn-class="btn-default" 
                                             data-file-types="image/jpeg,image/png,image/gif"
                                             data-max-file-size="500000"
-                                            data-max-num-files="3" 
-                                            data-preview="on" 
-                                            multiple >
+                                            data-max-num-files="1" 
+                                            data-preview="on" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label for="inputEmail" class="col-lg-4 control-label">Foto 2</label>
+                                        <div class="col-lg-10">
+                                            <input type="file" name="foto2" class="form-control" id="foto2" data-field-type="bootstrap-file-filed" 
+                                            data-label='<i class="fa fa-folder-open"></i>Insertar Imagen' 
+                                            data-btn-class="btn-default" 
+                                            data-file-types="image/jpeg,image/png,image/gif"
+                                            data-max-file-size="500000"
+                                            data-max-num-files="1" 
+                                            data-preview="on" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <label for="inputEmail" class="col-lg-4 control-label">Foto 3</label>
+                                        <div class="col-lg-10">
+                                            <input type="file" name="foto3" class="form-control" id="foto3" data-field-type="bootstrap-file-filed" 
+                                            data-label='<i class="fa fa-folder-open"></i>Insertar Imagen' 
+                                            data-btn-class="btn-default" 
+                                            data-file-types="image/jpeg,image/png,image/gif"
+                                            data-max-file-size="500000"
+                                            data-max-num-files="1" 
+                                            data-preview="on" >
                                         </div>
                                     </div>
 
                                     <div class="form-group col-sm-4">
                                         <div class="col-lg-10">
+                                            <label for="fotos" class="col-lg-4 control-label">Foto 1 <i class="fa fa-arrow-right"></i></label>
                                             <img src="views/images/productos/<?php echo $_productos[$_GET['id']]['foto1']; ?>" alt="'. $_productos[$_GET['id']]['nombre'] .'" width="70" height="70">
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <div class="col-lg-10">
+                                            <label for="fotos" class="col-lg-4 control-label">Foto 2 <i class="fa fa-arrow-right"></i></label>
                                             <img src="views/images/productos/<?php if (!empty($_productos[$_GET['id']]['foto2'])) {
                                                 echo $_productos[$_GET['id']]['foto2'];
                                             } else {
@@ -174,6 +211,7 @@
                                     </div>
                                     <div class="form-group col-sm-4">
                                         <div class="col-lg-10">
+                                            <label for="fotos" class="col-lg-4 control-label">Foto 3 <i class="fa fa-arrow-right"></i></label>
                                             <img src="views/images/productos/<?php if (!empty($_productos[$_GET['id']]['foto3'])) {
                                                 echo $_productos[$_GET['id']]['foto3'];
                                             } else {
