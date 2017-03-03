@@ -16,15 +16,11 @@ if (isset($_SESSION['app_id']) && $_users[$_SESSION['app_id']]['permisos'] >= 2)
 			}			
 		break;
 		case 'edit':
-			if ($isset_id && array_key_exists($_GET['id'],$_categorias)) {
-				if ($_POST) {
-					$subcategorias->Edit();
-				} else {
-					include(HTML_DIR . 'subcategorias/edit_subcategoria.php');
-				}					
+			if ($_POST) {
+				$subcategorias->Edit();
 			} else {
-				header('location: ?view=subcategorias');	
-			}			
+				include(HTML_DIR . 'subcategorias/edit_subcategoria.php');
+			}
 		break;
 		case 'delete':
 			if ($isset_id) {

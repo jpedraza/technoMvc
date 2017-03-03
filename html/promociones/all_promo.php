@@ -12,7 +12,7 @@
                     <div>
                         <ul class="mbr-navbar__items mbr-buttons--active">
                         	<li>
-                                <a class="btn btn-default active" data-toggle="modal" href="?view=promociones">
+                                <a class="btn btn-default active" data-toggle="modal" href="Promociones/">
                                     Gestionar
                                 </a>
                                 <a class="btn btn-default" data-target="#Addpromo" data-toggle="modal">
@@ -25,7 +25,7 @@
                 </div>
                 <ol class="breadcrumb">
                   <li><a href="home/"><i class="fa fa-home"></i>Inicio</a></li>
-                  <li><a href="?view=promociones"><i class="fa fa-folder-open-o"></i>Promociones</a></li>
+                  <li><a href="Promociones/"><i class="fa fa-folder-open-o"></i>Promociones</a></li>
                 </ol>
             </div>
 			

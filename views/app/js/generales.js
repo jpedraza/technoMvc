@@ -21,3 +21,14 @@ function Dependientes(){
     })
   });
 }
+
+/**
+ * Funcion para desactivar los estados hasta que seleccione el país
+ */
+function Desactivo(v) {
+    if (v == 0) {
+        document.getElementById('estado').disabled = true;
+    } else {
+        document.getElementById('estado').disabled = false;
+    }
+}

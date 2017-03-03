@@ -35,3 +35,6 @@ RewriteRule ^Categorias/$ ?view=categorias
 RewriteRule ^Usuarios/$ ?view=userAdm
 RewriteRule ^Reporte-Productos/$ ?view=reportes&mode=inv
 RewriteRule ^Reporte-Usuarios/$ ?view=reportes&mode=user
+RewriteRule ^Promociones/$ ?view=promociones
+RewriteRule ^Procesar-Compra/$ ?view=detalles&mode=checkout
+RewriteRule ^Confirmar-Compra/$ ?view=detalles&mode=checkoutConfirm

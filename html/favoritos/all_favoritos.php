@@ -9,40 +9,6 @@ include(HTML_DIR . 'overall/header.php'); ?>
 <section>
     <div class="container">
         <div class="row">
-            <?php
-                $db  = new Conexion();
-                if (!isset($_SESSION['app_id'])) {
-                    $sql = $db->query(
-                    "SELECT
-                        id_producto,
-                        id
-                    FROM
-                        favoritos
-                    WHERE
-                        id_usuario='$_SESSION[favoritos]';");
-                $cantidadPrd = $db->rows($sql);
-                $idCarrito   = $_SESSION['carrito']; 
-                } else {
-                    $sql = $db->query(
-                    "UPDATE
-                        favoritos
-                    SET
-                        id_usuario='$_SESSION[app_id]'
-                    WHERE
-                        id_usuario='$_SESSION[favoritos]';");
-                    $sql = $db->query(
-                    "SELECT
-                        id_producto,
-                        id
-                    FROM
-                        favoritos
-                    WHERE
-                        id_usuario='$_SESSION[app_id]';");
-                $cantidadPrd = $db->rows($sql);
-
-                $idCarrito   = $_SESSION['app_id'];
-                }
-            ?>
             <!--CUERPO DE FAVORITOS-->
             <div class="col-sm-12 padding-right">
                 <div class="features_items">
@@ -51,7 +17,21 @@ include(HTML_DIR . 'overall/header.php'); ?>
                     </h2>
                     <?php
                     $HTML = "";
-                    if ($cantidadPrd > 0) {                                
+                    if ($cantidadPrd > 0) {
+                        /**
+                         * Verifica si existen las variables de Sesion favoritos y Usuario Logeado.
+                         * En base a la respuesta hace el SELECT para mostrar los favoritos.
+                         */
+                        $favoritos = isset($_SESSION['favoritos']) ? $_SESSION['favoritos'] : null;
+                        $id        = isset($_SESSION['app_id']) ? $_SESSION['app_id'] : null;
+                        $sql = $db->query(
+                            "SELECT
+                                id_producto,
+                                id
+                            FROM
+                                favoritos
+                            WHERE
+                                id_usuario = '$favoritos' OR id_usuario = '$id';");
                         while($data = $db->recorrer($sql)) {
                             $_productos[$data[0]]['oferta'] == 1 ? $precio = number_format($_productos[$data[0]]['precio_oferta'],2,",",".") : $precio = number_format($_productos[$data[0]]['precio'],2,",",".");
                             $nombreProducto = strlen($_productos[$data[0]]['nombre']) > 50 ? substr($_productos[$data[0]]['nombre'],0,47) . "..." : $_productos[$data[0]]['nombre'];
@@ -79,14 +59,15 @@ include(HTML_DIR . 'overall/header.php'); ?>
                             </div>
                             ';
                         }
+                        $db->liberar($sql);
+                        $db->close();  
                         echo $HTML;
                     } else { ?>
                         <div class="col-sm-12">
                             <h4 style="margin-top: 30px; margin-bottom: 100px;">Aún no tienes productos en tus favoritos.</h4>
                         </div> <?php
 
-                    }
-                    $db->close();  ?>                                 
+                    }?>                                 
                 </div><!-- FIN DE FAVORITOS-->
             </div>
         </div>

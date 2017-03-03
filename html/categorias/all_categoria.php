@@ -61,11 +61,12 @@
 					            		</thead>				     
 					     	       		<tbody>';
 				             				foreach ($_categorias as $id_categoria => $categoria_array) {
+				             					$cate = htmlentities($_categorias[$id_categoria]['nombre'],ENT_QUOTES | ENT_HTML5, "UTF-8");
 				             				 	$HTML .= 
 				                 				'<tr>
 				                   					<td>'.
-				                   						strtoupper(substr($_categorias[$id_categoria]['nombre'],0,1)).
-				                   						strtolower(substr($_categorias[$id_categoria]['nombre'],1)).
+				                   						strtoupper(substr($cate,0,1)).
+				                   						strtolower(substr($cate,1)).
 				                   					'</td>
 				                   					<td>
 				                   						<a class="btn btn-default" href="?view=categorias&mode=edit&id='.$_categorias[$id_categoria]['id'].'">

@@ -54,6 +54,7 @@ if (isset($_GET['producto']) || isset($_GET['mode'])){
 					header('Location:'. $_SERVER['HTTP_REFERER']);
 				}
 			}
+			$db->liberar($sql);
 			$db->close();
 		break;
 		case 'delete':
@@ -66,6 +67,7 @@ if (isset($_GET['producto']) || isset($_GET['mode'])){
 				;");
 			$db->close();
 			header('Location:'. $_SERVER['HTTP_REFERER']);
+			$db->close();
 		break;
 		default:					
 			include(HTML_DIR . 'favoritos/all_favoritos.php');

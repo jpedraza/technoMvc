@@ -29,7 +29,7 @@
 			       <div class="row titulo_categoria" style="margin-bottom: 15px;">Perfil de <?php echo $_users[$id_usuario]['user']; ?></div>
 
 			       	<div class="row cajas">
-				        <div class="col-md-2" >
+				        <div class="col-md-3" >
 				          	<center>
                                 <?php 
                                     $db     = new Conexion();
@@ -45,10 +45,17 @@
                                 <img src="<?php echo URL_PRODUCTOS . "default.jpg" ;?>" class="thumbnail" height="120" />
                                 <strong style="color:#0084bd;"><?php echo strtoupper($users[$id_usuario]['name']); ?></strong> <br /><br />
                             </center>
-                            <strong>Compras: </strong> 0<br />
+                            <p>
+                                <strong>Compras: </strong> 
+                                <span style="font-size: 10pt;color:#0084bd;">0</span>
+                            </p>
+                            <p>
+                                <strong>Última Visita: </strong>
+                                <span style="font-size: 10pt; color:#0084bd;"><?php echo $users[$id_usuario]['ultima_conexion']; ?></span>
+                            </p>
 
                         </div>
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                         <div id="_AJAX_EDIPERFIL_"></div>
                             <blockquote>
                                 <form role="form">

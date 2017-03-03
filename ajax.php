@@ -39,6 +39,9 @@ if ($_POST) {
 		case 'busPro':
 			require('core/bin/ajax/busPro.php');
 			break;	
+		case 'confirmCheck':
+			require('core/bin/ajax/goCheckConfirm.php');
+			break;	
 		default:
 			header('location: home/');
 			break;

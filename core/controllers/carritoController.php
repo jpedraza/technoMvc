@@ -5,6 +5,9 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 	switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		case 'add':
 			$db = new Conexion();
+			/**
+			 * Verifica si no hay un usuario logeado en la página.
+			 */
 			if (!isset($_SESSION['app_id'])) {
 				$sql = $db->query("
 					SELECT
@@ -21,7 +24,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 				$existe 	= $db->rows($sql);
 				$cantidad 	= $existe > 0 ? intval($db->recorrer($sql)[3]) : 0;
 				$inventario	= $_productos[$_GET['producto']]['cantidad'];
-				if (isset($cantidad) && $cantidad > 0) {
+				if ($cantidad > 0) {
 					if ($cantidad < $inventario) {
 						$db->query("
 						UPDATE
@@ -43,7 +46,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 					");
 					header('Location:'. $_SERVER['HTTP_REFERER']);
 				}
-			} else {
+			} else if($_users[$_SESSION['app_id']]['permisos'] != 2){
 				$sql = $db->query("
 					SELECT
 						id,
@@ -59,7 +62,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 				$existe 	= $db->rows($sql);
 				$cantidad 	= $existe > 0 ? intval($db->recorrer($sql)[3]) : 0; 
 				
-				if (isset($cantidad) && $cantidad > 0) {
+				if ($cantidad > 0) {
 					$db->query("
 					UPDATE
 						carrito
@@ -77,7 +80,16 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 					");
 					header('Location:'. $_SERVER['HTTP_REFERER']);
 				}
+			} else {
+				$db->query("
+					DELETE FROM
+						carrito
+					WHERE
+						id_usuario = '$_SESSION[carrito]' OR id_usuario = '$_SESSION[app_id]';");
+				header('Location:'. $_SERVER['HTTP_REFERER']);
 			}
+			$db->liberar($sql);
+			$db->close();
 		break;
 		case 'ver':
 			include(HTML_DIR . 'carrito/carrito.php');			
@@ -91,6 +103,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 					id = '$_GET[producto]'
 				;");
 			header('Location:'. $_SERVER['HTTP_REFERER']);
+			$db->close();
 		break;
 		case 'vaciar':
 			$db = new Conexion();
@@ -101,6 +114,7 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 					id_usuario = '$_GET[usuario]'
 				;");
 			header('Location:'. $_SERVER['HTTP_REFERER']);
+			$db->close();
 		break;		
 		default:					
 			include(HTML_DIR . 'carrito/carrito.php');
@@ -109,5 +123,4 @@ if (isset($_GET['producto']) || (isset($_GET['mode']) && ($_GET['mode'] == 'ver'
 } else{
 	header('location: home/');
 }
-$db->close();
 ?>

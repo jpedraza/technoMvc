@@ -234,5 +234,5 @@ $pdf->FancyTable($header,$data);
  * @param nombre: El nombre del fichero. Éste es ignorado en caso de destino S. El valor por defecto es doc.pdf.
  * @param UTF-8: Bolean. Indica si name es codificado en ISO-8859-1 (false) ó UTF-8 (true). Solo usa destinos I y D. 
  */
-$pdf->Output('I','Inventario_al_'.date('d/m/Y').'.pdf',true);
+$pdf->Output('D','Inventario_al_'.date('d/m/Y').'.pdf',true);
 ?>

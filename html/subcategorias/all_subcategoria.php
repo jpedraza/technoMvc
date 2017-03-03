@@ -64,16 +64,18 @@
 					            		</thead>				     
 					     	       		<tbody>';
 				             				foreach ($_subcategorias as $id_subcategoria => $subcategoria_array) {
+				             					$cate 	 = htmlentities($_categorias[$_subcategorias[$id_subcategoria]['id_categoria']]['nombre'],ENT_QUOTES | ENT_HTML5, "UTF-8");
+				             					$subcate = htmlentities($_subcategorias[$id_subcategoria]['nombre'],ENT_QUOTES | ENT_HTML5, "UTF-8");
 				             				 	$HTML .= 
 				                 				'<tr>
 				                   					<td>'.
-				                   						strtoupper(substr($_categorias[$_subcategorias[$id_subcategoria]['id_categoria']]['nombre'],0,1)).
-				                   						strtolower(substr($_categorias[$_subcategorias[$id_subcategoria]['id_categoria']]['nombre'],1)).
+				                   						strtoupper(substr($cate,0,1)).
+				                   						strtolower(substr($cate,1)).
 				                   					'</td>
 
 				                 					<td>'.
-				                   						strtoupper(substr($_subcategorias[$id_subcategoria]['nombre'],0,1)).
-				                   						strtolower(substr($_subcategorias[$id_subcategoria]['nombre'],1)).
+				                   						strtoupper(substr($subcate,0,1)).
+				                   						strtolower(substr($subcate,1)).
 				                   					'</td>
 				                   					<td>
 				                   						<a class="btn btn-default" href="?view=subcategorias&mode=edit&id='.$_subcategorias[$id_subcategoria]['id'].'">

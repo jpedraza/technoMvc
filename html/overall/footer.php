@@ -87,7 +87,6 @@
           <div class="single-widget">
             <h2>Servicios</h2>
             <ul class="nav nav-pills nav-stacked">
-              <li><a href="#">Ayuda en Línea</a></li>
               <li><a href="contacto/">Contactenos</a></li>
               <li><a href="#">Productos en Reparación</a></li>
             </ul>

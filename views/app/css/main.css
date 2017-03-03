@@ -6,6 +6,13 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+.popup{
+  display: none;
+  color: #00849c;
+}
+.popup-input:hover .popup{
+  display: inline;
+}
 
 .aviso-luis{
     color:red;
@@ -2241,6 +2248,18 @@ h2.title {
     padding: 10px;
     width: 100%;
     font-weight: 300
+
+}
+
+.form-luis > form > select, 
+.form-luis > form > input, 
+.form-luis > form > input {
+    background:#F0F0E9;
+    border: 0 none;
+    margin-bottom:10px;
+    padding: 10px;
+    width: 100%;
+    font-weight: 300
 }
 
 .form-two > form > select {
@@ -2770,13 +2789,13 @@ h2.title {
 
 #contact-page 
 .form-control::-moz-placeholder {
-    color: #8D8D8D;
+    color: #A3A1A1;
 }
 
 #contact-page .form-control {
     background-color: #fff;
     border: 1px solid #ddd;
-    color: #696763;
+    color: #555353;
     height: 46px;
     padding: 6px 12px;
     width: 100%;
