@@ -52,6 +52,8 @@ define('PRECIO_MIN_PROD', 350);
 define('MONEDA', 'Bs');
 define('CANTIDAD_PRODUCTOS', 5);
 define('CANTIDAD_ARTICULOS', 9);
+define('COSTO_ENVIO_LOCAL', 2500);
+define('COSTO_ENVIO_NACIONAL', 2900);
 
 #Estructura
 require('vendor/autoload.php'); //incluye las librerias instaladas por composer
