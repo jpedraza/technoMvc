@@ -254,7 +254,7 @@ function goBuscarStock() {
               if(connect.readyState == 4 && connect.status == 200) {
                   if(connect.responseText == 1) {
                       result = '<span class="label label-success">';
-                      result += '<strong>Buscando!<img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
+                      result += '<strong>Buscando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
                       result += '</span>';
                       __('_AJAX_SEARCH_').innerHTML = result;
                       window.location.assign("?view=productos&mode=busPro&buscar="+buscar);

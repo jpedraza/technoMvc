@@ -56,7 +56,9 @@ a:hover {
   text-decoration: none;
 }
 
-
+.justificado{
+  text-align: justify;
+}
 
 ul.pagination {
     display: inline-block;
@@ -94,4 +96,14 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
   width: 100%;
   transform: scale(1);
   transition: all .2s ease;
+}
+
+.justificadoMedio{
+  text-align: justify;
+  vertical-align: middle;
+}
+
+.centradoMedio{
+  text-align: center;
+  vertical-align: middle;
 }

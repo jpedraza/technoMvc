@@ -46,10 +46,10 @@
                         <h2 class="title text-center">Informaci&oacute;n de Contacto</h2>
                         <address>
                             <p>Technotronic Game RK. C.A.</p>
-                            <p style="text-align: justify;">Calle las colinas local 1, parroquia Caucagua, municipio Acevedo. Estado Miranda - Venezuela</p>
-                            <p>Celular: +58 424 2228991</p>
-                            <p>Local:   +58 239 5555555</p>
-                            <p>Email: <a href="mailto:inv.technotronicgame.rk@gmail.com" style="text-decoration: none;">inv.technotronicgame.rk@gmail.com</a></p>
+                            <p style="text-align: justify;"><?php echo DIRECCION_TIENDA; ?></p>
+                            <p>Celular: <?php echo CELULAR; ?></p>
+                            <p>Local:   <?php echo TELEFONO; ?></p>
+                            <p>Email: <a href="mailto:<?php echo CORREO_PRINCIPAL; ?>" style="text-decoration: none;"><?php echo CORREO_PRINCIPAL; ?></a></p>
                         </address>
                         <div class="social-icons">
                             <h2 class="title text-center">Redes Sociales</h2>

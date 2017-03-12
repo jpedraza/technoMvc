@@ -28,6 +28,13 @@ define('APP_COPY','Copyright &copy; '. date('Y',time()). ' Technotronick Game R.
 /*define('APP_COPY','Copyright &copy; Technotronick Game R.K.');*/
 define('APP_URL','http://localhost/technoMvc/'); // http://localhost/technoMvc/			http://lcdesign.com.ve/techno/
 
+#Constantes de la tienda
+define('TELEFONO', '0234-5157913');
+define('CELULAR', '0424-1234567');
+define('CORREO_PAGO', 'pagos@technotronick.com.ve');
+define('CORREO_PRINCIPAL', 'inv.technotronicgame.rk@gmail.com');
+define('DIRECCION_TIENDA', 'Calle las colinas local 1, parroquia Caucagua, municipio Acevedo. Estado Miranda');
+
 #Constantes de PHPMailer
 define('PHPMAILER_HOST', 'mail.lcdesign.com.ve');
 define('PHPMAILER_USER', 'lcandelario@lcdesign.com.ve');

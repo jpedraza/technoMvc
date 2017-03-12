@@ -120,8 +120,42 @@ function goCheckout() {
 	  	
 }
 
+
+function confirmCompra() {
+    var connect, form, response, result, tipoPago, total, productosComprados, totalItems;
+    tipoPago            = __('tipoPago').value;
+    total               = __('total').value;
+    productosComprados  = __('productosComprados').value;
+    totalItems          = __('totalItems').value;
+    form = 'tipoPago=' + tipoPago + '&total=' + total + '&productosComprados=' + productosComprados + '&totalItems=' + totalItems;
+    connect = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    connect.onreadystatechange = function() {
+
+        if(connect.readyState == 4 && connect.status == 200) {
+            if(connect.responseText == 1) {
+                result = '<span class="label label-success">';
+                result += '<strong>Compra Exitosa </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
+                result += '</span>';
+                __('_AJAX_CONFIRMCOMPRA_').innerHTML = result;
+                window.location.replace('Compra-Exitosa/');
+            } else {
+                __('_AJAX_CONFIRMCOMPRA_').innerHTML = connect.responseText;
+            }
+        } else if(connect.readyState != 4) {
+            result = '<span class="label label-info">';
+            result += '<strong>Procesando </strong><img src="views/app/images/loading1.gif" heigth="60%" alt="..." />';
+            result += '</span>';
+            __('_AJAX_CONFIRMCOMPRA_').innerHTML = result;
+        }
+    }
+    connect.open('POST','ajax.php?mode=confirmCompra',true);
+    connect.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    connect.send(form);
+}
+
+
 function runScriptCheck(e) {
-	if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
-		goCheckout();
-	}
+    if(e.keyCode == 13) { //13 corresponde al boton enter o intro del teclado en Ascii
+        goCheckout();
+    }
 }

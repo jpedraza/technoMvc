@@ -11,9 +11,13 @@ switch (isset($_GET['mode']) ? $_GET['mode'] : null) {
 		include(HTML_DIR . 'detalles/checkout.php');
 	break;	
 	case 'checkoutConfirm':
-		include(HTML_DIR . 'detalles/checkConfirm.php');	
+		include(HTML_DIR . 'detalles/checkConfirm.php');
+	break;	
 	case 'checkoutEdit':
 		include(HTML_DIR . 'detalles/checkoutEdit.php');
+	break;	
+	case 'confirmCompra':
+		include(HTML_DIR . 'detalles/confirmCompra.php');
 	break;	
 	default:				
 		header('location: home/');

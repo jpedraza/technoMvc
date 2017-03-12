@@ -54,8 +54,43 @@
  	<![endif]--> 
   	<title>
     <?php 
-      $archivo_actual   = !isset($_GET['view']) ? "index" : $_GET['view'];    
-      $modo_actual      = !isset($_GET['mode']) ? "" : $_GET['mode'];    
+        /**
+         * Si existe la varible vista coloca el title con su valor, si no Home
+         */
+        $archivo_actual   = !isset($_GET['view']) ? "Home" : $_GET['view']; 
+        /**
+         * Si ademas la vista tiene un modo, en Base al modo que tiene coloca el title segun cada caso
+         */
+        if (!isset($_GET['mode'])) {
+            $modo_actual = "";
+        } else {
+            switch ($_GET['mode']) {
+                case 'contacto':
+                    $modo_actual = "Contacto";
+                    break;
+                case 'productos':
+                    $modo_actual = "Detalle del Producto";
+                    break;
+                case 'ver':
+                    $modo_actual = "Carrito";
+                    break;
+                case 'checkout':
+                    $modo_actual = "Procesar Compra";
+                    break;
+                case 'checkoutConfirm':
+                    $modo_actual = "Confirmar Compra";
+                    break;
+                case 'checkoutEdit':
+                    $modo_actual = "Editar Datos de Compra";
+                    break;
+                case 'confirmCompra':
+                    $modo_actual = "Compra Exitosa";
+                    break;
+                default:
+                    $modo_actual = "techno";
+                    break;
+            }
+        }  
         switch ($archivo_actual) {
             case "index":
                 echo "Home";
@@ -79,7 +114,7 @@
                 echo "Recuperar Clave";
                 break;            
             case "detalles":
-                echo "Detalle " . strtoupper(substr($modo_actual,0,1)) . substr($modo_actual,1) . " ";
+                echo strtoupper(substr($modo_actual,0,1)) . substr($modo_actual,1) . " ";
                 break;            
             case "mostrar":
                 echo "Productos";

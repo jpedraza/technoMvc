@@ -18,11 +18,13 @@ if(!empty($_POST['nombre']) and !empty($_POST['apellido']) and !empty($_POST['ce
     $municipio  =  $_POST['municipio'];
     $calle      =  $_POST['calle'];
     $edificio   =  $_POST['edificio'];
-    if ($_POST['transferencia'] == true) {
-        $tipoPago = "transferencia";
-    } elseif ($_POST['mercadopago'] == true) {
+    $fecha      =  date("d-m-Y");
+
+    if ($_POST['mercadopago'] == "true") {
         $tipoPago = "mercadopago";
-    }elseif ($_POST['efectivo'] == true) {
+    } elseif ($_POST['transferencia'] == "true") {
+        $tipoPago = "transferencia";
+    }elseif ($_POST['efectivo'] == "true") {
         $tipoPago = "efectivo";
     }else{
         $tipoPago = "debito";
@@ -106,6 +108,7 @@ if(!empty($_POST['nombre']) and !empty($_POST['apellido']) and !empty($_POST['ce
                                                                         "calle"         => $calle,
                                                                         "edificio"      => $edificio,
                                                                         "tipoPago"      => $tipoPago,
+                                                                        "fecha"         => $fecha,
                                                                     ];
                                                                     $_SESSION['checkout'] = serialize($compra);
                                                                     echo 1;

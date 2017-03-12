@@ -245,7 +245,7 @@ if (isset($_SESSION['checkout'])) {
                                 <div class="radio">
                                     <label class="popup-input">
                                         <input name="tipoPago" id="transferencia" value="transferencia" type="radio">
-                                        <img src="views/app/images/transferencia.jpg" title="Transferencia" width="50px" height="50px"> 
+                                        <img src="views/app/images/transferencia.png" title="Transferencia" width="50px" height="50px"> 
                                         <i class="popup">Transferencia</i>
                                     </label>
                                 </div>

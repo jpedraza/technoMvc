@@ -42,6 +42,10 @@ if ($_POST) {
 		case 'confirmCheck':
 			require('core/bin/ajax/goCheckConfirm.php');
 			break;	
+		default:	
+		case 'confirmCompra':
+			require('core/bin/ajax/goConfirmCompra.php');
+			break;	
 		default:
 			header('location: home/');
 			break;

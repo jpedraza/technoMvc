@@ -86,7 +86,7 @@
                                                         $estado = "Delta Amacuro";
                                                          break;
                                                     case '10':
-                                                        $estado = "Dpnd. Federales";
+                                                        $estado = "Depnd. Federales";
                                                          break;
                                                     case '11':
                                                         $estado = "Distrito Capital";
@@ -143,7 +143,7 @@
                                                 '<small>'. $datosCompra['municipio'] . '</small><br />'.
                                                 '<small>'. $datosCompra['calle']. '</small><br />'.
                                                 '<small>'. $datosCompra['edificio']. '</small><br />'.
-                                                '<small>'. date("d-m-Y"). '</small><br />';
+                                                '<small>'. $datosCompra['fecha']. '</small><br />';
                                             ?>
                                         </td>
                                         <td style="text-align:center; width: 5%">
@@ -154,7 +154,7 @@
                                                     . strtolower(substr($datosCompra['tipoPago'],1)). 
                                                 '</small><br />'; ?>
                                         <td style="vertical-align:middle; width: 3%">
-                                            <a class="pull-right btn btn-default btn-xs" href="Procesar-Compra/">
+                                            <a class="pull-right btn btn-default btn-xs" href="Editar-Datos-Compra/">
                                                 <i class="fa fa-edit"></i>
                                                 Modificar                        
                                             </a>
@@ -192,12 +192,16 @@
                                      * [$costoEnvio determina el costo del envio (Nacional o Local)]
                                      * @var [String]
                                      */
-                                    $estado != "Distrito Capital" ? $costoEnvio = COSTO_ENVIO_NACIONAL : $costoEnvio = COSTO_ENVIO_LOCAL;                              
+                                    $estado != "Distrito Capital" ? $costoEnvio = COSTO_ENVIO_NACIONAL : $costoEnvio = COSTO_ENVIO_LOCAL;
+                                    $productosComprados = 0;                              
+                                    $totalItems         = 0;                              
                                         while($data = $db->recorrer($sql)) {
-                                            $precio     = ($_productos[$data[0]]['oferta'] == 1) ? $_productos[$data[0]]['precio_oferta']: $_productos[$data[0]]['precio'];
-                                            $subtotal  += ($precio * $data[1]);
-                                            $total      = $costoEnvio + $subtotal;
-                                            $HTML .= 
+                                            $precio             = ($_productos[$data[0]]['oferta'] == 1) ? $_productos[$data[0]]['precio_oferta']: $_productos[$data[0]]['precio'];
+                                            $subtotal          += ($precio * $data[1]);
+                                            $productosComprados+= 1;
+                                            $totalItems        += $data[1];
+                                            $total              = $costoEnvio + $subtotal;
+                                            $HTML              .= 
                                             '<tr>
                                                 <td style="text-align:center; width: 10%">
                                                     <a href="detalles/'. UrlAmigable($data[0], $_productos[$data[0]]['nombre']) . '">
@@ -230,34 +234,18 @@
                                 <div id="payment">
                                     <div class="form-group action-buttons">
                                         <div class="col-md-12">
-                                            <button id="checkout_btn" onclick="confirmSubmit();" class="btn btn-success lock-on-click" title="Confirmar Orden" data-loading-text="<i class='fa fa-refresh fa-spin'></i>">
-                                                <i class="fa fa-check-square"></i>
-                                                Confirmar Orden
-                                            </button>
+                                            <form>
+                                                <input type="hidden" name="tipoPago" id="tipoPago" value="<?php echo $datosCompra['tipoPago'] ?>">
+                                                <input type="hidden" name="total" id="total" value="<?php echo $total ?>">
+                                                <input type="hidden" name="totalItems" id="totalItems" value="<?php echo $totalItems ?>">
+                                                <input type="hidden" name="productosComprados" id="productosComprados" value="<?php echo $productosComprados ?>">
+                                                <button type="button" class="btn btn-success lock-on-click" onclick="confirmCompra()">
+                                                    <span class="glyphicon glyphicon-check"></span> 
+                                                        Confirmar Orden
+                                                </button>
+                                                <span id="_AJAX_CONFIRMCOMPRA_"></span>
+                                            </form>
                                         </div>
-                                        <!-- <script type="text/javascript">
-                                            function confirmSubmit() {
-                                                $('body').css('cursor','wait');
-                                                $.ajax({
-                                                    type: 'GET',
-                                                    url: 'http://demos1.softaculous.com/AbanteCart/index.php?rt=extension/default_cod/confirm',
-                                                    beforeSend: function() {
-                                                        $('.alert').remove();
-                                                        $('.action-buttons').hide(); 
-                                                        $('.action-buttons').before('<div class="wait alert alert-info text-center"><i class="fa fa-refresh fa-spin"></i> </div>');
-                                                    },      
-                                                    success: function() {
-                                                        location = 'http://demos1.softaculous.com/AbanteCart/index.php?rt=checkout/success';
-                                                    },
-                                                    error: function (jqXHR, textStatus, errorThrown) {
-                                                        alert(textStatus + ' ' + errorThrown);
-                                                        $('.wait').remove();
-                                                        $('.action-buttons').show();
-                                                        try { resetLockBtn(); } catch (e){}
-                                                    }
-                                                });
-                                            }
-                                        </script> -->
                                     </div>
                                 </div>
                             </div>
@@ -348,7 +336,10 @@
     </div>
     <!--/FIN DE PAGINA DE COMPRA-->
 </section>
+
+<script src=views/app/js/checkout.js></script>
 <?php include(HTML_DIR . 'overall/footer.php'); ?>
 
 </body>
 </html>
+

@@ -12,7 +12,7 @@
             <div class="bg">
                 <div class="row">           
                     <div class="col-sm-12">                         
-                        <h2 class="title text-center">Procesar Compra</h2>
+                        <h2 class="title text-center">Editar Datos de Compra</h2>
                     </div>                  
                 </div>
                 <?php
@@ -120,7 +120,7 @@
                                 <div class="radio">
                                     <label class="popup-input">
                                         <input name="tipoPago" id="transferencia" value="transferencia" type="radio">
-                                        <img src="views/app/images/transferencia.jpg" title="Transferencia" width="50px" height="50px"> 
+                                        <img src="views/app/images/transferencia.png" title="Transferencia" width="50px" height="50px"> 
                                         <i class="popup">Transferencia</i>
                                     </label>
                                 </div>
@@ -146,10 +146,14 @@
                                     </label>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-default btn-success btn-block" onclick="goCheckout()">
+                            <button type="button" class="btn btn-success" onclick="goCheckout()">
                                 <span class="glyphicon glyphicon-check"></span> 
-                                    Procesar Compra
+                                    Editar y Continuar
                             </button>
+                            <a href="Confirmar-Compra/" type="button" class="btn btn-success">
+                                <span class="glyphicon glyphicon-check"></span> 
+                                    Volver sin editar
+                            </a>
                         </form>                    
                     </div> 
                 <?php
