@@ -40,14 +40,57 @@
                                         }
                                     } else {
                                         $users = false;
-                                    }    
+                                    } 
+                                    $db->liberar($sql);   
                                 ?>
                                 <img src="<?php echo URL_PRODUCTOS . "default.jpg" ;?>" class="thumbnail" height="120" />
                                 <strong style="color:#0084bd;"><?php echo strtoupper($users[$id_usuario]['name']); ?></strong> <br /><br />
                             </center>
                             <p>
+                                <?php 
+                                    /**
+                                     * Cantidad de Compras de un Usuario
+                                     */
+                                    $sql = $db->query(
+                                        "SELECT 
+                                            count(*) 
+                                        FROM 
+                                            compras 
+                                        WHERE 
+                                            id_usuario='$_SESSION[app_id]';"
+                                    );
+                                    $numeroCompras = $db->rows($sql);
+                                    $db->liberar($sql);
+
+                                    /**
+                                     * Cantidad de Productos comprados por un Usuario
+                                     */
+                                    $sql = $db->query(
+                                        "SELECT 
+                                            SUM(dc.cantidad_items), c.fecha 
+                                        FROM 
+                                            compras c 
+                                        JOIN 
+                                            detalle_compras dc 
+                                        ON 
+                                            c.id = dc.id_compra 
+                                        WHERE 
+                                            c.id_usuario = '$_SESSION[app_id]';"
+                                    );
+                                    $query             = $db->recorrer($sql);
+                                    $cantidadComprados = intval($query[0]);
+                                    $cantidadComprados == 0 ? $fechaCompra = "Hoy es un buen día" :  $fechaCompra = $query[1];
+                                ?>
                                 <strong>Compras: </strong> 
-                                <span style="font-size: 10pt;color:#0084bd;">0</span>
+                                <span style="font-size: 10pt;color:#0084bd;"><?php echo $numeroCompras; ?></span>
+                            </p>
+                            <p>
+                                <strong>Articulos Comprados: </strong>
+                                <span style="font-size: 10pt; color:#0084bd;"><?php echo $cantidadComprados; ?></span>
+                            </p>
+                            <p>
+                                <strong>Última Compra: </strong>
+                                <span style="font-size: 10pt; color:#0084bd;"><?php echo $fechaCompra; ?></span>
                             </p>
                             <p>
                                 <strong>Última Visita: </strong>
@@ -85,6 +128,47 @@
                                         Editar
                                     </button>
                                 </form>
+                            </blockquote>
+                            <blockquote>
+                                <div>
+                                    <label>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> 
+                                        Productos Adquiridos
+                                    </label>                                    
+                                </div>
+                                <div class="col-sm-12">
+                                    <?php 
+                                        $sql = $db->query(
+                                            "SELECT 
+                                                p.foto1, p.nombre, dc.id_producto
+                                            FROM 
+                                                compras c 
+                                            JOIN 
+                                                detalle_compras dc 
+                                            ON 
+                                                c.id = dc.id_compra 
+                                            JOIN 
+                                                productos p
+                                            ON 
+                                                dc.id_producto = p.id
+                                            WHERE 
+                                                c.id_usuario = '$_SESSION[app_id]';"
+                                        );
+                                        if ($db->rows($sql) > 1) {
+                                            while ($data = $db->recorrer($sql)) {
+                                                echo 
+                                                '<a href="detalles/'. UrlAmigable($data[2], $_productos[$data[2]]['nombre']) . '" target="_blank">
+                                                    <img src="'.URL_PRODUCTOS . $data[0] .'" alt="'. $data[1].'" width="100px" height=100px />
+                                                </a>';
+                                            }
+                                        } else {
+                                            echo
+                                            '<span style="font-size: 10pt;color:#0084bd; text-align:justify;">
+                                                 Aún no has comprado, aprovecha nuestros descuentos y promociones. ¿Qué estas esperando?
+                                            </span>';
+                                        }
+                                    ?>
+                                </div>
                             </blockquote>
                             <hr />
 				        </div>

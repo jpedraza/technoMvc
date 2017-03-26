@@ -47,7 +47,7 @@ if ($db->rows($sql) == 0) {
 	$mail->isHTML(true);								// Establecer el formato de correo electrónico en HTML
 
 	$mail->Subject = 'Activación de tu cuenta';
-	$mail->Body    = EmailTemplate($name,$link);
+	$mail->Body    = EmailTemplate($name,$link);		// Llama a la funcion que construye el cuerpo del mail
 	$mail->AltBody = 'Hola ' . $name . ' para activar tu cuenta accede al siguiente enlace: ' . $link;
 
 	if(!$mail->send()) {
